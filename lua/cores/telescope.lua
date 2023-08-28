@@ -88,7 +88,8 @@ return {
 			{ "tsg", "<cmd>Telescope live_grep<cr>" },
 			{ "tsh", "<cmd>Telescope help_tags<cr>" },
 			{ "tsy", "<cmd>Telescope neoclip<CR>" },
-			{ "tsl", "<cmd>UrlView<cr>" }
+			{ "tsl", "<cmd>UrlView<cr>" },
+			{ "tsm", "<cmd>Telescope marks<cr>" }
 		}
 	}
 }

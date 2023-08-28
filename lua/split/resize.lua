@@ -2,20 +2,7 @@ Map('n', 'sr', function()
 	require('smart-splits').start_resize_mode()
 end)
 return {
-	{
-		"numToStr/Navigator.nvim",
-		lazy = false,
-		config = true,
-		keys = {
-			{ '<A-h>', '<CMD>NavigatorLeft<CR>',     mode = { "n", "t" } },
-			{ '<A-l>', '<CMD>NavigatorRight<CR>',    mode = { "n", "t" } },
-			{ '<A-k>', '<CMD>NavigatorUp<CR>',       mode = { "n", "t" } },
-			{ '<A-j>', '<CMD>NavigatorDown<CR>',     mode = { "n", "t" } },
-			{ '<A-p>', '<CMD>NavigatorPrevious<CR>', mode = { "n", "t" } },
-		}
-
-	},
-	{
+{
 		"kwkarlwang/bufresize.nvim",
 		lazy = false,
 		opts = function()
@@ -41,11 +28,9 @@ return {
 					increment = false,
 				},
 			}
-		end
-		,
+		end	,
 		config = function(_, opts)
 			require("bufresize").setup(opts)
 		end
 	},
-
 }

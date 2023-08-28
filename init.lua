@@ -20,7 +20,6 @@ G = vim.g
 Set = vim.o
 HL = vim.api.nvim_set_hl
 
-require("variables")
 require("options")
 require("gui")
 require("mapping")

@@ -1,7 +1,5 @@
 Set.tabstop = 4
 Set.shiftwidth = 4
-Set.guifont =
-"Iosevka Second Custom, Symbols Nerd Font Mono, Symbols Nerd Font Mono Regular,Symbols Nerd Font, Symbols Nerd Font Mono Regular"
 Set.number = true
 Set.ruler = true
 Set.cursorline = true

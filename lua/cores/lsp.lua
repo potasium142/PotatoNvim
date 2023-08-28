@@ -1,18 +1,13 @@
 return {
 	{
-		'lukas-reineke/lsp-format.nvim',
-		config = true
-	},
-	{
-		'VonHeikemen/lsp-zero.nvim',
-		lazy = false,
-		config = function()
-			require('lsp-zero.settings').preset({})
-		end
-	},
-	{
 		"williamboman/mason.nvim",
 		config = true
+	},
+	{
+		'lukas-reineke/lsp-format.nvim',
+		config = function()
+			require("lsp-format").setup()
+		end
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -32,28 +27,16 @@ return {
 		end,
 		config =
 			function()
-				local lsp = require("lsp-zero").preset({})
-				lsp.on_attach(function(client, bufnr)
-					lsp.default_keymaps({ buffer = bufnr })
-					if client.supports_method('textDocument/formatting') then
-						require('lsp-format').on_attach(client)
-					end
-				end)
-				lsp.set_server_config({
-					capabilities = {
-						textDocument = {
-							foldingRange = {
-								dynamicRegistration = false,
-								lineFoldingOnly = true
-							}
-						}
-					}
+				require("mason-lspconfig").setup()
+				require("mason-lspconfig").setup_handlers({
+
+					function(server_name) -- default handler (optional)
+						require("lspconfig")[server_name].setup({
+							capabilities = require("cmp_nvim_lsp").default_capabilities(),
+							on_attach = require("lsp-format").on_attach
+						})
+					end,
 				})
-				lsp.default_keymaps({
-					buffer = bufnr,
-					omit = { 'gs', 'K' },
-				})
-				lsp.setup()
 			end
 	},
 	{
