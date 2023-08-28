@@ -1,0 +1,23 @@
+Set.tabstop = 4
+Set.shiftwidth = 4
+Set.guifont =
+"Iosevka Second Custom, Symbols Nerd Font Mono, Symbols Nerd Font Mono Regular,Symbols Nerd Font, Symbols Nerd Font Mono Regular"
+Set.number = true
+Set.ruler = true
+Set.cursorline = true
+Set.showmatch = true
+Set.autoread = true
+Set.termguicolors = true
+Set.updatetime = 100
+Set.splitbelow = true
+Set.wildmode = "longest,full"
+Set.signcolumn = "yes"
+Set.smartindent = true
+Set.autoindent = true
+Set.ffs = "unix,dos"
+Set.swapfile = false
+Set.mouse = ""
+Set.syntax = "ON"
+Set.relativenumber = true
+Set.guicursor = 'i-ci:ver10'
+Set.scrolloff = 12
