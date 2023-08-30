@@ -7,12 +7,13 @@ return {
 	},
 	{
 		"axieax/urlview.nvim",
-		config = function()
-			require("urlview").setup()
-		end,
+		config = true,
 	},
 	{
 		"AckslD/nvim-neoclip.lua",
+		dependencies = {
+			{ 'nvim-telescope/telescope.nvim' },
+		},
 		config = function()
 			local function is_whitespace(line)
 				return vim.fn.match(line, [[^\s*$]]) ~= -1
@@ -32,6 +33,8 @@ return {
 					return not all(data.event.regcontents, is_whitespace)
 				end,
 			})
+
+			require("telescope").load_extension("neoclip")
 		end
 	},
 	{
@@ -43,10 +46,11 @@ return {
 		"nvim-telescope/telescope.nvim",
 		lazy = false,
 		dependencies = {
+			"nvim-lua/plenary.nvim",
 			"axieax/urlview.nvim",
 			"debugloop/telescope-undo.nvim",
+			"olimorris/persisted.nvim",
 			"ahmedkhalf/project.nvim",
-			"AckslD/nvim-neoclip.lua",
 			"tiagovla/scope.nvim",
 		},
 		opts = function()
@@ -78,7 +82,6 @@ return {
 			telescope.load_extension('projects')
 			telescope.load_extension("persisted")
 			telescope.load_extension("scope")
-			telescope.load_extension("neoclip")
 			telescope.load_extension("undo")
 		end,
 		keys = {

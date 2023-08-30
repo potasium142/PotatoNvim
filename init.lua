@@ -27,9 +27,12 @@ require("lazy").setup({
 	defaults = {
 		lazy = false
 	},
+	checker = {
+		enabled = true
+	},
 	spec = {
-		{ import = "cores" },
 		{ import = "miscellaneous" },
+		{ import = "cores" },
 		{ import = "ui" },
 		{ import = "buffers" },
 		{ import = "utils" },
@@ -40,5 +43,5 @@ require("lazy").setup({
 	}
 })
 
---noodles fix for cmp inconsistent load
-require("cmp.cmp_manual_load")
+-- noodles fix for cmp inconsistent load
+-- require("cmp.cmp_manual_load")

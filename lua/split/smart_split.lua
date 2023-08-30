@@ -1,6 +1,7 @@
 return {
 	'mrjones2014/smart-splits.nvim',
 	lazy = false,
+	dependencies = { "kwkarlwang/bufresize.nvim" },
 	opts = {
 		ignored_filetypes = {
 			'nofile',
@@ -16,4 +17,9 @@ return {
 			},
 		},
 	},
+	keys = {
+		{ 'sr', function()
+			require('smart-splits').start_resize_mode()
+		end }
+	}
 }

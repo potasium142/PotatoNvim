@@ -7,4 +7,5 @@ if G.neovide then
 	Set.winblend = 40
 	G.neovide_floating_blur_amount_x = 10
 	G.neovide_floating_blur_amount_y = 10
+	Set.linespace = -1
 end

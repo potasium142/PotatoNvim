@@ -1,13 +1,18 @@
 return {
 	"kevinhwang91/nvim-ufo",
-	config = function()
+	dependencies = {
+		'kevinhwang91/promise-async',
+		'nvim-treesitter/nvim-treesitter'
+	},
+	init = function()
 		Set.foldcolumn = "1" -- '0' is not bad
 		Set.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 		Set.foldlevelstart = -1
 		Set.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 		Set.foldenable = true
 		Set.foldmethod = 'manual'
-
+	end,
+	config = function()
 		local handler = function(virtText, lnum, endLnum, width, truncate)
 			local newVirtText = {}
 			local suffix = ("    ⌊ %d⌉"):format(endLnum - lnum)
@@ -41,6 +46,11 @@ return {
 			end,
 			fold_virt_text_handler = handler,
 		})
-		Map('n', 'zm', require('ufo').closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
-	end
+		-- Map('n', 'zm', require('ufo').closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
+	end,
+	keys = {
+		{ 'zm', function()
+			require('ufo').closeFoldsWith()
+		end }
+	}
 }

@@ -1,8 +1,5 @@
-Map('n', 'sr', function()
-	require('smart-splits').start_resize_mode()
-end)
 return {
-{
+	{
 		"kwkarlwang/bufresize.nvim",
 		lazy = false,
 		opts = function()
@@ -28,7 +25,7 @@ return {
 					increment = false,
 				},
 			}
-		end	,
+		end,
 		config = function(_, opts)
 			require("bufresize").setup(opts)
 		end

@@ -1,0 +1,16 @@
+return {
+	"nvim-lua/plenary.nvim",
+	"winston0410/cmd-parser.nvim",
+	"kevinhwang91/promise-async",
+	"neanias/everforest-nvim",
+	"nvim-treesitter/nvim-treesitter-context",
+	"ahmedkhalf/project.nvim",
+	"axieax/urlview.nvim",
+	"AckslD/nvim-neoclip.lua",
+	"tiagovla/scope.nvim",
+	"nvim-telescope/telescope.nvim",
+	"williamboman/mason.nvim",
+	'lukas-reineke/lsp-format.nvim',
+	"neovim/nvim-lspconfig",
+	"nvimdev/lspsaga.nvim",
+}

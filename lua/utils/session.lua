@@ -1,7 +1,6 @@
 return {
 	"olimorris/persisted.nvim",
 	dependencies = {
-		"nvim-telescope/telescope.nvim",
 		"tiagovla/scope.nvim",
 	},
 	lazy = false,

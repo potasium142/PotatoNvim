@@ -14,22 +14,24 @@ return {
 		--Footer
 		local function info()
 			local total_plugins = require('lazy').stats().count
-			local datetime = os.date(" %d-%m-%Y   %H:%M:%S")
-			local nvim_version_info = "   v" .. version.major .. "." .. version.minor .. "." .. version.patch
-			return datetime .. "   " .. total_plugins .. " plugins" .. nvim_version_info
+			local nvim_version_info = "  v" .. version.major .. "." .. version.minor .. "." .. version.patch
+			return "  " .. total_plugins .. " plugins" .. nvim_version_info
 		end
 
 
 		-- Set header
 		dashboard.section.header.val = {
-			"                                                     ",
-			"  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
-			"  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
-			"  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
-			"  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
-			"  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
-			"  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
-			"                                                     ",
+			"      ▒▒▒▒▒▒▒▒▓▓        ",
+			"  ▒▒▒▒░░░░░░▓▓░░▓▓▓▓    ",
+			"  ▒▒    ░░▓▓▒▒░░░░▒▒▓▓  ",
+			"▒▒░░░░▓▓░░░░▒▒▒▒░░▒▒▓▓██",
+			"▒▒░░░░░░░░░░░░▒▒░░▒▒▓▓██",
+			"▒▒░░▒▒  ░░░░▓▓▒▒▒▒▓▓▓▓██",
+			"▒▒▒▒▒▒░░▒▒████▒▒▓▓▓▓██  ",
+			"▓▓▒▒▒▒▒▒▒▒▓▓▒▒▓▓████    ",
+			"  ▓▓▓▓▒▒▒▒▓▓▓▓██        ",
+			"      ████████          ",
+			"  LONG LIVE THE POTATO  ",
 			info(),
 		}
 

@@ -24,9 +24,11 @@ return {
 	},
 	{
 		"winston0410/range-highlight.nvim",
-		config = function()
-			require("range-highlight").setup()
-		end
+		dependencies = { 'winston0410/cmd-parser.nvim' },
+		config = true,
+	},
+	{
+		'stevearc/dressing.nvim',
 	},
 	{
 		"folke/noice.nvim",
@@ -45,11 +47,11 @@ return {
 			end
 		end,
 		dependencies = {
-			"stevearc/dressing.nvim",
 			"rcarriga/nvim-notify",
 			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
 			"winston0410/range-highlight.nvim",
+			"nvim-treesitter/nvim-treesitter",
 		},
 		opts = {
 			lsp = {

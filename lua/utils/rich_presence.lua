@@ -7,7 +7,7 @@ return {
 		log_level = nil,
 		debounce_timeout = 10,
 		blacklist = {},
-		buttons = false,
+		buttons = true,
 		file_assets = {},
 		show_time = true,
 	}

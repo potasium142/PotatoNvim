@@ -5,9 +5,7 @@ return {
 	},
 	{
 		'lukas-reineke/lsp-format.nvim',
-		config = function()
-			require("lsp-format").setup()
-		end
+		config = true
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -55,9 +53,12 @@ return {
 	{
 		"nvimdev/lspsaga.nvim",
 		lazy = false,
+		dependencies = {
+			'nvim-treesitter/nvim-treesitter',
+			'nvim-tree/nvim-web-devicons'
+		},
 		opts = {
 			diagnostic = {
-
 				border_follow = false
 			},
 			outline = {
@@ -80,7 +81,7 @@ return {
 		},
 		keys = {
 			{ "<space>ca", "<cmd>Lspsaga code_action<CR>" },
-			{ "<space>gh", "<cmd>Lspsaga lsp_finder<CR>" },
+			{ "<space>gh", "<cmd>Lspsaga finder<CR>" },
 			{ "<space>rn", "<cmd>Lspsaga rename<CR>" },
 			{ "<space>gd", "<cmd>Lspsaga goto_definition<CR>" },
 			{ "<space>fd", "<cmd>Lspsaga peek_definition<CR>" },
