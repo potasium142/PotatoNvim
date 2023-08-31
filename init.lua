@@ -21,25 +21,25 @@ HL = vim.api.nvim_set_hl
 AutoCMD = vim.api.nvim_create_autocmd
 AutoGroup = vim.api.nvim_create_augroup
 
-require("options")
-require("gui")
-require("mapping")
+require("config.options")
+require("config.gui")
+require("config.mapping")
+
 require("lazy").setup({
 	defaults = {
-		lazy = false
+		lazy = false,
 	},
 	checker = {
-		enabled = true
+		enabled = true,
 	},
 	spec = {
-		{ import = "miscellaneous" },
-		{ import = "cores" },
-		{ import = "ui" },
-		{ import = "buffers" },
-		{ import = "utils" },
-		{ import = "split" },
-		{ import = "dap" },
-		{ import = "cmp.cmp" },
+		{ import = "plugins.cores" },
+		{ import = "plugins.ui" },
+		{ import = "plugins.buffers" },
+		{ import = "plugins.utils" },
+		{ import = "plugins.split" },
+		{ import = "plugins.dap" },
+		{ import = "plugins.cmp.cmp" },
 		{ import = "languages" },
-	}
+	},
 })

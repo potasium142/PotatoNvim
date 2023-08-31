@@ -3,8 +3,8 @@ return {
 	lazy = false,
 	enabled = true,
 	dependencies = {
-		'kevinhwang91/promise-async',
-		'nvim-treesitter/nvim-treesitter'
+		"kevinhwang91/promise-async",
+		"nvim-treesitter/nvim-treesitter",
 	},
 	init = function()
 		Set.foldcolumn = "1" -- '0' is not bad
@@ -14,21 +14,21 @@ return {
 		Set.foldenable = true
 
 		local fold_group = AutoGroup("FoldsGroup", { clear = true })
-		-- AutoCMD({ "BufWritePre", "BufWinLeave", "InsertEnter" }, {
-		-- 	group = fold_group,
-		-- 	pattern = "*.*",
-		-- 	callback = function()
-		-- 		vim.cmd.mkview()
-		-- 	end,
-		-- })
-		--
-		-- AutoCMD({ "BufWritePost", "BufWinEnter", "InsertLeave" }, {
-		-- 	group = fold_group,
-		-- 	pattern = "*.*",
-		-- 	callback = function()
-		-- 		vim.cmd.loadview({ mods = { emsg_silent = true } })
-		-- 	end,
-		-- })
+		AutoCMD({ "BufWritePre", "BufWinLeave", "InsertEnter" }, {
+			group = fold_group,
+			pattern = "*.*",
+			callback = function()
+				vim.cmd.mkview()
+			end,
+		})
+
+		AutoCMD({ "BufWritePost", "BufWinEnter", "InsertLeave" }, {
+			group = fold_group,
+			pattern = "*.*",
+			callback = function()
+				vim.cmd.loadview({ mods = { emsg_silent = true } })
+			end,
+		})
 	end,
 	config = function()
 		local handler = function(virtText, lnum, endLnum, width, truncate)
@@ -60,7 +60,7 @@ return {
 
 		require("ufo").setup({
 			provider_selector = function(bufnr, filetype, buftype)
-				return { 'treesitter', 'indent' }
+				return { "treesitter", "indent" }
 			end,
 			fold_virt_text_handler = handler,
 		})
@@ -72,45 +72,50 @@ return {
 				vim.fn.winrestview(view)
 			end
 
-			local event = require('ufo.lib.event')
-			event:emit('setOpenFoldHl')
-			vim.keymap.set('n', 'h', function()
-				local shouldClose = vim.fn.foldlevel('.') ~= 0
+			local event = require("ufo.lib.event")
+			event:emit("setOpenFoldHl")
+			vim.keymap.set("n", "h", function()
+				local shouldClose = vim.fn.foldlevel(".") ~= 0
 				if shouldClose then
-					event:emit('setOpenFoldHl', false)
+					event:emit("setOpenFoldHl", false)
 					setScrollOff(10)
 				end
-				return shouldClose and 'zc' or 'h'
+				return shouldClose and "zc" or "h"
 			end, { buffer = 0, expr = true })
-			vim.keymap.set('n', 'l', function()
-				local shouldOpen = vim.fn.foldclosed('.') ~= -1
+			vim.keymap.set("n", "l", function()
+				local shouldOpen = vim.fn.foldclosed(".") ~= -1
 				if shouldOpen then
-					event:emit('setOpenFoldHl', false)
+					event:emit("setOpenFoldHl", false)
 					setScrollOff(10)
 				end
-				return shouldOpen and 'zo' or 'l'
+				return shouldOpen and "zo" or "l"
 			end, { buffer = 0, expr = true })
-			vim.api.nvim_create_autocmd('CursorMoved', {
-				group = vim.api.nvim_create_augroup('HateRepeatFoldAug', {}),
+			vim.api.nvim_create_autocmd("CursorMoved", {
+				group = vim.api.nvim_create_augroup("HateRepeatFoldAug", {}),
 				buffer = 0,
 				once = true,
 				callback = function()
-					pcall(vim.keymap.del, 'n', 'h', { buffer = 0 })
-					pcall(vim.keymap.del, 'n', 'l', { buffer = 0 })
+					pcall(vim.keymap.del, "n", "h", { buffer = 0 })
+					pcall(vim.keymap.del, "n", "l", { buffer = 0 })
 					setScrollOff(0)
-					event:emit('setOpenFoldHl')
-				end
+					event:emit("setOpenFoldHl")
+				end,
 			})
-			return 'mzz' .. char
+			return "mzz" .. char
 		end
 
-		for _, c in ipairs({ 'c', 'o', 'a', 'C', 'O', 'A', 'v' }) do
-			vim.keymap.set('n', 'z' .. c, function() return hateRepeatFold(c) end, { expr = true })
+		for _, c in ipairs({ "c", "o", "a", "C", "O", "A", "v" }) do
+			vim.keymap.set("n", "z" .. c, function()
+				return hateRepeatFold(c)
+			end, { expr = true })
 		end
 	end,
 	keys = {
-		{ 'zm', function()
-			require('ufo').closeFoldsWith()
-		end }
-	}
+		{
+			"zm",
+			function()
+				require("ufo").closeFoldsWith()
+			end,
+		},
+	},
 }

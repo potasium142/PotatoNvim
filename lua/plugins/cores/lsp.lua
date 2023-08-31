@@ -4,17 +4,12 @@ return {
 		config = true
 	},
 	{
-		'lukas-reineke/lsp-format.nvim',
-		config = true
-	},
-	{
 		"neovim/nvim-lspconfig",
 		lazy = false,
 		dependencies = {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"hrsh7th/cmp-nvim-lsp",
-			'lukas-reineke/lsp-format.nvim',
 		},
 		init = function()
 			vim.lsp.handlers["textDocument/publishDiagnostics"] =
@@ -31,7 +26,6 @@ return {
 					function(server_name) -- default handler (optional)
 						require("lspconfig")[server_name].setup({
 							capabilities = require("cmp_nvim_lsp").default_capabilities(),
-							on_attach = require("lsp-format").on_attach
 						})
 					end,
 				})

@@ -1,7 +1,9 @@
 return {
-	'mhartington/formatter.nvim',
+	"mhartington/formatter.nvim",
 	opts = function()
 		return {
+			logging = false,
+			log_level = vim.log.levels.DEBUG,
 			filetype = {
 				lua = {
 					require("formatter.filetypes.lua").stylua,
@@ -48,8 +50,34 @@ return {
 				yaml = {
 					require("formatter.filetypes.yaml").yamlfmt,
 				},
-				['*'] = { require("formatter.filetypes.any").remove_trailing_whitespace }
-			}
+				["*"] = {
+					require("formatter.filetypes.any").remove_trailing_whitespace,
+
+					function()
+						-- Ignore already configured types.
+						local defined_types = require("formatter.config").values.filetype
+						if defined_types[vim.bo.filetype] ~= nil then
+							return nil
+						end
+						vim.lsp.buf.format({ async = true })
+					end,
+				},
+			},
 		}
-	end
+	end,
+	config = function(_, opts)
+		require("formatter").setup(opts)
+
+		local formatter_group = AutoGroup("FormatAutoGroup", { clear = true })
+
+		AutoCMD({
+			"BufWritePost", --[[ , "BufWritePre", "BufWinLeave", "InsertEnter"  ]]
+		}, {
+			group = formatter_group,
+			pattern = "*",
+			callback = function()
+				vim.cmd.FormatWrite()
+			end,
+		})
+	end,
 }
