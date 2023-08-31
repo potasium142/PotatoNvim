@@ -1,3 +1,6 @@
+Map = vim.keymap.set
+DelMap = vim.keymap.del
+
 --Tabbing
 Map("n", ">", ":><cr>", Opts)
 Map("n", "<", ":<<cr>", Opts)
@@ -7,10 +10,10 @@ Map("v", ">", ":><cr>gv", Opts)
 Map("v", "<", ":<<cr>gv", Opts)
 
 --Disable arrow
-Map("n", "<Up>", "<nop>")
-Map("n", "<Down>", "<nop>")
-Map("n", "<Right>", "<nop>")
-Map("n", "<Left>", "<nop>")
+Map("n", "<Up>", "<nop>", Opts)
+Map("n", "<Down>", "<nop>", Opts)
+Map("n", "<Right>", "<nop>", Opts)
+Map("n", "<Left>", "<nop>", Opts)
 
 --Globle buffer paste
 Map("n", "gp", '"+p<CR>', Opts)
@@ -37,3 +40,5 @@ Map({ "n", "v" }, "<C-k>", "<C-u>zz")
 
 Map({ 'n', 'v' }, 'q', 'b')
 Map({ "n", "v" }, 'Q', 'B')
+
+Map({ "i", "n" }, "<F1>", "<nop>", Opts)

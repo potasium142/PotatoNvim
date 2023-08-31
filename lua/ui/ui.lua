@@ -9,20 +9,6 @@ return {
 		},
 	},
 	{
-		"onsails/lspkind.nvim",
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require('lspkind').init({
-				mode = "text",
-				symbol_map = Symbol_map
-			})
-		end
-	},
-	{
 		"winston0410/range-highlight.nvim",
 		dependencies = { 'winston0410/cmd-parser.nvim' },
 		config = true,

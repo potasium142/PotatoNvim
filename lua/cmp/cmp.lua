@@ -1,3 +1,30 @@
+local kind_icons = {
+	Text = "󰉿",
+	Method = "󰆧",
+	Function = "󰊕",
+	Constructor = "",
+	Field = "󰜢",
+	Variable = "󰀫",
+	Class = "󰠱",
+	Interface = "",
+	Module = "",
+	Property = "󰜢",
+	Unit = "󰑭",
+	Value = "󰎠",
+	Enum = "",
+	Keyword = "󰌋",
+	Snippet = "",
+	Color = "󰏘",
+	File = "󰈙",
+	Reference = "󰈇",
+	Folder = "󰉋",
+	EnumMember = "",
+	Constant = "󰏿",
+	Struct = "󰙅",
+	Event = "",
+	Operator = "󰆕",
+	TypeParameter = "󰅲",
+}
 return {
 	{
 		"L3MON4D3/LuaSnip",
@@ -13,7 +40,6 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
 			"nvim-tree/nvim-web-devicons",
-			"onsails/lspkind.nvim",
 			"windwp/nvim-autopairs",
 			"L3MON4D3/LuaSnip",
 			"neovim/nvim-lspconfig",
@@ -62,15 +88,20 @@ return {
 				},
 				formatting = {
 					fields = { "kind", "abbr" },
+					-- format = function(entry, vim_item)
+					-- 	local kind = require("lspkind").cmp_format(
+					-- 		{ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+					-- 	local strings = vim.split(kind.kind, "%s", { trimempty = true })
+					--
+					-- 	kind.kind = " " .. (strings[1] or "") .. " "
+					--
+					-- 	return kind
+					-- end,
+
 					format = function(entry, vim_item)
-						local kind = require("lspkind").cmp_format(
-							{ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
-						local strings = vim.split(kind.kind, "%s", { trimempty = true })
-
-						kind.kind = " " .. (strings[1] or "") .. " "
-
-						return kind
-					end,
+						vim_item.kind = string.format(' %s ', kind_icons[vim_item.kind]) -- This concatonates the icons with the name of the item kind
+						return vim_item
+					end
 				},
 				sources = {
 					{ name = "nvim_lsp" },

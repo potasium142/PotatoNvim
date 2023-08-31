@@ -13,12 +13,13 @@ end
 
 vim.opt.runtimepath:prepend(lazypath)
 
-Map = vim.keymap.set
 Opts = { noremap = true, silent = true }
 BufOpts = { noremap = true, silent = true, buffer = bufnr }
 G = vim.g
 Set = vim.o
 HL = vim.api.nvim_set_hl
+AutoCMD = vim.api.nvim_create_autocmd
+AutoGroup = vim.api.nvim_create_augroup
 
 require("options")
 require("gui")
@@ -42,6 +43,3 @@ require("lazy").setup({
 		{ import = "languages" },
 	}
 })
-
--- noodles fix for cmp inconsistent load
--- require("cmp.cmp_manual_load")

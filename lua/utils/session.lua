@@ -6,9 +6,9 @@ return {
 	lazy = false,
 	init = function()
 		vim.o.sessionoptions = "buffers,curdir,folds,globals,tabpages,winpos,winsize"
-		local group = vim.api.nvim_create_augroup("PersistedHooks", {})
+		local group = AutoGroup("PersistedHooks", {})
 
-		vim.api.nvim_create_autocmd({ "User" }, {
+		AutoCMD({ "User" }, {
 			pattern = "PersistedSavePre",
 			group = group,
 			callback = function()
@@ -16,7 +16,7 @@ return {
 			end,
 		})
 
-		vim.api.nvim_create_autocmd({ "User" }, {
+		AutoCMD({ "User" }, {
 			pattern = "PersistedLoadPost",
 			group = group,
 			callback = function()

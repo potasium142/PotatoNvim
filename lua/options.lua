@@ -19,3 +19,4 @@ Set.syntax = "ON"
 Set.relativenumber = true
 Set.guicursor = 'i-ci:ver10'
 Set.scrolloff = 12
+Set.foldenable = true
