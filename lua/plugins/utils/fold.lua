@@ -59,28 +59,9 @@ return {
 			return newVirtText
 		end
 
-		local function customizeSelector(bufnr)
-			local function handleFallbackException(err, providerName)
-				if type(err) == "string" and err:match("UfoFallbackException") then
-					return require("ufo").getFolds(bufnr, providerName)
-				else
-					return require("promise").reject(err)
-				end
-			end
-
-			return require("ufo")
-				.getFolds(bufnr, "lsp")
-				:catch(function(err)
-					return handleFallbackException(err, "treesitter")
-				end)
-				:catch(function(err)
-					return handleFallbackException(err, "indent")
-				end)
-		end
-
 		require("ufo").setup({
 			provider_selector = function(bufnr, filetype, buftype)
-				customizeSelector(bufnr)
+				return { "treesitter", "indent" }
 			end,
 			fold_virt_text_handler = handler,
 		})
