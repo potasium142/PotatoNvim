@@ -38,7 +38,8 @@ Map({ "n", "v" }, "x", '"_x', Opts)
 Map({ "n", "v" }, "<C-j>", "<C-d>zz")
 Map({ "n", "v" }, "<C-k>", "<C-u>zz")
 
-Map({ 'n', 'v' }, 'q', 'b')
-Map({ "n", "v" }, 'Q', 'B')
+Map({ "n", "v" }, "q", "b")
+Map({ "n", "v" }, "Q", "B")
 
 Map({ "i", "n" }, "<F1>", "<nop>", Opts)
+Map("n", "<space>tq", "<cmd>tabclose<cr>")
