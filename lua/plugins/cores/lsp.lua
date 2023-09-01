@@ -1,7 +1,7 @@
 return {
 	{
 		"williamboman/mason.nvim",
-		config = true
+		config = true,
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -18,18 +18,21 @@ return {
 					virtual_text = false,
 				})
 		end,
-		config =
-			function()
-				require("mason-lspconfig").setup()
-				require("mason-lspconfig").setup_handlers({
-
-					function(server_name) -- default handler (optional)
-						require("lspconfig")[server_name].setup({
-							capabilities = require("cmp_nvim_lsp").default_capabilities(),
-						})
-					end,
-				})
-			end
+		config = function()
+			require("mason-lspconfig").setup()
+			require("mason-lspconfig").setup_handlers({
+				function(server_name) -- default handler (optional)
+					local capabilities = require("cmp_nvim_lsp").default_capabilities()
+					capabilities.textDocument.foldingRange = {
+						dynamicRegistration = false,
+						lineFoldingOnly = true,
+					}
+					require("lspconfig")[server_name].setup({
+						capabilities = capabilities,
+					})
+				end,
+			})
+		end,
 	},
 	{
 		url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
@@ -37,26 +40,26 @@ return {
 			vim.diagnostic.config({
 				underline = false,
 				virtual_text = false,
-				virtual_lines = { only_current_line = true }
+				virtual_lines = { only_current_line = true },
 			})
 		end,
 		config = function()
 			require("lsp_lines").setup()
-		end
+		end,
 	},
 	{
 		"nvimdev/lspsaga.nvim",
 		lazy = false,
 		dependencies = {
-			'nvim-treesitter/nvim-treesitter',
-			'nvim-tree/nvim-web-devicons'
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
 		},
 		opts = {
 			diagnostic = {
-				border_follow = false
+				border_follow = false,
 			},
 			outline = {
-				layout = 'float'
+				layout = "float",
 			},
 			lightbulb = {
 				enable = true,
@@ -80,10 +83,10 @@ return {
 			{ "<space>gd", "<cmd>Lspsaga goto_definition<CR>" },
 			{ "<space>fd", "<cmd>Lspsaga peek_definition<CR>" },
 			{ "<space>tt", "<cmd>Lspsaga show_workspace_diagnostics<CR>" },
-			{ "[d",        "<cmd>Lspsaga diagnostic_jump_prev<CR>" },
-			{ "]d",        "<cmd>Lspsaga diagnostic_jump_next<CR>" },
-			{ "<F4>",      "<cmd>Lspsaga outline<CR>" },
-			{ "<space>D",  "<cmd>Lspsaga hover_doc<CR>" },
+			{ "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>" },
+			{ "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>" },
+			{ "<F4>", "<cmd>Lspsaga outline<CR>" },
+			{ "<space>D", "<cmd>Lspsaga hover_doc<CR>" },
 		},
 	},
 }

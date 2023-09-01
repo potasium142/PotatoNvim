@@ -21,13 +21,13 @@ Set = vim.o
 HL = vim.api.nvim_set_hl
 Shell = "fish"
 
-require("global_config")
-require("mapping")
+require("config.options")
+require("config.mapping")
 require("lazy").setup({
 	defaults = {
-		lazy = false
+		lazy = false,
 	},
 	spec = {
-		{ import = "buffers" },
-	}
+		{ import = "plugins.buffers" },
+	},
 })

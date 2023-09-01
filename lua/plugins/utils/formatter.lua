@@ -71,7 +71,7 @@ return {
 		local formatter_group = AutoGroup("FormatAutoGroup", { clear = true })
 
 		AutoCMD({
-			"BufWritePost", --[[ , "BufWritePre", "BufWinLeave", "InsertEnter"  ]]
+			"BufWritePost",
 		}, {
 			group = formatter_group,
 			pattern = "*",

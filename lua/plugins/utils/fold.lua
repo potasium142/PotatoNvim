@@ -5,6 +5,7 @@ return {
 	dependencies = {
 		"kevinhwang91/promise-async",
 		"nvim-treesitter/nvim-treesitter",
+		"neovim/nvim-lspconfig",
 	},
 	init = function()
 		Set.foldcolumn = "1" -- '0' is not bad
@@ -14,7 +15,7 @@ return {
 		Set.foldenable = true
 
 		local fold_group = AutoGroup("FoldsGroup", { clear = true })
-		AutoCMD({ "BufWritePre", "BufWinLeave", "InsertEnter" }, {
+		AutoCMD({ "BufWinLeave" }, {
 			group = fold_group,
 			pattern = "*.*",
 			callback = function()
@@ -22,7 +23,7 @@ return {
 			end,
 		})
 
-		AutoCMD({ "BufWritePost", "BufWinEnter", "InsertLeave" }, {
+		AutoCMD({ "BufWinEnter" }, {
 			group = fold_group,
 			pattern = "*.*",
 			callback = function()
@@ -58,9 +59,28 @@ return {
 			return newVirtText
 		end
 
+		local function customizeSelector(bufnr)
+			local function handleFallbackException(err, providerName)
+				if type(err) == "string" and err:match("UfoFallbackException") then
+					return require("ufo").getFolds(bufnr, providerName)
+				else
+					return require("promise").reject(err)
+				end
+			end
+
+			return require("ufo")
+				.getFolds(bufnr, "lsp")
+				:catch(function(err)
+					return handleFallbackException(err, "treesitter")
+				end)
+				:catch(function(err)
+					return handleFallbackException(err, "indent")
+				end)
+		end
+
 		require("ufo").setup({
 			provider_selector = function(bufnr, filetype, buftype)
-				return { "treesitter", "indent" }
+				customizeSelector(bufnr)
 			end,
 			fold_virt_text_handler = handler,
 		})
@@ -110,12 +130,4 @@ return {
 			end, { expr = true })
 		end
 	end,
-	keys = {
-		{
-			"zm",
-			function()
-				require("ufo").closeFoldsWith()
-			end,
-		},
-	},
 }
