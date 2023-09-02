@@ -15,10 +15,10 @@ return {
 			},
 			enable_check_bracket_line = true,
 			check_ts = true,
-		}
+		},
 	},
 	{
 		"kylechui/nvim-surround",
-		config = true
-	}
+		config = true,
+	},
 }

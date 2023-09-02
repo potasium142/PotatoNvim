@@ -3,18 +3,35 @@ return {
 	{
 		"rcarriga/nvim-notify",
 		opts = {
-			stages  = "fade_in_slide_out",
+			stages = "fade_in_slide_out",
 			timeout = 1000,
-			render  = "compact"
+			render = "compact",
 		},
 	},
 	{
 		"winston0410/range-highlight.nvim",
-		dependencies = { 'winston0410/cmd-parser.nvim' },
+		dependencies = { "winston0410/cmd-parser.nvim" },
 		config = true,
 	},
 	{
-		'stevearc/dressing.nvim',
+		"petertriho/nvim-scrollbar",
+		dependencies = {
+			"lewis6991/gitsigns.nvim",
+			"neovim/nvim-lspconfig",
+		},
+		opts = {
+			excluded_filetypes = {
+				"terminal",
+				"alpha",
+			},
+		},
+		config = function(_, opts)
+			require("scrollbar").setup(opts)
+			require("scrollbar.handlers.gitsigns").setup()
+		end,
+	},
+	{
+		"stevearc/dressing.nvim",
 	},
 	{
 		"folke/noice.nvim",
@@ -52,7 +69,14 @@ return {
 				command_palette = true,
 				long_message_to_split = true,
 				inc_rename = false,
-				lsp_doc_border = false,
+				lsp_doc_border = true,
+			},
+			views = {
+				cmdline_popup = {
+					border = {
+						style = "single",
+					},
+				},
 			},
 			routes = {
 				{
@@ -64,6 +88,6 @@ return {
 					opts = { skip = true },
 				},
 			},
-		}
-	}
+		},
+	},
 }

@@ -31,7 +31,7 @@ return {
 		lazy = false,
 		config = function()
 			require("luasnip.loaders.from_vscode").lazy_load()
-		end
+		end,
 	},
 	{
 		"hrsh7th/nvim-cmp",
@@ -88,20 +88,10 @@ return {
 				},
 				formatting = {
 					fields = { "kind", "abbr" },
-					-- format = function(entry, vim_item)
-					-- 	local kind = require("lspkind").cmp_format(
-					-- 		{ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
-					-- 	local strings = vim.split(kind.kind, "%s", { trimempty = true })
-					--
-					-- 	kind.kind = " " .. (strings[1] or "") .. " "
-					--
-					-- 	return kind
-					-- end,
-
 					format = function(entry, vim_item)
-						vim_item.kind = string.format(' %s ', kind_icons[vim_item.kind]) -- This concatonates the icons with the name of the item kind
+						vim_item.kind = string.format(" %s  ┃", kind_icons[vim_item.kind]) -- This concatonates the icons with the name of the item kind
 						return vim_item
-					end
+					end,
 				},
 				sources = {
 					{ name = "nvim_lsp" },
@@ -110,8 +100,8 @@ return {
 				window = {
 					completion = {
 						winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-
-						col_offset = -3,
+						border = { "", "", "", "", "🭵", "", "", "🭰" },
+						col_offset = -4,
 						side_padding = 0,
 					},
 					documentation = {
@@ -122,6 +112,6 @@ return {
 					entries = { name = "custom", selection_order = "near_cursor" },
 				},
 			}
-		end
+		end,
 	},
 }

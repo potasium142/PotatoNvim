@@ -3,7 +3,7 @@ return {
 		"nvim-treesitter/nvim-treesitter-context",
 		config = function()
 			require("treesitter-context").setup()
-		end
+		end,
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -11,7 +11,6 @@ return {
 		dependencies = {
 			"HiPhish/nvim-ts-rainbow2",
 			"nvim-treesitter/nvim-treesitter",
-			"nvim-treesitter/nvim-treesitter-textobjects",
 			"windwp/nvim-ts-autotag",
 			"JoosepAlviste/nvim-ts-context-commentstring",
 			"nvim-treesitter/nvim-treesitter-context",
@@ -32,27 +31,22 @@ return {
 			rainbow = {
 				enable = true,
 				hlgroups = {
-					'Red',
-					'Orange',
-					'Yellow',
-					'Green',
-					'Blue',
-					'Aqua',
-					'Purple',
+					"Red",
+					"Orange",
+					"Yellow",
+					"Green",
+					"Blue",
+					"Aqua",
+					"Purple",
 				},
 			},
 			context_commentstring = {
 				enable = true,
 			},
-			textobjects = {
-				move = {
-					enable = false
-				},
-			}
 		},
 		config = function(_, opts)
 			require("nvim-treesitter.install").compilers = { "clang" }
 			require("nvim-treesitter.configs").setup(opts)
-		end
-	}
+		end,
+	},
 }
