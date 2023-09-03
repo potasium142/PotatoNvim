@@ -1,29 +1,38 @@
 local kind_icons = {
-	Text = "󰉿",
+	Array = "",
+	Boolean = "",
+	Key = "",
+	Namespace = "",
+	Null = "󰟢",
+	Number = "",
+	Object = "",
+	Package = "",
+	Reference = "",
+	Snippet = "",
+	String = "",
+	Text = "",
+	TypeParameter = "",
+	Unit = "",
 	Method = "󰆧",
-	Function = "󰊕",
+	Function = "󰡱",
 	Constructor = "",
 	Field = "󰜢",
-	Variable = "󰀫",
+	Variable = "",
 	Class = "󰠱",
 	Interface = "",
 	Module = "",
 	Property = "󰜢",
-	Unit = "󰑭",
 	Value = "󰎠",
 	Enum = "",
 	Keyword = "󰌋",
-	Snippet = "",
 	Color = "󰏘",
 	File = "󰈙",
-	Reference = "󰈇",
 	Folder = "󰉋",
 	EnumMember = "",
 	Constant = "󰏿",
 	Struct = "󰙅",
-	Event = "",
+	Event = "",
 	Operator = "󰆕",
-	TypeParameter = "󰅲",
 }
 return {
 	{
@@ -48,6 +57,7 @@ return {
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 			local luasnip = require("luasnip")
 			local cmp = require("cmp")
+			local mapping = cmp.mapping
 			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 			return {
 				snippet = {
@@ -56,18 +66,18 @@ return {
 					end,
 				},
 				mapping = {
-					["<C-k>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-					["<C-j>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-					["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-					["<CR>"] = cmp.mapping.confirm({
+					["<C-k>"] = mapping(mapping.scroll_docs(-1), { "i", "c" }),
+					["<C-j>"] = mapping(mapping.scroll_docs(1), { "i", "c" }),
+					["<C-Space>"] = mapping(mapping.complete(), { "i", "c" }),
+					["<CR>"] = mapping.confirm({
 						behavior = cmp.ConfirmBehavior.Replace,
 						select = true,
 					}),
-					["<Esc>"] = cmp.mapping({
-						i = cmp.mapping.abort(),
-						c = cmp.mapping.close(),
+					["<Esc>"] = mapping({
+						i = mapping.abort(),
+						c = mapping.close(),
 					}),
-					["<Tab>"] = cmp.mapping(function(fallback)
+					["<Tab>"] = mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
 						elseif luasnip.expand_or_jumpable() then
@@ -76,7 +86,7 @@ return {
 							fallback()
 						end
 					end, { "i", "s" }),
-					["<S-Tab>"] = cmp.mapping(function(fallback)
+					["<S-Tab>"] = mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
 						elseif luasnip.jumpable(-1) then
@@ -89,7 +99,7 @@ return {
 				formatting = {
 					fields = { "kind", "abbr" },
 					format = function(entry, vim_item)
-						vim_item.kind = string.format(" %s  ┃", kind_icons[vim_item.kind]) -- This concatonates the icons with the name of the item kind
+						vim_item.kind = string.format(" %s  ", kind_icons[vim_item.kind])
 						return vim_item
 					end,
 				},
@@ -99,10 +109,10 @@ return {
 				},
 				window = {
 					completion = {
-						winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-						border = { "", "", "", "", "🭵", "", "", "🭰" },
+						winhighlight = "Normal:Pmenu,FloatBorder:None,Search:None",
 						col_offset = -4,
 						side_padding = 0,
+						border = { "", "", "┃", "┃", "┃", "", "", "" },
 					},
 					documentation = {
 						border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },

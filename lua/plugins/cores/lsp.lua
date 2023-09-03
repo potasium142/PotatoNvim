@@ -59,7 +59,7 @@ return {
 				border_follow = false,
 			},
 			outline = {
-				layout = "float",
+				auto_preview = false,
 			},
 			lightbulb = {
 				enable = true,

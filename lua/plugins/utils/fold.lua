@@ -15,21 +15,29 @@ return {
 		Set.foldenable = true
 
 		local fold_group = AutoGroup("FoldsGroup", { clear = true })
-		AutoCMD({ "BufWinLeave" }, {
+		-- AutoCMD("BufWinLeave", {
+		-- 	group = fold_group,
+		-- 	pattern = "*.*",
+		-- 	callback = function()
+		-- 		vim.cmd.mkview()
+		-- 	end,
+		-- })
+
+		AutoCMD("FileType", {
 			group = fold_group,
-			pattern = "*.*",
+			pattern = { "sagaoutline", "neo-tree" },
 			callback = function()
-				vim.cmd.mkview()
+				require("ufo").detach()
 			end,
 		})
 
-		AutoCMD({ "BufWinEnter" }, {
-			group = fold_group,
-			pattern = "*.*",
-			callback = function()
-				vim.cmd.loadview({ mods = { emsg_silent = true } })
-			end,
-		})
+		-- AutoCMD("BufWinEnter", {
+		-- 	group = fold_group,
+		-- 	pattern = "*.*",
+		-- 	callback = function()
+		-- 		vim.cmd.loadview({ mods = { emsg_silent = true } })
+		-- 	end,
+		-- })
 	end,
 	config = function()
 		local handler = function(virtText, lnum, endLnum, width, truncate)

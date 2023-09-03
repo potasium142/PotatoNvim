@@ -17,9 +17,13 @@ return {
 						colwidth = 1,
 						fillchar = "│",
 					},
-				}
+				},
 			},
-			ft_ignore = { "neo-tree", "Outline", "alpha", "Trouble", "lazy" },
+			ft_ignore = { "sagaoutline", "neo-tree", "Outline", "alpha", "Trouble", "lazy" },
+
+			bt_ignore = {
+				"nofile",
+			},
 		}
-	end
+	end,
 }

@@ -20,7 +20,7 @@ return {
 			highlight = {
 				enable = true,
 				sync_install = true,
-				additional_vim_regex_highlighting = true,
+				additional_vim_regex_highlighting = false,
 			},
 			autotag = {
 				enable = true,

@@ -21,11 +21,6 @@ Map("n", "gjp", "<cmd>pu+<CR>", Opts)
 Map("n", "gkp", "<cmd>pu!+<CR>", Opts)
 Map({ "v", "n" }, "gy", '"+y<CR>', Opts)
 
---Buffer
-Map("n", "]b", "<cmd>bn<cr>", Opts)
-Map("n", "[b", "<cmd>bp<cr>", Opts)
-Map("n", "<Space>dd", "<cmd>bd!<cr>", Opts)
-
 Map("n", "<CR>", ":noh<cr><cr>", Opts)
 
 --Save

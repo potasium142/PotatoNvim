@@ -14,23 +14,6 @@ return {
 		config = true,
 	},
 	{
-		"petertriho/nvim-scrollbar",
-		dependencies = {
-			"lewis6991/gitsigns.nvim",
-			"neovim/nvim-lspconfig",
-		},
-		opts = {
-			excluded_filetypes = {
-				"terminal",
-				"alpha",
-			},
-		},
-		config = function(_, opts)
-			require("scrollbar").setup(opts)
-			require("scrollbar.handlers.gitsigns").setup()
-		end,
-	},
-	{
 		"stevearc/dressing.nvim",
 	},
 	{

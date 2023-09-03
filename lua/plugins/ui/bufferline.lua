@@ -18,7 +18,7 @@ return {
 					seperator = true,
 				},
 				{
-					filetype = "lspsagaoutline",
+					filetype = "Outline",
 					text = "Outline",
 					highlight = "Outline",
 				},
