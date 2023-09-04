@@ -3,15 +3,15 @@ return {
 	opts = {
 		filetypes = {
 			"*",
-			"!NeoTree",
-			"!Outline",
+			"!neo-tree",
+			"!sagaoutline",
 			"!alpha",
 			"!TelescopePrompt",
 		},
 		user_default_options = {
 			RGB = true,
 			RRGGBB = true,
-			names = true,
+			names = false,
 			RRGGBBAA = true,
 			AARRGGBB = true,
 			rgb_fn = true,
@@ -20,10 +20,10 @@ return {
 			css_fn = true,
 			-- red, blue,green,yellow ,#a7c080
 			mode = "background",
-			sass = { enable = false, parsers = { "css" }, },
+			sass = { enable = true, parsers = { "css" } },
 			virtualtext = "",
-			always_update = false
+			always_update = false,
 		},
 		buftypes = {},
-	}
+	},
 }

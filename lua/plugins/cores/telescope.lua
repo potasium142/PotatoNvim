@@ -2,8 +2,8 @@ return {
 	{
 		"ahmedkhalf/project.nvim",
 		config = function()
-			require("project_nvim").setup {}
-		end
+			require("project_nvim").setup({})
+		end,
 	},
 	{
 		"axieax/urlview.nvim",
@@ -12,7 +12,7 @@ return {
 	{
 		"AckslD/nvim-neoclip.lua",
 		dependencies = {
-			{ 'nvim-telescope/telescope.nvim' },
+			{ "nvim-telescope/telescope.nvim" },
 		},
 		config = function()
 			local function is_whitespace(line)
@@ -35,12 +35,12 @@ return {
 			})
 
 			require("telescope").load_extension("neoclip")
-		end
+		end,
 	},
 	{
 		"tiagovla/scope.nvim",
 		lazy = false,
-		config = true
+		config = true,
 	},
 	{
 		"nvim-telescope/telescope.nvim",
@@ -71,6 +71,13 @@ return {
 				extensions = {
 					undo = {
 						side_by_side = true,
+						mappings = {
+							n = {
+								["<s-cr>"] = require("telescope-undo.actions").yank_additions,
+								["<c-cr>"] = require("telescope-undo.actions").yank_deletions,
+								["<cr>"] = require("telescope-undo.actions").restore,
+							},
+						},
 					},
 				},
 			}
@@ -79,7 +86,7 @@ return {
 			local telescope = require("telescope")
 			telescope.setup(opts)
 			telescope.load_extension("noice")
-			telescope.load_extension('projects')
+			telescope.load_extension("projects")
 			telescope.load_extension("persisted")
 			telescope.load_extension("scope")
 			telescope.load_extension("undo")
@@ -92,7 +99,7 @@ return {
 			{ "tsh", "<cmd>Telescope help_tags<cr>" },
 			{ "tsy", "<cmd>Telescope neoclip<CR>" },
 			{ "tsl", "<cmd>UrlView<cr>" },
-			{ "tsm", "<cmd>Telescope marks<cr>" }
-		}
-	}
+			{ "tsm", "<cmd>Telescope marks<cr>" },
+		},
+	},
 }

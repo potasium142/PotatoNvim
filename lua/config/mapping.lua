@@ -1,5 +1,4 @@
 Map = vim.keymap.set
-DelMap = vim.keymap.del
 
 --Tabbing
 Map("n", ">", ":><cr>", Opts)
@@ -38,3 +37,4 @@ Map({ "n", "v" }, "Q", "B")
 
 Map({ "i", "n" }, "<F1>", "<nop>", Opts)
 Map("n", "<space>tq", "<cmd>tabclose<cr>")
+Map("n", "<space>tn", "<cmd>tabnew<cr>")
