@@ -1,5 +1,6 @@
 return {
 	"famiu/bufdelete.nvim",
+	lazy = true,
 	keys = {
 		{
 			"<space>dd",

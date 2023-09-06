@@ -41,6 +41,13 @@ return {
 			hl.CmpItemKindUnit = { link = "CmpItemKindEnumMember" }
 			hl.CmpItemKindValue = { link = "CmpItemKindEnumMember" }
 			hl.CmpItemKindVariable = { link = "CmpItemKindConstant" }
+			hl.DapBreakpoint = { link = "red" }
+			hl.DapLogPoint = { link = "green" }
+			hl.DapStopped = { link = "yellow" }
+
+			-- HL(namespace, "DapBreakpoint", { link = "red" })
+			-- HL(namespace, "DapLogPoint", { link = "green" })
+			-- HL(namespace, "DapStopped", { link = "yellow" })
 		end,
 	},
 	config = function(_, opts)

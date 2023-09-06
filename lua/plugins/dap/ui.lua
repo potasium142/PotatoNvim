@@ -21,14 +21,11 @@ return {
 		local sign_define = vim.fn.sign_define
 
 		local namespace = 0
-		HL(namespace, "DapBreakpoint", { link = "red" })
-		HL(namespace, "DapLogPoint", { link = "green" })
-		HL(namespace, "DapStopped", { link = "yellow" })
 
 		sign_define("DapBreakpoint", { text = "", texthl = "DapBreakpoint", numhl = "DapBreakpoint" })
 		sign_define("DapBreakpointCondition", { text = "ﳁ", texthl = "DapBreakpoint", numhl = "DapBreakpoint" })
 		sign_define("DapBreakpointRejected", { text = "", texthl = "DapBreakpoint", numhl = "DapBreakpoint" })
 		sign_define("DapLogPoint", { text = "", texthl = "DapLogPoint", numhl = "DapLogPoint" })
 		sign_define("DapStopped", { text = "", texthl = "DapStopped", numhl = "DapStopped" })
-	end
+	end,
 }
