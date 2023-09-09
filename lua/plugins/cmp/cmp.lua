@@ -37,6 +37,7 @@ local kind_icons = {
 return {
 	{
 		"L3MON4D3/LuaSnip",
+		dependencies = { "rafamadriz/friendly-snippets" },
 		config = function()
 			require("luasnip.loaders.from_vscode").lazy_load()
 		end,
@@ -51,6 +52,7 @@ return {
 			"windwp/nvim-autopairs",
 			"L3MON4D3/LuaSnip",
 			"neovim/nvim-lspconfig",
+			"saadparwaiz1/cmp_luasnip",
 		},
 		opts = function()
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
@@ -96,15 +98,27 @@ return {
 					end, { "i", "s" }),
 				},
 				formatting = {
-					fields = { "kind", "abbr" },
+					fields = { "kind", "abbr", "menu" },
 					format = function(entry, vim_item)
 						vim_item.kind = string.format(" %s  ", kind_icons[vim_item.kind])
+						vim_item.menu = ({
+							luasnip = "[LuaSnip]",
+							nvim_lsp = "[LSP]",
+							path = "[Path]",
+						})[entry.source.name]
 						return vim_item
 					end,
 				},
 				sources = {
 					{ name = "nvim_lsp" },
 					{ name = "path" },
+					{
+						name = "luasnip",
+						option = {
+							use_show_condition = false,
+							show_autosnippets = true,
+						},
+					},
 				},
 				window = {
 					completion = {

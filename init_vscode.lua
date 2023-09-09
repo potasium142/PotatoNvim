@@ -13,7 +13,6 @@ end
 
 vim.opt.runtimepath:prepend(lazypath)
 
-Map = vim.keymap.set
 Opts = { noremap = true, silent = true }
 BufOpts = { noremap = true, silent = true, buffer = bufnr }
 G = vim.g
@@ -29,5 +28,6 @@ require("lazy").setup({
 	},
 	spec = {
 		{ import = "plugins.buffers" },
+		{ import = "languages" },
 	},
 })

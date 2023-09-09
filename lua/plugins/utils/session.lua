@@ -53,6 +53,7 @@ return {
 			require("persisted").setup({
 				follow_cwd = true,
 			})
+			require("telescope").load_extension("persisted")
 		end,
 	},
 }

@@ -22,7 +22,7 @@ AutoCMD = vim.api.nvim_create_autocmd
 AutoGroup = vim.api.nvim_create_augroup
 
 require("config.options")
-require("config.gui")
+require("config.env")
 require("config.mapping")
 
 require("lazy").setup({

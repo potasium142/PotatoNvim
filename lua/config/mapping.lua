@@ -23,7 +23,7 @@ Map({ "v", "n" }, "gy", '"+y<CR>', Opts)
 Map("n", "<CR>", ":noh<cr><cr>", Opts)
 
 --Save
-Map("n", "<Space>w", "<cmd>:w<cr>", Opts)
+Map("n", "<Space>w", "<cmd>:w<cr>")
 
 --Delete
 Map({ "n", "v" }, "x", '"_x', Opts)
