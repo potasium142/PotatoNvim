@@ -4,6 +4,7 @@ return {
 		lazy = false,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
+			"debugloop/telescope-undo.nvim",
 		},
 		opts = function()
 			local actions = require("telescope.actions")
@@ -25,14 +26,19 @@ return {
 						side_by_side = true,
 						mappings = {
 							n = {
-								["<cr>"] = require("telescope-undo.actions").restore,
+								["<cr>"] = require("telescope-undo.actions").yank_additions,
+								["<S-cr>"] = require("telescope-undo.actions").yank_deletions,
+								["<C-cr>"] = require("telescope-undo.actions").restore,
 							},
 						},
 					},
 				},
 			}
 		end,
-		config = true,
+		config = function(_, opts)
+			require("telescope").setup(opts)
+			require("telescope").load_extension("undo")
+		end,
 		keys = {
 			{ "tsf", "<cmd>Telescope find_files<cr>" },
 			{ "tsg", "<cmd>Telescope live_grep<cr>" },

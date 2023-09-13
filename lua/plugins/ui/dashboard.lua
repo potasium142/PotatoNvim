@@ -44,9 +44,7 @@ return {
 
 		-- Set menu
 		dashboard.section.buttons.val = {
-			dashboard.button("c", "󱛣  > Restore Session", ":SessionLoadLast<CR>"),
 			dashboard.button("p", "  > Project", ":Telescope projects<CR>"),
-			dashboard.button("r", "󱃕  > Session", ":Telescope persisted<CR>"),
 			dashboard.button("s", "  > Settings", ":e $MYVIMRC | :cd %:p:h <CR>"),
 			dashboard.button("u", "  > Update", "", {
 				callback = function()

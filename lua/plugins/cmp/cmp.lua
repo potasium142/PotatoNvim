@@ -1,39 +1,4 @@
-local kind_icons = {
-	Array = "",
-	Boolean = "",
-	Key = "",
-	Namespace = "",
-	Null = "󰟢",
-	Number = "",
-	Object = "",
-	Package = "",
-	Reference = "",
-	Snippet = "",
-	String = "",
-	Text = "",
-	TypeParameter = "",
-	Unit = "",
-	Method = "󰆧",
-	Function = "󰡱",
-	Constructor = "",
-	Field = "󰜢",
-	Variable = "",
-	Class = "󰠱",
-	Interface = "",
-	Module = "",
-	Property = "󰜢",
-	Value = "󰎠",
-	Enum = "",
-	Keyword = "󰌋",
-	Color = "󰏘",
-	File = "󰈙",
-	Folder = "󰉋",
-	EnumMember = "",
-	Constant = "󰏿",
-	Struct = "󰙅",
-	Event = "",
-	Operator = "󰆕",
-}
+local icons = require("config.icons")
 return {
 	{
 		"L3MON4D3/LuaSnip",
@@ -100,7 +65,7 @@ return {
 				formatting = {
 					fields = { "kind", "abbr", "menu" },
 					format = function(entry, vim_item)
-						vim_item.kind = string.format(" %s  ", kind_icons[vim_item.kind])
+						vim_item.kind = string.format(" %s  ", icons.kind_icons[vim_item.kind])
 						vim_item.menu = ({
 							luasnip = "[LuaSnip]",
 							nvim_lsp = "[LSP]",

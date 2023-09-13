@@ -28,6 +28,7 @@ require("lazy").setup({
 	},
 	spec = {
 		{ import = "plugins.buffers" },
+		{ import = "plugins.utils.auto_save" },
 		{ import = "languages" },
 	},
 })
