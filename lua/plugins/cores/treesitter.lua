@@ -21,6 +21,7 @@ return {
 				enable = true,
 				sync_install = true,
 				additional_vim_regex_highlighting = false,
+				disable = { "scss" },
 			},
 			autotag = {
 				enable = true,

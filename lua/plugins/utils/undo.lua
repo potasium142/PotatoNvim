@@ -12,13 +12,4 @@ return {
 			require("fundo").setup(opts)
 		end,
 	},
-	{
-		"debugloop/telescope-undo.nvim",
-		config = function(_, opts)
-			require("telescope").load_extension("undo")
-		end,
-		keys = {
-			{ "tsu", "<cmd>Telescope undo<cr>" },
-		},
-	},
 }

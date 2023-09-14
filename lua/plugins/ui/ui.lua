@@ -33,7 +33,6 @@ return {
 			"MunifTanjim/nui.nvim",
 			"winston0410/range-highlight.nvim",
 			"nvim-treesitter/nvim-treesitter",
-			"nvim-telescope/telescope.nvim",
 		},
 		opts = {
 			lsp = {
@@ -68,10 +67,5 @@ return {
 				},
 			},
 		},
-		config = function(_, opts)
-			require("noice").setup(opts)
-
-			require("telescope").load_extension("noice")
-		end,
 	},
 }

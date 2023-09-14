@@ -3,12 +3,8 @@ return {
 		"nvim-telescope/telescope-dap.nvim",
 		lazy = true,
 		dependencies = {
-			"nvim-telescope/telescope.nvim",
 			"mfussenegger/nvim-dap",
 		},
-		config = function()
-			require("telescope").load_extension("dap")
-		end,
 	},
 	{
 		"jay-babu/mason-nvim-dap.nvim",
@@ -46,6 +42,9 @@ return {
 	},
 	{
 		"mfussenegger/nvim-dap",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+		},
 		lazy = true,
 		keys = {
 			{

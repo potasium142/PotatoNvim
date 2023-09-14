@@ -3,8 +3,31 @@ return {
 		"nvim-telescope/telescope.nvim",
 		lazy = false,
 		dependencies = {
+			"nvim-telescope/telescope-dap.nvim",
 			"nvim-lua/plenary.nvim",
 			"debugloop/telescope-undo.nvim",
+			{
+				"debugloop/telescope-undo.nvim",
+				keys = {
+					{ "tsu", "<cmd>Telescope undo<cr>" },
+				},
+			},
+			{
+				"tiagovla/scope.nvim",
+				config = true,
+				keys = {
+					{ "tsb", "<cmd>Telescope scope buffers<cr>" },
+				},
+			},
+			{
+				"ahmedkhalf/project.nvim",
+				config = function()
+					require("project_nvim").setup()
+				end,
+			},
+
+			"AckslD/nvim-neoclip.lua",
+			"folke/noice.nvim",
 		},
 		opts = function()
 			local actions = require("telescope.actions")
@@ -36,8 +59,15 @@ return {
 			}
 		end,
 		config = function(_, opts)
-			require("telescope").setup(opts)
+			local telescope = require("telescope")
+			telescope.setup(opts)
+			telescope.load_extension("undo")
+			require("telescope").load_extension("neoclip")
+			require("telescope").load_extension("scope")
+			require("telescope").load_extension("projects")
+			require("telescope").load_extension("noice")
 			require("telescope").load_extension("undo")
+			require("telescope").load_extension("dap")
 		end,
 		keys = {
 			{ "tsf", "<cmd>Telescope find_files<cr>" },

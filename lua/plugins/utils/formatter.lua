@@ -1,82 +1,78 @@
 return {
-	"mhartington/formatter.nvim",
+	"stevearc/conform.nvim",
+	lazy = false,
+	dependencies = {
+		"neovim/nvim-lspconfig",
+	},
 	opts = function()
 		return {
-			logging = false,
-			log_level = vim.log.levels.DEBUG,
-			filetype = {
+			formatters_by_ft = {
 				lua = {
-					require("formatter.filetypes.lua").stylua,
+					"stylua",
 				},
 				c = {
-					require("formatter.filetypes.cpp").clangformat,
+					"clang_format",
 				},
 				cpp = {
-					require("formatter.filetypes.cpp").clangformat,
+					"clang_format",
 				},
 				rust = {
-					require("formatter.filetypes.rust").rustfmt,
+					"rustfmt",
 				},
 				markdown = {
-					require("formatter.filetypes.markdown").prettier,
+					"prettier",
 				},
 				html = {
-					require("formatter.filetypes.markdown").prettier,
+					"prettier",
 				},
 				json = {
-					require("formatter.filetypes.markdown").prettier,
+					"prettier",
 				},
 				latex = {
-					require("formatter.filetypes.latex").latexindent,
+					"latexindent",
 				},
 				javascript = {
-					require("formatter.filetypes.markdown").prettier,
+					"prettier",
 				},
 				sass = {
-					require("formatter.filetypes.markdown").prettier,
+					"prettier",
 				},
 				scss = {
-					require("formatter.filetypes.markdown").prettier,
+					"prettier",
 				},
 				css = {
-					require("formatter.filetypes.markdown").prettier,
+					"prettier",
 				},
 				python = {
-					require("formatter.filetypes.python").autopep8,
+					"autopep8",
 				},
 				toml = {
-					require("formatter.filetypes.toml").taplo,
+					"taplo",
 				},
 				yaml = {
-					require("formatter.filetypes.yaml").yamlfmt,
+					"yamlfmt",
 				},
-				["*"] = {
-					require("formatter.filetypes.any").remove_trailing_whitespace,
+				["*"] = { "trim_whitespace" },
+			},
 
-					function()
-						-- Ignore already configured types.
-						local defined_types = require("formatter.config").values.filetype
-						if defined_types[vim.bo.filetype] ~= nil then
-							return nil
-						end
-						vim.lsp.buf.format({ async = true })
-					end,
-				},
+			format_on_save = {
+				-- These options will be passed to conform.format()
+				timeout_ms = 500,
+				lsp_fallback = true,
+			},
+			format_after_save = {
+				lsp_fallback = "always",
 			},
 		}
 	end,
 	config = function(_, opts)
-		require("formatter").setup(opts)
-
+		require("conform").setup(opts)
 		local formatter_group = AutoGroup("FormatAutoGroup", { clear = true })
 
-		AutoCMD({
-			"BufWritePost",
-		}, {
-			group = formatter_group,
+		AutoCMD("BufWritePre", {
 			pattern = "*",
-			callback = function()
-				vim.cmd.FormatWrite()
+			callback = function(args)
+				require("conform").format({ bufnr = args.buf })
 			end,
 		})
 	end,

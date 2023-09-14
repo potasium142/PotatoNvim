@@ -1,9 +1,6 @@
 return {
 	"AckslD/nvim-neoclip.lua",
 	lazy = true,
-	dependencies = {
-		"nvim-telescope/telescope.nvim",
-	},
 	config = function()
 		local function is_whitespace(line)
 			return vim.fn.match(line, [[^\s*$]]) ~= -1
@@ -23,8 +20,6 @@ return {
 				return not all(data.event.regcontents, is_whitespace)
 			end,
 		})
-
-		require("telescope").load_extension("neoclip")
 	end,
 	keys = {
 		{ "tsy", "<cmd>Telescope neoclip<CR>" },
