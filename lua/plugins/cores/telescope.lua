@@ -1,23 +1,23 @@
 return {
 	{
 		"nvim-telescope/telescope.nvim",
-		lazy = false,
+		lazy = true,
 		dependencies = {
 			"nvim-telescope/telescope-dap.nvim",
 			"nvim-lua/plenary.nvim",
 			"debugloop/telescope-undo.nvim",
 			{
-				"debugloop/telescope-undo.nvim",
-				keys = {
-					{ "tsu", "<cmd>Telescope undo<cr>" },
+				"nvim-telescope/telescope-file-browser.nvim",
+				dependencies = {
+					"nvim-lua/plenary.nvim",
 				},
+			},
+			{
+				"debugloop/telescope-undo.nvim",
 			},
 			{
 				"tiagovla/scope.nvim",
 				config = true,
-				keys = {
-					{ "tsb", "<cmd>Telescope scope buffers<cr>" },
-				},
 			},
 			{
 				"ahmedkhalf/project.nvim",
@@ -45,6 +45,9 @@ return {
 					borderchars = { "━", "┃", "━", "┃", "┏", "┓", "┛", "┗" },
 				},
 				extensions = {
+					file_browser = {
+						hijack_netrw = true,
+					},
 					undo = {
 						side_by_side = true,
 						mappings = {
@@ -62,18 +65,22 @@ return {
 			local telescope = require("telescope")
 			telescope.setup(opts)
 			telescope.load_extension("undo")
-			require("telescope").load_extension("neoclip")
-			require("telescope").load_extension("scope")
-			require("telescope").load_extension("projects")
-			require("telescope").load_extension("noice")
-			require("telescope").load_extension("undo")
-			require("telescope").load_extension("dap")
+			telescope.load_extension("neoclip")
+			telescope.load_extension("scope")
+			telescope.load_extension("projects")
+			telescope.load_extension("noice")
+			telescope.load_extension("undo")
+			telescope.load_extension("dap")
+			telescope.load_extension("file_browser")
 		end,
 		keys = {
 			{ "tsf", "<cmd>Telescope find_files<cr>" },
 			{ "tsg", "<cmd>Telescope live_grep<cr>" },
 			{ "tsh", "<cmd>Telescope help_tags<cr>" },
 			{ "tsm", "<cmd>Telescope marks<cr>" },
+			{ "<F2>", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>" },
+			{ "tsu", "<cmd>Telescope undo<cr>" },
+			{ "tsb", "<cmd>Telescope scope buffers<cr>" },
 		},
 	},
 }

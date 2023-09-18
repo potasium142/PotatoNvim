@@ -1,15 +1,8 @@
 return {
 	{
-		"nvim-telescope/telescope-dap.nvim",
+		"jay-babu/mason-nvim-dap.nvim",
 		lazy = true,
 		dependencies = {
-			"mfussenegger/nvim-dap",
-		},
-	},
-	{
-		"jay-babu/mason-nvim-dap.nvim",
-		dependencies = {
-			"mfussenegger/nvim-dap",
 			"williamboman/mason.nvim",
 		},
 		config = function()
@@ -19,33 +12,11 @@ return {
 		end,
 	},
 	{
-		"Weissle/persistent-breakpoints.nvim",
-		dependencies = {
-			"mfussenegger/nvim-dap",
-		},
-		config = function(_, opts)
-			require("persistent-breakpoints").setup({
-				load_breakpoints_event = { "BufReadPost" },
-			})
-		end,
-	},
-	{
-		"ldelossa/nvim-dap-projects",
-
-		lazy = true,
-		dependencies = {
-			"mfussenegger/nvim-dap",
-		},
-		config = function()
-			require("nvim-dap-projects").search_project_config()
-		end,
-	},
-	{
 		"mfussenegger/nvim-dap",
-		dependencies = {
-			"nvim-telescope/telescope.nvim",
-		},
 		lazy = true,
+		dependencies = {
+			"jay-babu/mason-nvim-dap.nvim",
+		},
 		keys = {
 			{
 				"<space>ds",

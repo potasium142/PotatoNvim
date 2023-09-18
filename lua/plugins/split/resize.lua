@@ -1,7 +1,7 @@
 return {
 	{
 		"kwkarlwang/bufresize.nvim",
-		lazy = true,
+		lazy = false,
 		opts = function()
 			local opts = { noremap = true, silent = true }
 			return {

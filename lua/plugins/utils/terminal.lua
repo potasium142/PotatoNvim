@@ -1,6 +1,6 @@
 return {
 	"akinsho/toggleterm.nvim",
-	lazy = false,
+	lazy = true,
 	opts = {
 		direction = "float",
 		open_mapping = [[<C-\>]],
@@ -17,6 +17,10 @@ return {
 
 				lazygit:toggle()
 			end,
+		},
+		{
+			"<C-\\>",
+			"<cmd>ToggleTerm<cr>",
 		},
 	},
 }

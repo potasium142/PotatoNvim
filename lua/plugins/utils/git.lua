@@ -15,6 +15,11 @@ return {
 	},
 	{
 		"sindrets/diffview.nvim",
+		lazy = true,
+		cmd = {
+			"DiffviewOpen",
+			"DiffviewToggleFiles",
+		},
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
