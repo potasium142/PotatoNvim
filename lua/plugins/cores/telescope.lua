@@ -1,7 +1,7 @@
 return {
 	{
 		"nvim-telescope/telescope.nvim",
-		lazy = true,
+		lazy = false,
 		dependencies = {
 			"nvim-telescope/telescope-dap.nvim",
 			"nvim-lua/plenary.nvim",
@@ -81,6 +81,9 @@ return {
 			{ "<F2>", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>" },
 			{ "tsu", "<cmd>Telescope undo<cr>" },
 			{ "tsb", "<cmd>Telescope scope buffers<cr>" },
+		},
+		cmd = {
+			"Telescope",
 		},
 	},
 }

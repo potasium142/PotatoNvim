@@ -29,18 +29,6 @@ return {
 			indent = {
 				enable = false,
 			},
-			rainbow = {
-				enable = true,
-				hlgroups = {
-					"Red",
-					"Orange",
-					"Yellow",
-					"Green",
-					"Blue",
-					"Aqua",
-					"Purple",
-				},
-			},
 			context_commentstring = {
 				enable = true,
 			},

@@ -1,18 +1,22 @@
+local highlight = {
+	"Red",
+	"Orange",
+	"Yellow",
+	"Green",
+	"Blue",
+}
 return {
 	"lukas-reineke/indent-blankline.nvim",
 	lazy = false,
+	main = "ibl",
 	opts = {
-		space_char_blankline = " ",
-		show_end_of_line = true,
-		filetype_exclude = { "dashboard", "alpha" },
-		context_highlight_list = {
-			"Red",
-			"Orange",
-			"Yellow",
-			"Green",
-			"Blue",
+		scope = {
+			highlight = highlight,
 		},
-		show_current_context = true,
-		show_current_context_start = true,
 	},
+	config = function(_, opts)
+		require("ibl").setup(opts)
+		local hooks = require("ibl.hooks")
+		hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
+	end,
 }

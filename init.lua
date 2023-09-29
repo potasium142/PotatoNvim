@@ -24,7 +24,6 @@ AutoGroup = vim.api.nvim_create_augroup
 require("config.options")
 require("config.env")
 require("config.mapping")
-
 require("lazy").setup({
 	defaults = {
 		lazy = false,
