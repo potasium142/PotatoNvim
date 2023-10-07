@@ -12,7 +12,5 @@ return {
 	keys = {
 		{ "<S-j>", "<Plug>GoNSMDown" },
 		{ "<S-k>", "<Plug>GoNSMUp" },
-		{ "<S-j>", "<Plug>GoVSMDown", mode = "v" },
-		{ "<S-k>", "<Plug>GoVSMUp", mode = "v" },
 	},
 }

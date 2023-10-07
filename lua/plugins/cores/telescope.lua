@@ -3,7 +3,6 @@ return {
 		"nvim-telescope/telescope.nvim",
 		lazy = false,
 		dependencies = {
-			"nvim-telescope/telescope-dap.nvim",
 			"nvim-lua/plenary.nvim",
 			"debugloop/telescope-undo.nvim",
 			{
@@ -70,7 +69,6 @@ return {
 			telescope.load_extension("projects")
 			telescope.load_extension("noice")
 			telescope.load_extension("undo")
-			telescope.load_extension("dap")
 			telescope.load_extension("file_browser")
 		end,
 		keys = {

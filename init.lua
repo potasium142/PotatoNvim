@@ -37,7 +37,6 @@ require("lazy").setup({
 		{ import = "plugins.buffers" },
 		{ import = "plugins.utils" },
 		{ import = "plugins.split" },
-		{ import = "plugins.dap" },
 		{ import = "plugins.cmp.cmp" },
 		{ import = "languages" },
 	},
