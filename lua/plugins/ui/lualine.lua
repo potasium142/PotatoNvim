@@ -11,7 +11,7 @@ return {
 				theme = "auto",
 				disabled_filetypes = { "alpha" },
 				globalstatus = true,
-				section_separators = { left = "🮌", right = "🮍" },
+				-- section_separators = { left = "🮌", right = "🮍" },
 				component_separators = "",
 			},
 			sections = {

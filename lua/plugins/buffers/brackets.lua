@@ -2,6 +2,7 @@ return {
 	{
 		"windwp/nvim-autopairs",
 		lazy = false,
+		event = "InsertEnter",
 		opts = {
 			fast_wrap = {
 				map = "<M-e>",

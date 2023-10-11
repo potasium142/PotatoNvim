@@ -14,6 +14,7 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
 			"nvim-tree/nvim-web-devicons",
+			"abecodes/tabout.nvim",
 			"windwp/nvim-autopairs",
 			"L3MON4D3/LuaSnip",
 			"neovim/nvim-lspconfig",

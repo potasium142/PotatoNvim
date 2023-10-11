@@ -31,7 +31,6 @@ return {
 						highlight = "Outline",
 					},
 				},
-				separator_style = "thick",
 				show_close_icons = false,
 				show_buffer_close_icons = false,
 			},

@@ -9,7 +9,6 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		lazy = false,
 		dependencies = {
-			"HiPhish/nvim-ts-rainbow2",
 			"nvim-treesitter/nvim-treesitter",
 			"windwp/nvim-ts-autotag",
 			"JoosepAlviste/nvim-ts-context-commentstring",
