@@ -19,9 +19,22 @@ return {
 			filter = function(data)
 				return not all(data.event.regcontents, is_whitespace)
 			end,
+			default_register_macros = "r",
+			keys = {
+				telescope = {
+					n = {
+						replay = "r",
+					},
+				},
+			},
 		})
 	end,
 	keys = {
-		{ "tsy", "<cmd>Telescope neoclip<CR>" },
+		{
+			"tsy",
+			function()
+				require("telescope").extensions.neoclip.default()
+			end,
+		},
 	},
 }

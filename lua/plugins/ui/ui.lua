@@ -66,6 +66,9 @@ return {
 					opts = { skip = true },
 				},
 			},
+			config = function(opts, _)
+				require("noice").setup(opts)
+			end,
 		},
 	},
 }

@@ -17,7 +17,14 @@ return {
 			sections = {
 				lualine_b = {
 					"branch",
-					"diff",
+					{
+						"diff",
+						symbols = {
+							added = icons.git.LineAdded,
+							modified = icons.git.LineModified,
+							removed = icons.git.LineRemoved,
+						},
+					},
 					{
 						"diagnostics",
 						symbols = {

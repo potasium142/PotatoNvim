@@ -15,7 +15,7 @@ return {
 						name = { ".*" },
 						maxwidth = 1,
 						colwidth = 1,
-						fillchar = "│",
+						fillchar = "║",
 					},
 				},
 			},
