@@ -86,7 +86,6 @@ return {
 			{ "<space>tt", "<cmd>Lspsaga show_workspace_diagnostics<CR>" },
 			{ "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>" },
 			{ "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>" },
-			{ "<F4>", "<cmd>Lspsaga outline<CR>" },
 			{ "<space>D", "<cmd>Lspsaga hover_doc<CR>" },
 		},
 	},

@@ -12,14 +12,13 @@ return {
 					for e, n in pairs(diagnostics_dict) do
 						local sym = e == "error" and icons.diagnostics.Error
 							or (e == "warning" and icons.diagnostics.Warn or icons.diagnostics.Hint)
-
-						s = s .. n .. sym
+						s = s .. sym .. n .. " "
 					end
 					return s
 				end,
 				offsets = {
 					{
-						filetype = "NvimTree",
+						filetype = "neo-tree",
 						text = "File Explorer",
 						highlight = "Directory",
 						text_align = "center",

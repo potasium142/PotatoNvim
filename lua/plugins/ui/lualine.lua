@@ -43,10 +43,10 @@ return {
 					{
 						"filename",
 						symbols = {
-							modified = icons.buffer.modified,
-							readonly = icons.buffer.readonly,
-							unnamed = icons.buffer.unnamed,
-							newfile = icons.buffer.newfile,
+							modified = icons.buffer.Modified,
+							readonly = icons.buffer.Readonly,
+							unnamed = icons.buffer.Unnamed,
+							newfile = icons.buffer.Newfile,
 						},
 					},
 				},

@@ -1,7 +1,12 @@
 return {
 	{
 		"kwkarlwang/bufresize.nvim",
-		lazy = false,
+		lazy = true,
+		event = {
+			"VimResized",
+			"BufWinEnter",
+			"WinEnter",
+		},
 		opts = function()
 			local opts = { noremap = true, silent = true }
 			return {

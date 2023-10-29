@@ -57,14 +57,4 @@ return {
 			-- { "tsb", "<cmd>Telescope scope buffers<cr>" },
 		},
 	},
-	{
-		"nvim-telescope/telescope-file-browser.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-		},
-		keys = {
-			{ "<F2>", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>" },
-		},
-	},
 }

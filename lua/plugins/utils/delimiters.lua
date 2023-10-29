@@ -9,15 +9,7 @@ return {
 	url = "https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
 	init = function()
 		G.rainbow_delimiters = {
-			hlgroups = {
-				"Red",
-				"Orange",
-				"Yellow",
-				"Green",
-				"Blue",
-				"Aqua",
-				"Purple",
-			},
+			hlgroups = highlight,
 			rainbow_delimiters = { highlight = highlight },
 		}
 	end,

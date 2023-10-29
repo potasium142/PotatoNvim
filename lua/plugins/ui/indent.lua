@@ -12,6 +12,7 @@ return {
 	opts = {
 		scope = {
 			highlight = highlight,
+			show_exact_scope = false,
 		},
 	},
 	config = function(_, opts)
