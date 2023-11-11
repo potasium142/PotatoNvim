@@ -3,7 +3,7 @@ return {
 	lazy = false,
 	priority = 1000,
 	opts = {
-		sign_column_background = "grey",
+		-- sign_column_background = "grey",
 		italics = false,
 		disable_italic_comment = true,
 		diagnostic_text_highlight = true,
@@ -44,10 +44,6 @@ return {
 			hl.DapBreakpoint = { link = "red" }
 			hl.DapLogPoint = { link = "green" }
 			hl.DapStopped = { link = "yellow" }
-
-			-- HL(namespace, "DapBreakpoint", { link = "red" })
-			-- HL(namespace, "DapLogPoint", { link = "green" })
-			-- HL(namespace, "DapStopped", { link = "yellow" })
 		end,
 	},
 	config = function(_, opts)

@@ -1,6 +1,5 @@
 return {
 	"AckslD/nvim-neoclip.lua",
-	lazy = true,
 	config = function()
 		local function is_whitespace(line)
 			return vim.fn.match(line, [[^\s*$]]) ~= -1

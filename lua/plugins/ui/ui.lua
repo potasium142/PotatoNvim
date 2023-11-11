@@ -1,11 +1,15 @@
 return {
-	"nvim-tree/nvim-web-devicons",
+	{ "nvim-tree/nvim-web-devicons" },
 	{
 		"rcarriga/nvim-notify",
 		opts = {
-			stages = "fade_in_slide_out",
-			timeout = 1000,
-			render = "compact",
+			function()
+				return {
+					stages = "fade_in_slide_out",
+					timeout = 1000,
+					render = "compact",
+				}
+			end,
 		},
 	},
 	{

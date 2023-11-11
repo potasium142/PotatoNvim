@@ -1,4 +1,5 @@
 Map = vim.keymap.set
+Opts = { noremap = true, silent = true }
 
 --Tabbing
 Map("n", ">", ":><cr>", Opts)

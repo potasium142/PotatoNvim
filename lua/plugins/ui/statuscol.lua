@@ -3,7 +3,7 @@ return {
 	opts = function()
 		local builtin = require("statuscol.builtin")
 		return {
-			relculright = false,
+			relculright = true,
 			segments = {
 				{ text = { builtin.foldfunc, " " } },
 				{ text = { builtin.lnumfunc, " " } },
@@ -15,7 +15,7 @@ return {
 						name = { ".*" },
 						maxwidth = 1,
 						colwidth = 1,
-						fillchar = "┊",
+						fillchar = "│",
 					},
 				},
 			},

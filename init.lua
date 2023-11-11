@@ -13,9 +13,8 @@ end
 
 vim.opt.runtimepath:prepend(lazypath)
 
-Opts = { noremap = true, silent = true }
-BufOpts = { noremap = true, silent = true, buffer = bufnr }
 G = vim.g
+
 Set = vim.o
 HL = vim.api.nvim_set_hl
 AutoCMD = vim.api.nvim_create_autocmd
