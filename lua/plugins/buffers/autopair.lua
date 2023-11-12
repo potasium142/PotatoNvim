@@ -18,8 +18,4 @@ return {
 			check_ts = true,
 		},
 	},
-	{
-		"kylechui/nvim-surround",
-		config = true,
-	},
 }

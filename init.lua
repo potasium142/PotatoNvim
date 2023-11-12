@@ -14,7 +14,6 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 G = vim.g
-
 Set = vim.o
 HL = vim.api.nvim_set_hl
 AutoCMD = vim.api.nvim_create_autocmd
