@@ -6,7 +6,7 @@ return {
 		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 		"MunifTanjim/nui.nvim",
 	},
-	lazy = true,
+	lazy = false,
 	opts = {
 		default_component_configs = {
 			git_status = {

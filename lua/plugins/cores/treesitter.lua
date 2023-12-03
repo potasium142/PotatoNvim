@@ -11,10 +11,9 @@ return {
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 			"windwp/nvim-ts-autotag",
-			"JoosepAlviste/nvim-ts-context-commentstring",
 			"nvim-treesitter/nvim-treesitter-context",
 		},
-		cmd = { "TSUpdateSync" },
+		build = ":TSUpdate",
 		opts = {
 			highlight = {
 				enable = true,
@@ -26,14 +25,11 @@ return {
 				enable = true,
 			},
 			indent = {
-				enable = false,
-			},
-			context_commentstring = {
 				enable = true,
 			},
 		},
 		config = function(_, opts)
-			require("nvim-treesitter.install").compilers = { "gcc" }
+			require("nvim-treesitter.install").compilers = { "clang++", "gcc" }
 			require("nvim-treesitter.configs").setup(opts)
 		end,
 	},
