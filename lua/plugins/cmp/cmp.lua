@@ -2,19 +2,21 @@ local icons = require("config.icons")
 return {
 	{
 		"L3MON4D3/LuaSnip",
+		dependencies = { "rafamadriz/friendly-snippets" },
 	},
 	{
 		"hrsh7th/nvim-cmp",
 		lazy = false,
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-path",
+			"FelipeLema/cmp-async-path",
 			"nvim-tree/nvim-web-devicons",
 			"abecodes/tabout.nvim",
 			"windwp/nvim-autopairs",
 			"L3MON4D3/LuaSnip",
 			"neovim/nvim-lspconfig",
 			"saadparwaiz1/cmp_luasnip",
+			"chrisgrieser/cmp_yanky",
 		},
 		opts = function()
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
@@ -64,16 +66,18 @@ return {
 					format = function(entry, vim_item)
 						vim_item.kind = string.format(" %s  ", icons.kind_icons[vim_item.kind])
 						vim_item.menu = ({
-							luasnip = "[LuaSnip]",
-							nvim_lsp = "[LSP]",
-							path = "[Path]",
+							luasnip = "LuaSnip",
+							nvim_lsp = "LSP",
+							path = "Path",
+							async_path = "APath",
+							cmp_yanky = "Yanky",
 						})[entry.source.name]
 						return vim_item
 					end,
 				},
 				sources = {
 					{ name = "nvim_lsp" },
-					{ name = "path" },
+					{ name = "async_path" },
 					{
 						name = "luasnip",
 						option = {
@@ -81,6 +85,7 @@ return {
 							show_autosnippets = true,
 						},
 					},
+					{ name = "cmp_yanky" },
 				},
 				window = {
 					completion = {

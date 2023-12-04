@@ -15,7 +15,7 @@ return {
 		init = function()
 			vim.lsp.handlers["textDocument/publishDiagnostics"] =
 				vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-					underline = false,
+					-- underline = false,
 					virtual_text = false,
 				})
 		end,
@@ -28,10 +28,6 @@ return {
 						capabilities = capabilities,
 					})
 				end,
-			})
-
-			require("lspconfig").rust_analyzer.setup({
-				capabilities = capabilities,
 			})
 		end,
 	},
