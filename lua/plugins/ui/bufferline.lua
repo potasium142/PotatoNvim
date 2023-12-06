@@ -11,7 +11,7 @@ return {
 		return {
 			options = {
 				diagnostics = "nvim_lsp",
-				diagnostics_indicator = function(count, level, diagnostics_dict, context)
+				diagnostics_indicator = function(_, level, _, _)
 					return level:match("error") and icons.diagnostics.Error
 						or (level:match("warning") and icons.diagnostics.Warn or icons.diagnostics.Hint)
 				end,

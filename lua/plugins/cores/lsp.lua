@@ -1,3 +1,5 @@
+local opts = { noremap = true, silent = true }
+
 return {
 	{
 		"williamboman/mason.nvim",
@@ -29,10 +31,57 @@ return {
 				end,
 			})
 		end,
+		keys = {
+			{
+				"<Space>ca",
+				function()
+					vim.lsp.buf.code_action()
+				end,
+				opts,
+			},
+			{
+				"[d",
+				function()
+					vim.diagnostic.goto_prev()
+				end,
+				opts,
+			},
+			{
+				"<Space>rn",
+				function()
+					vim.lsp.buf.rename()
+				end,
+				opts,
+			},
+			{
+				"K",
+				function()
+					vim.lsp.buf.hover()
+				end,
+				opts,
+			},
+			{
+				"<Space>gd",
+				function()
+					vim.lsp.buf.definition()
+				end,
+				opts,
+			},
+			{
+				"]d",
+				function()
+					vim.diagnostic.goto_next()
+				end,
+				opts,
+			},
+		},
 	},
 	{
 		url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 		enabled = true,
+		dependencies = {
+			"neovim/nvim-lspconfig",
+		},
 		init = function()
 			vim.diagnostic.config({
 				underline = false,
@@ -45,45 +94,43 @@ return {
 		end,
 	},
 	{
-		"nvimdev/lspsaga.nvim",
-		lazy = false,
-		enabled = true,
+		"folke/trouble.nvim",
 		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons",
+			"neovim/nvim-lspconfig",
 		},
 		opts = {
-			diagnostic = {
-				border_follow = false,
-			},
-			outline = {
-				auto_preview = false,
-			},
-			lightbulb = {
-				enable = true,
-				enable_in_insert = true,
-				sign = false,
-				sign_priority = 40,
-				virtual_text = true,
-			},
-			symbol_in_winbar = {
-				enable = false,
-				hide_keyword = false,
-			},
-			ui = {
-				code_action = "",
-			},
+			padding = true,
 		},
 		keys = {
-			{ "<space>ca", "<cmd>Lspsaga code_action<CR>" },
-			{ "<space>gh", "<cmd>Lspsaga finder<CR>" },
-			{ "<space>rn", "<cmd>Lspsaga rename<CR>" },
-			{ "<space>gd", "<cmd>Lspsaga goto_definition<CR>" },
-			{ "<space>fd", "<cmd>Lspsaga peek_definition<CR>" },
-			{ "<space>tt", "<cmd>Lspsaga show_workspace_diagnostics<CR>" },
-			{ "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>" },
-			{ "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>" },
-			{ "<space>D", "<cmd>Lspsaga hover_doc<CR>" },
+			{
+				"<Space>tt",
+				function()
+					require("trouble").toggle()
+				end,
+			},
 		},
+	},
+	{
+		"kosayoda/nvim-lightbulb",
+		dependencies = {
+			"neovim/nvim-lspconfig",
+		},
+		lazy = false,
+		opts = function()
+			return {
+				autocmd = {
+					enabled = true,
+					updatetime = 0,
+					events = { "InsertLeave", "CursorHold" },
+					pattern = { "*" },
+				},
+				virtual_text = {
+					enabled = true,
+					text = require("config.icons").diagnostics.Hint,
+					hl = "yellow",
+				},
+			}
+		end,
 	},
 }

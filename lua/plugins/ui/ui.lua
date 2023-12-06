@@ -19,6 +19,17 @@ return {
 	},
 	{
 		"stevearc/dressing.nvim",
+		lazy = false,
+		opts = function()
+			return {
+				select = {
+					backend = { "builtin", "nui", "telescope", "fzf_lua", "fzf" },
+					builtin = {
+						relative = "cursor",
+					},
+				},
+			}
+		end,
 	},
 	{
 		"folke/noice.nvim",

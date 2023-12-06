@@ -37,7 +37,3 @@ Map({ "n", "v" }, "q", "b")
 Map({ "n", "v" }, "Q", "B")
 
 Map({ "i", "n" }, "<F1>", "<nop>", Opts)
-Map("n", "<space>tq", "<cmd>tabclose<cr>")
-Map("n", "<space>tn", "<cmd>tabnew<cr>")
-Map("n", "]t", "<cmd>tabnext<cr>", Opts)
-Map("n", "[t", "<cmd>tabprevious<cr>", Opts)

@@ -1,5 +1,6 @@
 return {
 	"booperlv/nvim-gomove",
+	enabled = false,
 	lazy = true,
 	config = function()
 		require("gomove").setup({
