@@ -11,7 +11,6 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 			"FelipeLema/cmp-async-path",
 			"nvim-tree/nvim-web-devicons",
-			"abecodes/tabout.nvim",
 			"windwp/nvim-autopairs",
 			"L3MON4D3/LuaSnip",
 			"neovim/nvim-lspconfig",
@@ -64,7 +63,7 @@ return {
 				formatting = {
 					fields = { "kind", "abbr", "menu" },
 					format = function(entry, vim_item)
-						vim_item.kind = string.format(" %s  ", icons.kind_icons[vim_item.kind])
+						vim_item.kind = string.format(" %s ", icons.kind_icons[vim_item.kind])
 						vim_item.menu = ({
 							luasnip = "LuaSnip",
 							nvim_lsp = "LSP",
@@ -76,16 +75,17 @@ return {
 					end,
 				},
 				sources = {
-					{ name = "nvim_lsp" },
-					{ name = "async_path" },
+					{ name = "nvim_lsp", priority = 5 },
+					{ name = "async_path", priority = 4 },
 					{
 						name = "luasnip",
 						option = {
 							use_show_condition = false,
 							show_autosnippets = true,
 						},
+						priority = 3,
 					},
-					{ name = "cmp_yanky" },
+					{ name = "cmp_yanky", priority = 2 },
 				},
 				window = {
 					completion = {

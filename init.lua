@@ -1,5 +1,4 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
@@ -13,15 +12,13 @@ end
 
 vim.opt.runtimepath:prepend(lazypath)
 
-G = vim.g
-Set = vim.o
-HL = vim.api.nvim_set_hl
 AutoCMD = vim.api.nvim_create_autocmd
 AutoGroup = vim.api.nvim_create_augroup
 
 require("config.options")
 require("config.env")
 require("config.mapping")
+require("custom_script.tabout")
 require("lazy").setup({
 	defaults = {
 		lazy = false,

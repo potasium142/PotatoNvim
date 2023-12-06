@@ -7,7 +7,7 @@ return {
 	dependencies = { "nvim-lua/plenary.nvim" },
 	config = function()
 		require("crates").setup()
-		vim.api.nvim_create_autocmd("BufRead", {
+		AutoCMD("BufRead", {
 			group = vim.api.nvim_create_augroup("CmpSourceCargo", { clear = true }),
 			pattern = "Cargo.toml",
 			callback = function()

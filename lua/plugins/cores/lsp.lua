@@ -11,14 +11,8 @@ return {
 		dependencies = {
 			"williamboman/mason-lspconfig.nvim",
 			"hrsh7th/cmp-nvim-lsp",
+			"folke/neodev.nvim",
 		},
-		init = function()
-			vim.lsp.handlers["textDocument/publishDiagnostics"] =
-				vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-					-- underline = false,
-					virtual_text = false,
-				})
-		end,
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			require("mason-lspconfig").setup()
@@ -26,6 +20,11 @@ return {
 				function(server_name) -- default handler (optional)
 					require("lspconfig")[server_name].setup({
 						capabilities = capabilities,
+						on_attach = function(client, bufnr)
+							if client.server_capabilities["documentSymbolProvider"] then
+								require("nvim-navic").attach(client, bufnr)
+							end
+						end,
 					})
 				end,
 			})
@@ -33,6 +32,7 @@ return {
 	},
 	{
 		url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		enabled = true,
 		init = function()
 			vim.diagnostic.config({
 				underline = false,
@@ -47,6 +47,7 @@ return {
 	{
 		"nvimdev/lspsaga.nvim",
 		lazy = false,
+		enabled = true,
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons",
@@ -66,7 +67,7 @@ return {
 				virtual_text = true,
 			},
 			symbol_in_winbar = {
-				enable = true,
+				enable = false,
 				hide_keyword = false,
 			},
 			ui = {

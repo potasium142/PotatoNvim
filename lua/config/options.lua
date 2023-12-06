@@ -1,24 +1,35 @@
-Set.tabstop = 4
-Set.shiftwidth = 4
-Set.number = true
-Set.ruler = true
-Set.cursorline = true
-Set.showmatch = true
-Set.autoread = true
-Set.termguicolors = true
-Set.updatetime = 100
-Set.splitbelow = true
-Set.wildmode = "longest,full"
-Set.signcolumn = "yes"
-Set.smartindent = true
-Set.autoindent = true
-Set.ffs = "unix,dos"
-Set.swapfile = false
-Set.mouse = ""
-Set.syntax = false
-Set.relativenumber = true
-Set.guicursor = "i-ci:ver10"
-Set.scrolloff = 12
-Set.foldenable = true
-Set.foldmethod = "indent"
-Set.foldlevelstart = 69
+local options = {
+	tabstop = 4,
+	shiftwidth = 4,
+	number = true,
+	ruler = true,
+	cursorline = true,
+	showmatch = true,
+	autoread = true,
+	termguicolors = true,
+	updatetime = 100,
+	splitbelow = true,
+	wildmode = "longest,full",
+	smartindent = true,
+	autoindent = true,
+	signcolumn = "yes",
+	ffs = "unix,dos",
+	swapfile = false,
+	mouse = "",
+	relativenumber = true,
+	guicursor = "i-ci:ver10",
+	scrolloff = 12,
+	foldenable = true,
+	foldmethod = "indent",
+	foldlevelstart = 69,
+	laststatus = 3,
+	listchars = {
+		tab = "┃ ",
+		multispace = "┇ ",
+	},
+	list = true,
+}
+
+for k, v in pairs(options) do
+	vim.opt[k] = v
+end

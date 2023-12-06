@@ -15,11 +15,10 @@ return {
 						name = { ".*" },
 						maxwidth = 1,
 						colwidth = 1,
-						fillchar = "│",
+						fillchar = "┃",
 					},
 				},
 			},
-			ft_ignore = { "sagaoutline", "neo-tree", "Outline", "alpha", "Trouble", "lazy" },
 			bt_ignore = {
 				"nofile",
 			},

@@ -13,6 +13,6 @@ return {
 		vim.fn["mkdp#util#install"]()
 	end,
 	config = function()
-		G.mkdp_theme = "light"
+		vim.g.mkdp_theme = "light"
 	end,
 }

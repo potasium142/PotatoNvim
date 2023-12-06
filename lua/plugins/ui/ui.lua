@@ -2,15 +2,15 @@ return {
 	{ "nvim-tree/nvim-web-devicons" },
 	{
 		"rcarriga/nvim-notify",
-		opts = {
-			function()
-				return {
-					stages = "fade_in_slide_out",
-					timeout = 1000,
-					render = "compact",
-				}
-			end,
-		},
+		enabled = true,
+		config = function()
+			require("notify").setup({
+				render = "compact",
+				stages = "static",
+				timeout = 5000,
+				top_down = true,
+			})
+		end,
 	},
 	{
 		"winston0410/range-highlight.nvim",
@@ -22,6 +22,7 @@ return {
 	},
 	{
 		"folke/noice.nvim",
+		enabled = true,
 		lazy = false,
 		priority = 1000,
 		init = function()

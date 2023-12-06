@@ -1,21 +1,19 @@
 return {
 	"akinsho/bufferline.nvim",
-	enabled = true,
+	enabled = false,
 	lazy = false,
-	dependencies = { "nvim-tree/nvim-web-devicons" },
+	dependencies = {
+		"nvim-tree/nvim-web-devicons",
+		"neovim/nvim-lspconfig",
+	},
 	opts = function()
 		local icons = require("config.icons")
 		return {
 			options = {
 				diagnostics = "nvim_lsp",
 				diagnostics_indicator = function(count, level, diagnostics_dict, context)
-					local s = " "
-					for e, n in pairs(diagnostics_dict) do
-						local sym = e == "error" and icons.diagnostics.Error
-							or (e == "warning" and icons.diagnostics.Warn or icons.diagnostics.Hint)
-						s = s .. sym .. n .. " "
-					end
-					return s
+					return level:match("error") and icons.diagnostics.Error
+						or (level:match("warning") and icons.diagnostics.Warn or icons.diagnostics.Hint)
 				end,
 				offsets = {
 					{
@@ -33,6 +31,7 @@ return {
 				},
 				show_close_icons = false,
 				show_buffer_close_icons = false,
+				separator_style = { " " },
 			},
 		}
 	end,
