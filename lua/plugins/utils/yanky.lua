@@ -1,8 +1,5 @@
 return {
 	"gbprod/yanky.nvim",
-	dependencies = {
-		"hrsh7th/nvim-cmp",
-	},
 	config = true,
 	keys = {
 		{

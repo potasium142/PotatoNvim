@@ -8,6 +8,9 @@ return {
 	},
 	lazy = false,
 	opts = {
+		filesystem = {
+			hijack_netrw_behavior = "open_current",
+		},
 		default_component_configs = {
 			git_status = {
 				symbols = {

@@ -33,3 +33,12 @@ local options = {
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
+
+flags = {
+	loaded_netrwPlugin = 1,
+	loaded_netrw = 1,
+}
+
+for k, v in pairs(flags) do
+	vim.g[k] = v
+end

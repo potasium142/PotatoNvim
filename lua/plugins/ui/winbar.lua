@@ -1,10 +1,12 @@
 return {
 	"SmiteshP/nvim-navic",
 	enabled = true,
+	lazy = true,
 	dependencies = {
 		"neovim/nvim-lspconfig",
 		"freddiehaddad/feline.nvim",
 	},
+	event = { "LspAttach" },
 	opts = function()
 		return {
 			icons = require("config.icons").kind_icons,

@@ -4,8 +4,6 @@ return {
 		lazy = true,
 		event = {
 			"VimResized",
-			"BufWinEnter",
-			"WinEnter",
 		},
 		opts = function()
 			local opts = { noremap = true, silent = true }

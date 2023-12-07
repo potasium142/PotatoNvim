@@ -13,7 +13,6 @@ return {
 		dependencies = {
 			"williamboman/mason-lspconfig.nvim",
 			"hrsh7th/cmp-nvim-lsp",
-			"folke/neodev.nvim",
 		},
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -79,6 +78,8 @@ return {
 	{
 		url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 		enabled = true,
+		lazy = true,
+		event = { "LspAttach" },
 		dependencies = {
 			"neovim/nvim-lspconfig",
 		},
@@ -99,6 +100,8 @@ return {
 			"nvim-tree/nvim-web-devicons",
 			"neovim/nvim-lspconfig",
 		},
+		event = { "LspAttach" },
+		lazy = true,
 		opts = {
 			padding = true,
 		},
@@ -116,7 +119,8 @@ return {
 		dependencies = {
 			"neovim/nvim-lspconfig",
 		},
-		lazy = false,
+		event = { "LspAttach" },
+		lazy = true,
 		opts = function()
 			return {
 				autocmd = {

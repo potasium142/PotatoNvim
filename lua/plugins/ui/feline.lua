@@ -6,7 +6,6 @@ return {
 		"neanias/everforest-nvim",
 		"neovim/nvim-lspconfig",
 		"lewis6991/gitsigns.nvim",
-		"SmiteshP/nvim-navic",
 	},
 	config = function()
 		local icons = require("config.icons")
@@ -228,7 +227,6 @@ return {
 			scrollbar,
 			seperator,
 		}
-
 		local components = {
 			active = {
 				left,

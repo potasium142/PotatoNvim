@@ -6,7 +6,8 @@ return {
 	},
 	{
 		"hrsh7th/nvim-cmp",
-		lazy = false,
+		lazy = true,
+		event = { "LspAttach" },
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"FelipeLema/cmp-async-path",
@@ -75,7 +76,7 @@ return {
 					end,
 				},
 				sources = {
-					{ name = "nvim_lsp", priority = 5 },
+					{ name = "nvim_lsp",   priority = 5 },
 					{ name = "async_path", priority = 4 },
 					{
 						name = "luasnip",
@@ -85,7 +86,6 @@ return {
 						},
 						priority = 3,
 					},
-					{ name = "cmp_yanky", priority = 2 },
 				},
 				window = {
 					completion = {
@@ -105,3 +105,4 @@ return {
 		end,
 	},
 }
+
