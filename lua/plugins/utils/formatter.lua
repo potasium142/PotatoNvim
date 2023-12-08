@@ -5,6 +5,9 @@ return {
 	dependencies = {
 		"neovim/nvim-lspconfig",
 	},
+	init = function()
+		vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+	end,
 	opts = function()
 		return {
 			formatters_by_ft = {
@@ -56,26 +59,16 @@ return {
 				bash = {
 					"shfmt",
 				},
-				["*"] = { "trim_whitespace" },
+				["_"] = { "trim_whitespace" },
 			},
 
-			format_on_save = {
-				timeout_ms = 500,
-				lsp_fallback = true,
-			},
 			format_after_save = {
-				lsp_fallback = "always",
+				-- timeout_ms = 500,
+				lsp_fallback = true,
 			},
 		}
 	end,
 	config = function(_, opts)
 		require("conform").setup(opts)
-
-		AutoCMD("BufWritePre", {
-			pattern = "*",
-			callback = function(args)
-				require("conform").format({ bufnr = args.buf })
-			end,
-		})
 	end,
 }

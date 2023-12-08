@@ -23,6 +23,7 @@ return {
 			local luasnip = require("luasnip")
 			local cmp = require("cmp")
 			local mapping = cmp.mapping
+			require("luasnip.loaders.from_vscode").lazy_load()
 			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 			return {
 				snippet = {
@@ -76,7 +77,7 @@ return {
 					end,
 				},
 				sources = {
-					{ name = "nvim_lsp",   priority = 5 },
+					{ name = "nvim_lsp", priority = 5 },
 					{ name = "async_path", priority = 4 },
 					{
 						name = "luasnip",
@@ -105,4 +106,3 @@ return {
 		end,
 	},
 }
-
