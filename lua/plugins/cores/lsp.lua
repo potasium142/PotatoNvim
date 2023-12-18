@@ -1,4 +1,5 @@
 local opts = { noremap = true, silent = true }
+local local_lsp = require("config.lsp")
 
 return {
 	{
@@ -16,17 +17,28 @@ return {
 		},
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+			local default_setup = {
+				capabilities = capabilities,
+				on_attach = function(client, bufnr)
+					if client.server_capabilities["documentSymbolProvider"] then
+						require("nvim-navic").attach(client, bufnr)
+					end
+				end,
+			}
+
 			require("mason-lspconfig").setup()
+			for server, config in pairs(local_lsp) do
+				for key, val in pairs(default_setup) do
+					config[key] = val
+				end
+				require("lspconfig")[server].setup(config)
+			end
 			require("mason-lspconfig").setup_handlers({
 				function(server_name) -- default handler (optional)
-					require("lspconfig")[server_name].setup({
-						capabilities = capabilities,
-						on_attach = function(client, bufnr)
-							if client.server_capabilities["documentSymbolProvider"] then
-								require("nvim-navic").attach(client, bufnr)
-							end
-						end,
-					})
+					if local_lsp[server_name] == nil then
+						require("lspconfig")[server_name].setup(default_setup)
+					end
 				end,
 			})
 		end,
@@ -76,6 +88,17 @@ return {
 		},
 	},
 	{
+		"antosha417/nvim-lsp-file-operations",
+		event = { "LspAttach" },
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-neo-tree/neo-tree.nvim",
+		},
+		config = function()
+			require("lsp-file-operations").setup()
+		end,
+	},
+	{
 		url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 		enabled = true,
 		lazy = true,
@@ -113,28 +136,5 @@ return {
 				end,
 			},
 		},
-	},
-	{
-		"kosayoda/nvim-lightbulb",
-		dependencies = {
-			"neovim/nvim-lspconfig",
-		},
-		event = { "LspAttach" },
-		lazy = true,
-		opts = function()
-			return {
-				autocmd = {
-					enabled = true,
-					updatetime = 0,
-					events = { "InsertLeave", "CursorHold" },
-					pattern = { "*" },
-				},
-				virtual_text = {
-					enabled = true,
-					text = require("config.icons").diagnostics.Hint,
-					hl = "yellow",
-				},
-			}
-		end,
 	},
 }

@@ -13,17 +13,21 @@ return {
 		end,
 	},
 	{
-		"winston0410/range-highlight.nvim",
-		dependencies = { "winston0410/cmd-parser.nvim" },
-		config = true,
-	},
-	{
 		"stevearc/dressing.nvim",
 		lazy = false,
 		opts = function()
 			return {
 				select = {
-					backend = { "builtin", "nui", "telescope", "fzf_lua", "fzf" },
+					get_config = function(opts)
+						if opts.kind == "codeaction" then
+							return {
+								backend = "builtin",
+								nui = {
+									relative = "cursor",
+								},
+							}
+						end
+					end,
 					builtin = {
 						relative = "cursor",
 					},
@@ -48,7 +52,6 @@ return {
 			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
 			"winston0410/range-highlight.nvim",
-			"nvim-treesitter/nvim-treesitter",
 		},
 		opts = {
 			lsp = {

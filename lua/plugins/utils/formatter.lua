@@ -59,6 +59,9 @@ return {
 				bash = {
 					"shfmt",
 				},
+				typst = {
+					"typstfmt",
+				},
 				["_"] = { "trim_whitespace" },
 			},
 

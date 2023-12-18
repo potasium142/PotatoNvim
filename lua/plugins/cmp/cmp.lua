@@ -2,6 +2,7 @@ local icons = require("config.icons")
 return {
 	{
 		"L3MON4D3/LuaSnip",
+		event = { "LspAttach" },
 		dependencies = { "rafamadriz/friendly-snippets" },
 	},
 	{
@@ -16,7 +17,6 @@ return {
 			"L3MON4D3/LuaSnip",
 			"neovim/nvim-lspconfig",
 			"saadparwaiz1/cmp_luasnip",
-			"chrisgrieser/cmp_yanky",
 		},
 		opts = function()
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
@@ -36,7 +36,7 @@ return {
 					["<C-j>"] = mapping(mapping.scroll_docs(1), { "i", "c" }),
 					["<C-Space>"] = mapping(mapping.complete(), { "i", "c" }),
 					["<CR>"] = mapping.confirm({
-						behavior = cmp.ConfirmBehavior.Replace,
+						behavior = cmp.ConfirmBehavior.Insert,
 						select = true,
 					}),
 					["<Esc>"] = mapping({
@@ -46,7 +46,7 @@ return {
 					["<Tab>"] = mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
-						elseif luasnip.expand_or_jumpable() then
+						elseif luasnip.expand_or_locally_jumpable() then
 							luasnip.expand_or_jump()
 						else
 							fallback()
@@ -55,7 +55,7 @@ return {
 					["<S-Tab>"] = mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
-						elseif luasnip.jumpable(-1) then
+						elseif luasnip.locally_jumpable(-1) then
 							luasnip.jump(-1)
 						else
 							fallback()

@@ -1,5 +1,6 @@
 return {
 	"luukvbaal/statuscol.nvim",
+	enabled = true,
 	opts = function()
 		local builtin = require("statuscol.builtin")
 		return {
@@ -12,7 +13,7 @@ return {
 				},
 				{
 					sign = {
-						name = { ".*" },
+						namespace = { ".*" },
 						maxwidth = 1,
 						colwidth = 1,
 						fillchar = "┃",

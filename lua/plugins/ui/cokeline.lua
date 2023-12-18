@@ -2,7 +2,7 @@ return {
 	"willothy/nvim-cokeline",
 	dependencies = {
 		"nvim-lua/plenary.nvim", -- Required for v0.4.0+
-		"kyazdani42/nvim-web-devicons", -- If you want devicons
+		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 	},
 	lazy = false,
 	opts = function()
@@ -14,8 +14,8 @@ return {
 				filetype = { "NvimTree", "neo-tree" },
 				components = {
 					{
-						text = function(buf)
-							return string.upper(buf.filetype)
+						text = function()
+							return ""
 						end,
 						bold = true,
 					},

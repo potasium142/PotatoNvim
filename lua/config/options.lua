@@ -18,7 +18,7 @@ local options = {
 	mouse = "",
 	relativenumber = true,
 	guicursor = "i-ci:ver10",
-	scrolloff = 12,
+	scrolloff = 7,
 	foldenable = true,
 	foldmethod = "indent",
 	foldlevelstart = 69,
@@ -34,7 +34,7 @@ for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
-flags = {
+local flags = {
 	loaded_netrwPlugin = 1,
 	loaded_netrw = 1,
 }

@@ -71,7 +71,7 @@ return {
 			},
 		}
 
-		local navic = {
+		local navic_winbar = {
 			provider = function()
 				return navic.get_location()
 			end,
@@ -83,21 +83,22 @@ return {
 		}
 
 		local winbar_components = {
-			active = {
-				{ navic },
-				{},
-				{ lsp.errors, lsp.warns, lsp.hints, lsp.info, lsp.provider },
-			},
-			inactive = {
-				{ navic },
-				{},
-				{ lsp.errors, lsp.warns, lsp.hints, lsp.info, lsp.provider },
+			{
+				condition = function()
+					return vim.bo.buftype ~= "nofile"
+				end,
+				active = {
+					{ navic_winbar },
+					{},
+					{ lsp.errors, lsp.warns, lsp.hints, lsp.info, lsp.provider },
+				},
+				inactive = {},
 			},
 		}
 
 		require("feline").winbar.setup({
-			components = winbar_components,
-			disable = {
+			conditional_components = winbar_components,
+			force_inactive = {
 				buftypes = {
 					"nofile",
 					"terminal",

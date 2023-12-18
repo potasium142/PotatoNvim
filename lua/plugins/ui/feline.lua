@@ -5,7 +5,7 @@ return {
 	dependencies = {
 		"neanias/everforest-nvim",
 		"neovim/nvim-lspconfig",
-		"lewis6991/gitsigns.nvim",
+		-- "lewis6991/gitsigns.nvim",
 	},
 	config = function()
 		local icons = require("config.icons")
@@ -127,7 +127,7 @@ return {
 			provider = {
 				name = "position",
 				opts = {
-					format = "  {line} ",
+					format = "  {line}:{col} ",
 				},
 			},
 			hl = {
@@ -174,8 +174,7 @@ return {
 			},
 			name = {
 				provider = function()
-					local filename = vim.fn.expand("%:t:r")
-					return filename == 0 and "Unnamed" or filename
+					return vim.fn.expand("%:t:r")
 				end,
 				hl = {
 					bg = "bg_blue",
@@ -197,7 +196,6 @@ return {
 					bg = "red",
 					fg = "bg",
 				},
-
 				left_sep = "block",
 				right_sep = "block",
 			},

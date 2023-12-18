@@ -17,8 +17,6 @@ Map("n", "<Left>", "<nop>", Opts)
 
 --Globle buffer paste
 Map("n", "gp", '"+p<CR>', Opts)
-Map("n", "gjp", "<cmd>pu+<CR>", Opts)
-Map("n", "gkp", "<cmd>pu!+<CR>", Opts)
 Map({ "v", "n" }, "gy", '"+y<CR>', Opts)
 
 Map("n", "<CR>", ":noh<cr><cr>", Opts)
@@ -32,8 +30,5 @@ Map({ "n", "v" }, "x", '"_x', Opts)
 --Half buffer jump
 Map({ "n", "v" }, "<C-j>", "<C-d>zz")
 Map({ "n", "v" }, "<C-k>", "<C-u>zz")
-
-Map({ "n", "v" }, "q", "b")
-Map({ "n", "v" }, "Q", "B")
 
 Map({ "i", "n" }, "<F1>", "<nop>", Opts)
