@@ -7,7 +7,6 @@ return {
 	},
 	{
 		"hrsh7th/nvim-cmp",
-		lazy = true,
 		event = { "LspAttach" },
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
@@ -79,14 +78,14 @@ return {
 				sources = {
 					{ name = "nvim_lsp", priority = 5 },
 					{ name = "async_path", priority = 4 },
-					{
-						name = "luasnip",
-						option = {
-							use_show_condition = false,
-							show_autosnippets = true,
-						},
-						priority = 3,
-					},
+					-- {
+					-- 	name = "luasnip",
+					-- 	option = {
+					-- 		use_show_condition = false,
+					-- 		show_autosnippets = true,
+					-- 	},
+					-- 	priority = 3,
+					-- },
 				},
 				window = {
 					completion = {

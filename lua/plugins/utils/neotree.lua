@@ -10,6 +10,22 @@ return {
 	opts = {
 		filesystem = {
 			hijack_netrw_behavior = "open_current",
+			window = {
+				mappings = {
+					["e"] = "open_in_explorer",
+				},
+			},
+			commands = {
+				open_in_explorer = function(state)
+					local node = state.tree:get_node()
+					local path = node:get_id()
+					if jit.os == "Windows" then
+						vim.fn.jobstart({ "explorer.exe", "/separate", "/e", "/select,", path }, { detach = true })
+					else
+						vim.fn.jobstart({ "xdg-open", path }, { detach = true })
+					end
+				end,
+			},
 		},
 		default_component_configs = {
 			git_status = {
@@ -29,6 +45,10 @@ return {
 				symbol = icons.buffer.Modified,
 			},
 		},
+		window = {
+			width = 30,
+			position = "right",
+		},
 		sources = {
 			"filesystem",
 			"buffers",
@@ -37,7 +57,7 @@ return {
 		},
 	},
 	keys = {
-		{ "<F2>", "<cmd>Neotree toggle position=left<cr>" },
+		{ "<F2>", "<cmd>Neotree toggle<cr>" },
 		{ "<F3>", "<cmd>Neotree toggle buffers<cr>" },
 		{ "<F4>", "<cmd>Neotree toggle document_symbols<cr>" },
 		{ "<F5>", "<cmd>Neotree toggle git_status<cr>" },

@@ -32,3 +32,6 @@ Map({ "n", "v" }, "<C-j>", "<C-d>zz")
 Map({ "n", "v" }, "<C-k>", "<C-u>zz")
 
 Map({ "i", "n" }, "<F1>", "<nop>", Opts)
+Map("n", "<C-\\>", function()
+	vim.fn.jobstart({ "wezterm", "start", "--cwd", vim.fn.getcwd() }, { detach = true })
+end)

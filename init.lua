@@ -35,4 +35,9 @@ require("lazy").setup({
 		{ import = "plugins.cmp.cmp" },
 		{ import = "languages" },
 	},
+	performance = {
+		rtp = {
+			reset = false, -- reset the runtime path to $VIMRUNTIME and your config directory
+		},
+	},
 })

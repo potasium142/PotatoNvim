@@ -1,5 +1,57 @@
 local opts = { noremap = true, silent = true }
+
 local local_lsp = require("config.lsp")
+
+local capabilities = {
+	textDocument = {
+		completion = {
+			dynamicRegistration = false,
+			completionItem = {
+				snippetSupport = true,
+				commitCharactersSupport = true,
+				deprecatedSupport = true,
+				preselectSupport = true,
+				tagSupport = {
+					valueSet = {
+						1, -- Deprecated
+					},
+				},
+				insertReplaceSupport = true,
+				resolveSupport = {
+					properties = {
+						"documentation",
+						"detail",
+						"additionalTextEdits",
+						"sortText",
+						"filterText",
+						"insertText",
+						"textEdit",
+						"insertTextFormat",
+						"insertTextMode",
+					},
+				},
+				insertTextModeSupport = {
+					valueSet = {
+						1, -- asIs
+						2, -- adjustIndentation
+					},
+				},
+				labelDetailsSupport = true,
+			},
+			contextSupport = true,
+			insertTextMode = 1,
+			completionList = {
+				itemDefaults = {
+					"commitCharacters",
+					"editRange",
+					"insertTextFormat",
+					"insertTextMode",
+					"data",
+				},
+			},
+		},
+	},
+}
 
 return {
 	{
@@ -13,11 +65,8 @@ return {
 		lazy = false,
 		dependencies = {
 			"williamboman/mason-lspconfig.nvim",
-			"hrsh7th/cmp-nvim-lsp",
 		},
 		config = function()
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
 			local default_setup = {
 				capabilities = capabilities,
 				on_attach = function(client, bufnr)
@@ -28,12 +77,14 @@ return {
 			}
 
 			require("mason-lspconfig").setup()
+
 			for server, config in pairs(local_lsp) do
 				for key, val in pairs(default_setup) do
 					config[key] = val
 				end
 				require("lspconfig")[server].setup(config)
 			end
+
 			require("mason-lspconfig").setup_handlers({
 				function(server_name) -- default handler (optional)
 					if local_lsp[server_name] == nil then

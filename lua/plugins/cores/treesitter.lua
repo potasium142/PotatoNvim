@@ -1,19 +1,11 @@
 return {
 	{
-		"nvim-treesitter/nvim-treesitter-context",
-		enabled = false,
-		config = function()
-			require("treesitter-context").setup()
-		end,
-	},
-	{
 		"nvim-treesitter/nvim-treesitter",
 		lazy = false,
 		-- enabled = false,
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 			"windwp/nvim-ts-autotag",
-			-- "nvim-treesitter/nvim-treesitter-context",
 		},
 		build = ":TSUpdate",
 		opts = {

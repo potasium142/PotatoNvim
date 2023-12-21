@@ -51,7 +51,6 @@ return {
 			"rcarriga/nvim-notify",
 			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
-			"winston0410/range-highlight.nvim",
 		},
 		opts = {
 			lsp = {

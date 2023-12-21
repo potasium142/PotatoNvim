@@ -36,9 +36,7 @@ return {
 				},
 				{
 					text = function(buffer)
-						return " "
-							.. (is_picking_focus() and string.upper(buffer.pick_letter) or buffer.devicon.icon)
-							.. " "
+						return " " .. (is_picking_focus() and buffer.pick_letter or buffer.devicon.icon) .. " "
 					end,
 					fg = function(buffer)
 						return buffer.is_focused and palette.bg0 or palette.fg

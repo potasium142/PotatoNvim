@@ -3,12 +3,10 @@ return {
 	lazy = false,
 	opts = {
 		auto_update = true,
-		neovim_image_text = "Eject bloated IDE. Imbrace Neovim",
-		log_level = nil,
+		main_image = "file",
+		neovim_image_text = "help, i cant quit",
 		debounce_timeout = 10,
-		blacklist = {},
 		buttons = true,
-		file_assets = {},
 		show_time = true,
-	}
+	},
 }
