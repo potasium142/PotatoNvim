@@ -37,11 +37,39 @@ return {
 				},
 			}
 		end,
-		keys = {
-			{ "tsf", "<cmd>Telescope find_files<cr>" },
-			{ "tsg", "<cmd>Telescope live_grep<cr>" },
-			{ "tsh", "<cmd>Telescope help_tags<cr>" },
-			{ "tsm", "<cmd>Telescope marks<cr>" },
-		},
+		keys = function()
+			return {
+				{
+					"tsf",
+					function()
+						require("telescope.builtin").find_files()
+					end,
+				},
+				{
+					"tsg",
+					function()
+						require("telescope.builtin").live_grep()
+					end,
+				},
+				{
+					"tsh",
+					function()
+						require("telescope.builtin").help_tags()
+					end,
+				},
+				{
+					"tsm",
+					function()
+						require("telescope.builtin").marks()
+					end,
+				},
+				{
+					"tsr",
+					function()
+						require("telescope.builtin").resume()
+					end,
+				},
+			}
+		end,
 	},
 }

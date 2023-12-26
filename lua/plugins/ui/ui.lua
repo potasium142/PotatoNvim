@@ -76,6 +76,10 @@ return {
 			},
 			routes = {
 				{
+					view = "notify",
+					filter = { event = "msg_showmode" },
+				},
+				{
 					filter = {
 						event = "msg_show",
 						kind = "",

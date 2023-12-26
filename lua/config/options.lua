@@ -28,6 +28,7 @@ local options = {
 		multispace = "┇ ",
 	},
 	list = true,
+	showmode = false,
 }
 
 for k, v in pairs(options) do

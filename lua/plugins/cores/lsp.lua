@@ -93,50 +93,54 @@ return {
 				end,
 			})
 		end,
-		keys = {
-			{
-				"<Space>ca",
-				function()
-					vim.lsp.buf.code_action()
-				end,
-				opts,
-			},
-			{
-				"[d",
-				function()
-					vim.diagnostic.goto_prev()
-				end,
-				opts,
-			},
-			{
-				"<Space>rn",
-				function()
-					vim.lsp.buf.rename()
-				end,
-				opts,
-			},
-			{
-				"K",
-				function()
-					vim.lsp.buf.hover()
-				end,
-				opts,
-			},
-			{
-				"<Space>gd",
-				function()
-					vim.lsp.buf.definition()
-				end,
-				opts,
-			},
-			{
-				"]d",
-				function()
-					vim.diagnostic.goto_next()
-				end,
-				opts,
-			},
-		},
+		keys = function()
+			local buf = vim.lsp.buf
+			local diag = vim.diagnostic
+			return {
+				{
+					"<Space>ca",
+					function()
+						buf.code_action()
+					end,
+					opts,
+				},
+				{
+					"[d",
+					function()
+						diag.goto_prev()
+					end,
+					opts,
+				},
+				{
+					"<Space>rn",
+					function()
+						buf.rename()
+					end,
+					opts,
+				},
+				{
+					"K",
+					function()
+						buf.hover()
+					end,
+					opts,
+				},
+				{
+					"<Space>gd",
+					function()
+						buf.definition()
+					end,
+					opts,
+				},
+				{
+					"]d",
+					function()
+						diag.goto_next()
+					end,
+					opts,
+				},
+			}
+		end,
 	},
 	{
 		"antosha417/nvim-lsp-file-operations",

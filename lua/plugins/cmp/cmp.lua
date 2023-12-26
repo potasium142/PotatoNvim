@@ -78,14 +78,14 @@ return {
 				sources = {
 					{ name = "nvim_lsp", priority = 5 },
 					{ name = "async_path", priority = 4 },
-					-- {
-					-- 	name = "luasnip",
-					-- 	option = {
-					-- 		use_show_condition = false,
-					-- 		show_autosnippets = true,
-					-- 	},
-					-- 	priority = 3,
-					-- },
+					{
+						name = "luasnip",
+						option = {
+							use_show_condition = false,
+							show_autosnippets = true,
+						},
+						priority = 3,
+					},
 				},
 				window = {
 					completion = {
@@ -102,6 +102,19 @@ return {
 					entries = { name = "custom", selection_order = "near_cursor" },
 				},
 			}
+		end,
+		config = function(_, opts)
+			require("cmp").setup(opts)
+			AutoCMD("InsertLeave", {
+				callback = function()
+					if
+						require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
+						and not require("luasnip").session.jump_active
+					then
+						require("luasnip").unlink_current()
+					end
+				end,
+			})
 		end,
 	},
 }

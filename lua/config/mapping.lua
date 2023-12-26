@@ -1,37 +1,46 @@
-Map = vim.keymap.set
-Opts = { noremap = true, silent = true }
+local map = vim.keymap.set
+local opts = { noremap = true, silent = true }
+
+local open_terminal_session = function()
+	vim.fn.jobstart({ "wezterm", "start", "--workspace", "neovim", "--cwd", vim.fn.getcwd() }, {
+		detach = false,
+		on_stdout = function(stdout)
+			print(stdout)
+		end,
+	})
+end
 
 --Tabbing
-Map("n", ">", ":><cr>", Opts)
-Map("n", "<", ":<<cr>", Opts)
+map("n", ">", ":><cr>", opts)
+map("n", "<", ":<<cr>", opts)
 
 --Visual tabbing
-Map("v", ">", ":><cr>gv", Opts)
-Map("v", "<", ":<<cr>gv", Opts)
+map("v", ">", ":><cr>gv", opts)
+map("v", "<", ":<<cr>gv", opts)
 
 --Disable arrow
-Map("n", "<Up>", "<nop>", Opts)
-Map("n", "<Down>", "<nop>", Opts)
-Map("n", "<Right>", "<nop>", Opts)
-Map("n", "<Left>", "<nop>", Opts)
+map("n", "<Up>", "<nop>", opts)
+map("n", "<Down>", "<nop>", opts)
+map("n", "<Right>", "<nop>", opts)
+map("n", "<Left>", "<nop>", opts)
 
 --Globle buffer paste
-Map("n", "gp", '"+p<CR>', Opts)
-Map({ "v", "n" }, "gy", '"+y<CR>', Opts)
+map("n", "gp", '"+p<CR>', opts)
+map({ "v", "n" }, "gy", '"+y<CR>', opts)
 
-Map("n", "<CR>", ":noh<cr><cr>", Opts)
+map("n", "<CR>", ":noh<cr><cr>", opts)
 
 --Save
-Map("n", "<Space>w", "<cmd>:w<cr>")
+map("n", "<Space>w", "<cmd>:w<cr>")
 
 --Delete
-Map({ "n", "v" }, "x", '"_x', Opts)
+map({ "n", "v" }, "x", '"_x', opts)
 
 --Half buffer jump
-Map({ "n", "v" }, "<C-j>", "<C-d>zz")
-Map({ "n", "v" }, "<C-k>", "<C-u>zz")
+map({ "n", "v" }, "<C-j>", "<C-d>zz")
+map({ "n", "v" }, "<C-k>", "<C-u>zz")
 
-Map({ "i", "n" }, "<F1>", "<nop>", Opts)
-Map("n", "<C-\\>", function()
-	vim.fn.jobstart({ "wezterm", "start", "--cwd", vim.fn.getcwd() }, { detach = true })
+map({ "i", "n" }, "<F1>", "<nop>", opts)
+map("n", "<C-\\>", function()
+	open_terminal_session()
 end)

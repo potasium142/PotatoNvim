@@ -36,10 +36,41 @@ return {
 				},
 				{
 					text = function(buffer)
-						return " " .. (is_picking_focus() and buffer.pick_letter or buffer.devicon.icon) .. " "
+						local diagnostic = function()
+							local diag = buffer.diagnostics
+
+							if diag.errors ~= 0 then
+								return icons.diagnostics.Error
+							end
+
+							if diag.warnings ~= 0 then
+								return icons.diagnostics.Warn
+							end
+
+							return false
+						end
+
+						local state = function()
+							if is_picking_focus() then
+								return buffer.pick_letter
+							end
+
+							if buffer.is_modified then
+								return icons.buffer.Modified .. " "
+							end
+
+							if buffer.is_readonly then
+								return icons.buffer.Readonly .. " "
+							end
+
+							return false
+						end
+
+						local icon = state() or diagnostic() or buffer.devicon.icon
+						return " " .. icon .. " "
 					end,
 					fg = function(buffer)
-						return buffer.is_focused and palette.bg0 or palette.fg
+						return buffer.is_focused and palette.bg_dim or palette.fg
 					end,
 					bg = function(buffer)
 						return buffer.is_focused and (buffer.is_readonly and palette.red or palette.green)
@@ -48,24 +79,20 @@ return {
 					bold = is_picking_focus(),
 				},
 				{
-					text = function(buffer)
+					text = function()
 						return is_picking_focus() and "░ " or " "
 					end,
 				},
 				{
 					text = function(buffer)
-						return buffer.filename .. "  "
+						return buffer.filename
 					end,
 					bold = function(buffer)
 						return buffer.is_focused
 					end,
 				},
 				{
-					text = function(buffer)
-						local warning = buffer.diagnostics.warnings == 0 and " " or icons.diagnostics.Warn
-						local error = buffer.diagnostics.errors ~= 0 and icons.diagnostics.Error
-						return buffer.is_modified and icons.buffer.Modified .. " " or (error and error or warning)
-					end,
+					text = " ",
 				},
 			},
 		}

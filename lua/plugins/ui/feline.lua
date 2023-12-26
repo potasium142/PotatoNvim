@@ -4,8 +4,6 @@ return {
 	enabled = true,
 	dependencies = {
 		"neanias/everforest-nvim",
-		-- "neovim/nvim-lspconfig",
-		-- "lewis6991/gitsigns.nvim",
 	},
 	config = function()
 		local icons = require("config.icons")
@@ -32,26 +30,26 @@ return {
 		}
 
 		local modes = setmetatable({
-			["n"] = " N ",
-			["no"] = " N ",
-			["v"] = " V ",
-			["s"] = " S ",
-			["i"] = " I ",
-			["ic"] = " I ",
-			["R"] = " R ",
-			["c"] = " C ",
-			["ce"] = " X ",
-			["r"] = " P ",
-			["rm"] = " M ",
-			["r?"] = " C ",
-			["t"] = " T ",
-			["S"] = "S L",
-			["V"] = "V L",
-			[""] = "V B",
-			[""] = "S B",
-			["Rv"] = "V R",
-			["cv"] = "E X",
-			["!"] = "S H",
+			["n"] = "N",
+			["no"] = "N",
+			["v"] = "V",
+			["s"] = "S",
+			["i"] = "I",
+			["ic"] = "I",
+			["R"] = "R",
+			["c"] = "C",
+			["ce"] = "X",
+			["r"] = "P",
+			["rm"] = "M",
+			["r?"] = "C",
+			["t"] = "T",
+			["S"] = "SL",
+			["V"] = "VL",
+			[""] = "VB",
+			[""] = "SB",
+			["Rv"] = "VR",
+			["cv"] = "EX",
+			["!"] = "SH",
 		}, {
 			__index = function()
 				return "-"
@@ -64,7 +62,8 @@ return {
 
 		local vim_mode = {
 			provider = function()
-				return " " .. modes[vim.api.nvim_get_mode().mode]
+				-- return vim.api.nvim_get_mode().mode
+				return string.upper(vim.api.nvim_get_mode().mode)
 			end,
 			hl = function()
 				return {
@@ -143,18 +142,6 @@ return {
 			left_sep = "block",
 			right_sep = "block",
 		}
-		local scrollbar = {
-			provider = {
-				name = "scroll_bar",
-				opts = {
-					reverse = true,
-				},
-			},
-			hl = {
-				fg = "bg",
-				bg = "yellow",
-			},
-		}
 
 		local file = {
 			type = {
@@ -168,6 +155,7 @@ return {
 				hl = {
 					fg = "bg",
 					bg = "blue",
+					style = "bold",
 				},
 				left_sep = "block",
 				right_sep = "block",
@@ -222,7 +210,6 @@ return {
 			seperator,
 			position,
 			line_percentage,
-			scrollbar,
 			seperator,
 		}
 		local components = {
