@@ -4,9 +4,6 @@ local opts = { noremap = true, silent = true }
 local open_terminal_session = function()
 	vim.fn.jobstart({ "wezterm", "start", "--workspace", "neovim", "--cwd", vim.fn.getcwd() }, {
 		detach = false,
-		on_stdout = function(stdout)
-			print(stdout)
-		end,
 	})
 end
 
@@ -32,6 +29,7 @@ map("n", "<CR>", ":noh<cr><cr>", opts)
 
 --Save
 map("n", "<Space>w", "<cmd>:w<cr>")
+map("n", "<Space>W", "<cmd>:wa<cr>")
 
 --Delete
 map({ "n", "v" }, "x", '"_x', opts)

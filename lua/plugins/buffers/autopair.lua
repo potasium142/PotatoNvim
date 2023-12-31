@@ -16,6 +16,7 @@ return {
 				manual_position = true,
 				highlight = "Search",
 				highlight_grey = "Comment",
+				use_virt_lines = false,
 			},
 			enable_check_bracket_line = true,
 		},

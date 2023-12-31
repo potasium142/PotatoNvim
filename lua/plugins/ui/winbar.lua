@@ -24,7 +24,7 @@ return {
 				icon = " ",
 				hl = {
 					fg = "bg",
-					bg = "blue",
+					bg = "cyan",
 				},
 				left_sep = "block",
 				right_sep = "block",
@@ -53,7 +53,7 @@ return {
 				provider = "diagnostic_hints",
 				icon = icons.diagnostics.Hint,
 				hl = {
-					fg = "aqua",
+					fg = "cyan",
 					bg = "bg_blue",
 				},
 				left_sep = "block",

@@ -22,7 +22,7 @@ return {
 				},
 			},
 			rendering = {
-				max_buffer_width = 24,
+				max_buffer_width = 40,
 			},
 			default_hl = {
 				bg = function(buffer)

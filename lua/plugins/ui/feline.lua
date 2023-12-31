@@ -14,19 +14,27 @@ return {
 			fg = palette.fg,
 			bg = palette.bg0,
 			black = palette.bg_dim,
-			red = palette.red,
-			orange = palette.orange,
-			yellow = palette.yellow,
+			skyblue = palette.blue,
+			cyan = palette.aqua,
 			green = palette.green,
-			blue = palette.blue,
-			aqua = palette.aqua,
-			purple = palette.purple,
+			oceanblue = palette.blue,
+			magenta = palette.purple,
+			orange = palette.orange,
+			red = palette.red,
+			violet = palette.purple,
 			white = palette.fg,
+			yellow = palette.yellow,
+			----------------
+			bg_skyblue = palette.bg_blue,
+			bg_cyan = palette.bg_blue,
+			bg_green = palette.bg_green,
+			bg_oceanblue = palette.bg_blue,
+			bg_magenta = palette.bg_red,
 			bg_red = palette.bg_red,
+			bg_violet = palette.bg_visual,
 			bg_visual = palette.bg_visual,
 			bg_yellow = palette.bg_yellow,
 			bg_blue = palette.bg_blue,
-			bg_green = palette.bg_green,
 		}
 
 		local modes = setmetatable({
@@ -61,20 +69,36 @@ return {
 		}
 
 		local vim_mode = {
-			provider = function()
-				-- return vim.api.nvim_get_mode().mode
-				return string.upper(vim.api.nvim_get_mode().mode)
-			end,
-			hl = function()
-				return {
-					fg = "bg",
-					bg = require("feline.providers.vi_mode").get_mode_color(),
-					style = "bold",
-					name = "NeovimModeHLColor",
-				}
-			end,
-			left_sep = "block",
-			right_sep = "block",
+			mode_name = {
+				provider = {
+					name = "vi_mode",
+					opts = {
+						show_mode_name = true,
+					},
+				},
+				icon = "",
+				hl = function()
+					return {
+						fg = "fg",
+						bg = "bg_" .. require("feline.providers.vi_mode").get_mode_color(),
+						style = "bold",
+						name = "NeovimModeHLColor",
+					}
+				end,
+				left_sep = "block",
+				right_sep = "block",
+			},
+			neovim_icon = {
+				provider = "   ",
+				hl = function()
+					return {
+						fg = "bg",
+						bg = require("feline.providers.vi_mode").get_mode_color(),
+						style = "bold",
+						name = "NeovimModeHLColor",
+					}
+				end,
+			},
 		}
 
 		local git = {
@@ -154,7 +178,7 @@ return {
 				},
 				hl = {
 					fg = "bg",
-					bg = "blue",
+					bg = "skyblue",
 					style = "bold",
 				},
 				left_sep = "block",
@@ -191,7 +215,8 @@ return {
 
 		local left = {
 			seperator,
-			vim_mode,
+			vim_mode.neovim_icon,
+			vim_mode.mode_name,
 			seperator,
 			git.branch,
 			git.add,

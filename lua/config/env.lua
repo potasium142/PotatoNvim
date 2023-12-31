@@ -1,6 +1,5 @@
 local font_size = 15
-local fonts =
-	"Iosevka Second Custom, Symbols Nerd Font Mono, Symbols Nerd Font Mono Regular,Symbols Nerd Font, Symbols Nerd Font Mono Regular:h"
+local fonts = "Iosevka Second Custom,Symbols Nerd Font:h"
 local g_env = {}
 
 g_env.neovide = {
@@ -10,11 +9,15 @@ g_env.neovide = {
 		guifont = fonts .. font_size,
 	},
 	g = {
-		neovide_transparency = 0.92,
-		neovide_refresh_rate = 120,
-		neovide_fullscreen = false,
+		neovide_transparency = 0.9,
+		neovide_refresh_rate = 60,
+		neovide_refresh_rate_idle = 30,
+		neovide_floating_z_height = 5,
 		neovide_floating_blur_amount_x = 10,
 		neovide_floating_blur_amount_y = 10,
+		neovide_scroll_animation_far_lines = 5,
+		neovide_unlink_border_highlights = true,
+		neovide_scroll_animation_length = 0.2,
 	},
 }
 
