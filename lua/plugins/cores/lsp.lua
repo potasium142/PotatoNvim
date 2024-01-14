@@ -1,3 +1,14 @@
+local border = {
+	{ "┏", "FloatBorder" },
+	{ "━", "FloatBorder" },
+	{ "┓", "FloatBorder" },
+	{ "┃", "FloatBorder" },
+	{ "┛", "FloatBorder" },
+	{ "━", "FloatBorder" },
+	{ "┗", "FloatBorder" },
+	{ "┃", "FloatBorder" },
+}
+
 local opts = { noremap = true, silent = true }
 
 local local_lsp = require("config.lsp")
@@ -67,6 +78,12 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 		},
 		config = function()
+			vim.diagnostic.config({
+				underline = false,
+				virtual_text = false,
+				virtual_lines = { only_current_line = true },
+				float = { border = border },
+			})
 			local default_setup = {
 				capabilities = capabilities,
 				on_attach = function(client, bufnr)
@@ -74,6 +91,10 @@ return {
 						require("nvim-navic").attach(client, bufnr)
 					end
 				end,
+				textDocument = {
+					hover = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+					signatureHelp = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+				},
 			}
 
 			require("mason-lspconfig").setup()
@@ -161,13 +182,6 @@ return {
 		dependencies = {
 			"neovim/nvim-lspconfig",
 		},
-		init = function()
-			vim.diagnostic.config({
-				underline = false,
-				virtual_text = false,
-				virtual_lines = { only_current_line = true },
-			})
-		end,
 		config = function()
 			require("lsp_lines").setup()
 		end,

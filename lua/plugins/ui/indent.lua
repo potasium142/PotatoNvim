@@ -1,10 +1,10 @@
-local highlight = {
-	"Red",
-	"Orange",
-	"Yellow",
-	"Green",
-	"Blue",
-}
+-- local highlight = {
+-- 	"Red",
+-- 	"Orange",
+-- 	"Yellow",
+-- 	"Green",
+-- 	"Blue",
+-- }
 return {}
 -- return {
 -- 	"lukas-reineke/indent-blankline.nvim",

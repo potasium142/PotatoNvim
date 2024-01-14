@@ -11,11 +11,9 @@ return {
 		diagnostic_line_highlight = true,
 		on_highlights = function(hl, p)
 			hl.CmpItemAbbrDeprecated = { fg = p.grey1, bg = p.none, strikethrough = true }
-
 			hl.CmpItemAbbrMatch = { fg = p.green, bg = p.none, bold = true }
 			hl.CmpItemAbbrMatchFuzzy = { fg = p.aqua, bg = p.none, bold = true }
 			hl.CmpItemMenu = { fg = p.purple, bg = p.none, italic = true }
-
 			hl.CmpItemKindClass = { fg = p.yellow, bg = p.bg_yellow }
 			hl.CmpItemKindColor = { fg = p.aqua, bg = p.bg_blue }
 			hl.CmpItemKindConstant = { fg = p.blue, bg = p.bg_blue }

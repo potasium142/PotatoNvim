@@ -47,7 +47,7 @@ return {
 		},
 		window = {
 			width = 30,
-			position = "right",
+			position = "left",
 		},
 		sources = {
 			"filesystem",

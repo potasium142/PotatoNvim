@@ -5,10 +5,18 @@ return {
 		enabled = true,
 		config = function()
 			require("notify").setup({
-				render = "compact",
-				stages = "static",
-				timeout = 5000,
+				render = "wrapped-compact",
+				stages = "slide",
+				timeout = 1000,
 				top_down = true,
+				on_open = function(win)
+					if vim.api.nvim_win_is_valid(win) then
+						vim.api.nvim_win_set_config(
+							win,
+							{ border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" } }
+						)
+					end
+				end,
 			})
 		end,
 	},

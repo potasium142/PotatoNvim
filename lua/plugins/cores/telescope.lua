@@ -38,35 +38,36 @@ return {
 			}
 		end,
 		keys = function()
+			local builtin = require("telescope.builtin")
 			return {
 				{
 					"tsf",
 					function()
-						require("telescope.builtin").find_files()
+						builtin.find_files()
 					end,
 				},
 				{
 					"tsg",
 					function()
-						require("telescope.builtin").live_grep()
+						builtin.live_grep()
 					end,
 				},
 				{
 					"tsh",
 					function()
-						require("telescope.builtin").help_tags()
+						builtin.help_tags()
 					end,
 				},
 				{
 					"tsm",
 					function()
-						require("telescope.builtin").marks()
+						builtin.marks()
 					end,
 				},
 				{
 					"tsr",
 					function()
-						require("telescope.builtin").resume()
+						builtin.resume()
 					end,
 				},
 			}

@@ -4,15 +4,13 @@ local g_env = {}
 
 g_env.neovide = {
 	opt = {
-		winblend = 40,
+		winblend = 00,
 		linespace = -1,
 		guifont = fonts .. font_size,
 	},
 	g = {
-		neovide_transparency = 0.9,
-		neovide_refresh_rate = 60,
-		neovide_refresh_rate_idle = 30,
-		neovide_floating_z_height = 5,
+		neovide_transparency = 0.97,
+		neovide_floating_z_height = 3,
 		neovide_floating_blur_amount_x = 10,
 		neovide_floating_blur_amount_y = 10,
 		neovide_scroll_animation_far_lines = 5,
