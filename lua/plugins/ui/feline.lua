@@ -25,6 +25,7 @@ return {
 			white = palette.fg,
 			yellow = palette.yellow,
 			----------------
+			bg_orange = palette.bg_visual,
 			bg_skyblue = palette.bg_blue,
 			bg_cyan = palette.bg_blue,
 			bg_green = palette.bg_green,

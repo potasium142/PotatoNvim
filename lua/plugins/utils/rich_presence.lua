@@ -1,5 +1,6 @@
 return {
-	"andweeb/presence.nvim",
+	"jiriks74/presence.nvim",
+	enabled = false,
 	lazy = false,
 	opts = {
 		auto_update = true,

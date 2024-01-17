@@ -1,3 +1,5 @@
+local formatters = require("builder.builder").formatter
+local formatters_args = require("builder.builder").formatter_args
 return {
 	"stevearc/conform.nvim",
 	lazy = true,
@@ -10,68 +12,21 @@ return {
 	end,
 	opts = function()
 		return {
-			formatters_by_ft = {
-				lua = {
-					"stylua",
-				},
-				c = {
-					"clang_format",
-				},
-				cpp = {
-					"clang_format",
-				},
-				rust = {
-					"rustfmt",
-				},
-				markdown = {
-					"prettier",
-				},
-				html = {
-					"prettier",
-				},
-				json = {
-					"prettier",
-				},
-				latex = {
-					"latexindent",
-				},
-				javascript = {
-					"prettier",
-				},
-				sass = {
-					"prettier",
-				},
-				scss = {
-					"prettier",
-				},
-				css = {
-					"prettier",
-				},
-				python = {
-					"autopep8",
-				},
-				toml = {
-					"taplo",
-				},
-				yaml = {
-					"yamlfmt",
-				},
-				bash = {
-					"shfmt",
-				},
-				typst = {
-					"typstfmt",
-				},
-				["_"] = { "trim_whitespace" },
-			},
+			formatters_by_ft = formatters,
 
 			format_after_save = {
-				-- timeout_ms = 500,
 				lsp_fallback = true,
 			},
 		}
 	end,
 	config = function(_, opts)
-		require("conform").setup(opts)
+		local conform = require("conform")
+		conform.setup(opts)
+
+		for key, value in pairs(formatters) do
+			conform.formatters[key] = {
+				args = value,
+			}
+		end
 	end,
 }

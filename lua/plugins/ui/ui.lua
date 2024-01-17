@@ -9,6 +9,7 @@ return {
 				stages = "slide",
 				timeout = 1000,
 				top_down = true,
+				fps = 5,
 				on_open = function(win)
 					if vim.api.nvim_win_is_valid(win) then
 						vim.api.nvim_win_set_config(

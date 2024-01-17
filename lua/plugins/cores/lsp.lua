@@ -11,7 +11,7 @@ local border = {
 
 local opts = { noremap = true, silent = true }
 
-local local_lsp = require("config.lsp")
+local lsp_cfg = require("builder.builder")
 
 local capabilities = {
 	textDocument = {
@@ -64,6 +64,19 @@ local capabilities = {
 	},
 }
 
+local default_setup = {
+	capabilities = capabilities,
+	on_attach = function(client, bufnr)
+		if client.server_capabilities["documentSymbolProvider"] then
+			require("nvim-navic").attach(client, bufnr)
+		end
+	end,
+	textDocument = {
+		hover = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+		signatureHelp = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+	},
+}
+
 return {
 	{
 		"williamboman/mason.nvim",
@@ -84,35 +97,26 @@ return {
 				virtual_lines = { only_current_line = true },
 				float = { border = border },
 			})
-			local default_setup = {
-				capabilities = capabilities,
-				on_attach = function(client, bufnr)
-					if client.server_capabilities["documentSymbolProvider"] then
-						require("nvim-navic").attach(client, bufnr)
-					end
-				end,
-				textDocument = {
-					hover = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
-					signatureHelp = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
-				},
-			}
 
 			require("mason-lspconfig").setup()
 
-			for server, config in pairs(local_lsp) do
-				for key, val in pairs(default_setup) do
-					config[key] = val
+			local handlers = {
+				function(server_name) -- default handler (optional)
+					require("lspconfig")[server_name].setup(default_setup)
+				end,
+			}
+
+			for k, v in pairs(lsp_cfg.lsp_external) do
+				local cfg = lsp_cfg.lsp_config[k]
+				local merge_cfg = vim.tbl_deep_extend("force", default_setup, cfg or {})
+				if v then
+					require("lspconfig")[k].setup(merge_cfg)
+				else
+					handlers.k = merge_cfg
 				end
-				require("lspconfig")[server].setup(config)
 			end
 
-			require("mason-lspconfig").setup_handlers({
-				function(server_name) -- default handler (optional)
-					if local_lsp[server_name] == nil then
-						require("lspconfig")[server_name].setup(default_setup)
-					end
-				end,
-			})
+			require("mason-lspconfig").setup_handlers(handlers)
 		end,
 		keys = function()
 			local buf = vim.lsp.buf
@@ -207,3 +211,4 @@ return {
 		},
 	},
 }
+

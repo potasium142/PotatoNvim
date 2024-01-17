@@ -4,7 +4,6 @@ local g_env = {}
 
 g_env.neovide = {
 	opt = {
-		winblend = 00,
 		linespace = -1,
 		guifont = fonts .. font_size,
 	},
