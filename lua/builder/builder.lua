@@ -51,13 +51,10 @@ for _, l in pairs(lang_list) do
 	-- formatter
 	for _, ft in pairs(cfg.formatter.ft or cfg.ft or cfg.name) do
 		M.formatter[ft] = cfg.formatter.name
-		if cfg.formatter.args then
-			M.formatter_args[cfg.formatter.name] = cfg.formatter.args
-		end
 	end
 
-	for _, ft in pairs(cfg.ft or cfg.name) do
-		M.lint[ft] = cfg.lint.name
+	for _, lint in pairs(cfg.lint.name) do
+		table.insert(M.lint, lint)
 	end
 end
 

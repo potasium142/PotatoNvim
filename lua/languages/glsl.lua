@@ -1,8 +1,8 @@
 local cfg = {}
 
 cfg.lsp = {
-	name = "glslls",
-	external = true,
+	-- name = "glsl_analyzer",
+	-- external = true,
 }
 cfg.name = {
 	"glsl",

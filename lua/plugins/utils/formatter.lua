@@ -1,5 +1,4 @@
 local formatters = require("builder.builder").formatter
-local formatters_args = require("builder.builder").formatter_args
 return {
 	"stevearc/conform.nvim",
 	lazy = true,
@@ -23,10 +22,11 @@ return {
 		local conform = require("conform")
 		conform.setup(opts)
 
-		for key, value in pairs(formatters) do
-			conform.formatters[key] = {
-				args = value,
-			}
-		end
+		conform.formatters.clang_format = {
+			prepend_args = {
+				"--style",
+				"{IndentWidth: 4}",
+			},
+		}
 	end,
 }
