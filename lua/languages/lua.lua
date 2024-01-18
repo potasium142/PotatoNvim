@@ -24,8 +24,4 @@ cfg.ft = {
 	"lua",
 }
 
-cfg.plugins = {
-	{ "folke/neodev.nvim", opts = {} },
-}
-
 return cfg
