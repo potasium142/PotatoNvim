@@ -15,6 +15,8 @@ vim.opt.runtimepath:prepend(lazypath)
 AutoCMD = vim.api.nvim_create_autocmd
 AutoGroup = vim.api.nvim_create_augroup
 
+local lg_plugins = require("builder.builder").plugins
+
 require("config.options")
 require("config.env")
 require("config.mapping")
@@ -33,7 +35,7 @@ require("lazy").setup({
 		{ import = "plugins.utils" },
 		{ import = "plugins.split" },
 		{ import = "plugins.cmp.cmp" },
-		{ import = "languages" },
+		lg_plugins,
 	},
 	performance = {
 		rtp = {
