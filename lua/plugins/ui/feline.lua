@@ -38,33 +38,6 @@ return {
 			bg_blue = palette.bg_blue,
 		}
 
-		local modes = setmetatable({
-			["n"] = "N",
-			["no"] = "N",
-			["v"] = "V",
-			["s"] = "S",
-			["i"] = "I",
-			["ic"] = "I",
-			["R"] = "R",
-			["c"] = "C",
-			["ce"] = "X",
-			["r"] = "P",
-			["rm"] = "M",
-			["r?"] = "C",
-			["t"] = "T",
-			["S"] = "SL",
-			["V"] = "VL",
-			[""] = "VB",
-			[""] = "SB",
-			["Rv"] = "VR",
-			["cv"] = "EX",
-			["!"] = "SH",
-		}, {
-			__index = function()
-				return "-"
-			end,
-		})
-
 		local seperator = {
 			provider = " ",
 		}

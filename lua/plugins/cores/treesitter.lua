@@ -4,16 +4,24 @@ return {
 		lazy = false,
 		-- enabled = false,
 		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
 			"windwp/nvim-ts-autotag",
 		},
 		build = ":TSUpdate",
 		opts = {
+			auto_install = true,
+			incremental_selection = {
+				enable = true,
+				keymaps = {
+					-- init_selection = "<CR>",
+					scope_incremental = "<CR>",
+					node_incremental = "<TAB>",
+					node_decremental = "<S-TAB>",
+				},
+			},
 			highlight = {
-				-- enable = true,
+				enable = true,
 				sync_install = true,
-				-- additional_vim_regex_highlighting = false,
-				disable = { "scss" },
+				-- disable = { "scss" },
 			},
 			autotag = {
 				enable = true,
@@ -23,7 +31,7 @@ return {
 			},
 		},
 		config = function(_, opts)
-			require("nvim-treesitter.install").compilers = { "gcc" }
+			require("nvim-treesitter.install").compilers = { "clang" }
 			require("nvim-treesitter.configs").setup(opts)
 		end,
 	},

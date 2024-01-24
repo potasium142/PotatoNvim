@@ -20,14 +20,6 @@ cfg.lsp = {
 
 cfg.formatter = {
 	name = { "clang_format" },
-	args = {
-		"--style",
-		"{IndentWidth: 4}",
-	},
-}
-
-cfg.lint = {
-	name = { "cpplint" },
 }
 
 return cfg

@@ -20,12 +20,14 @@ local options = {
 	guicursor = "i-ci:ver10",
 	scrolloff = 7,
 	foldenable = true,
-	foldmethod = "indent",
+	foldmethod = "expr",
+	foldexpr = "nvim_treesitter#foldexpr()",
 	foldlevelstart = 69,
 	laststatus = 3,
+	-- foldtext = "v:lua.vim.treesitter.foldtext()",
 	listchars = {
 		tab = "┃ ",
-		multispace = "┇ ",
+		multispace = " ┇",
 	},
 	list = true,
 	showmode = false,
@@ -34,6 +36,8 @@ local options = {
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
+
+vim.opt.fillchars:append({ fold = " " })
 
 local flags = {
 	loaded_netrwPlugin = 1,
