@@ -73,7 +73,7 @@ return {
 
 		local navic_winbar = {
 			provider = function()
-				return navic.get_location()
+				return "  " .. navic.get_location()
 			end,
 			enabled = function()
 				return navic.is_available()

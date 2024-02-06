@@ -6,16 +6,25 @@ cfg.lsp = {
 }
 cfg.name = {
 	"glsl",
-	"hlsl",
 }
 
 cfg.ft = {
+	"glsl",
+	"vs",
+	"fs",
+	"gs",
+	"vsh",
+	"fsh",
+	"gsh",
+	"vshader",
+	"fshader",
+	"gshader",
 	"vert",
 	"frag",
-	"glsl",
-	"fsh",
-	"vsh",
-	"hlsl",
+	"geom",
+	"tesc",
+	"tese",
+	"comp",
 }
 
 cfg.lint = {
@@ -24,18 +33,25 @@ cfg.lint = {
 
 cfg.formatter = {
 	name = {
-		"clang-format",
+		"clang_format",
 	},
 }
 
-cfg.plugins = {
-	{
-		"tikhomirov/vim-glsl",
-	},
-}
+local gr_id = AutoGroup("GLSL", {
+	clear = true,
+})
 
+local ft_ext = {}
 for _, value in pairs(cfg.ft) do
-	vim.treesitter.language.register("glsl", value)
+	table.insert(ft_ext, "*." .. value)
 end
+
+AutoCMD("BufEnter", {
+	pattern = ft_ext,
+	group = gr_id,
+	callback = function()
+		vim.opt.filetype = "glsl"
+	end,
+})
 
 return cfg
