@@ -1,4 +1,4 @@
-local formatters = require("builder.builder").formatter
+local formatters = require("loader.language").formatter
 return {
 	"stevearc/conform.nvim",
 	lazy = true,

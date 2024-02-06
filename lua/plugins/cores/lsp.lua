@@ -11,7 +11,7 @@ local border = {
 
 local opts = { noremap = true, silent = true }
 
-local lsp_cfg = require("builder.builder")
+local lsp_cfg = require("loader.language")
 
 local capabilities = {
 	textDocument = {
@@ -211,4 +211,3 @@ return {
 		},
 	},
 }
-

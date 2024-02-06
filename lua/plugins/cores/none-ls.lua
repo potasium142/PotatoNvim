@@ -1,4 +1,4 @@
-local linters = require("builder.builder").lint
+local linters = require("loader.language").lint
 return {
 	"nvimtools/none-ls.nvim",
 	config = function()
