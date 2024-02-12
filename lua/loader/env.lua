@@ -1,13 +1,14 @@
 local path = vim.fn.stdpath("config") .. "/lua/environments"
 local env_list = vim.fn.readdir(path)
 
-
 for _, e in pairs(env_list) do
 	local env = e:gsub("%.lua$", "")
 
-	if not vim.fn.has(env) then
+	if vim.fn.has(env) == 0 then
 		goto continue
 	end
+
+	print(env)
 
 	local cfg = require("environments." .. env)
 
@@ -16,7 +17,6 @@ for _, e in pairs(env_list) do
 			vim[opt][key] = value
 		end
 	end
-
 
 	::continue::
 end

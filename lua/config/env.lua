@@ -1,5 +1,6 @@
 local font_size = 15
-local fonts = "Iosevka Second Custom,Symbols Nerd Font:h"
+local local_system_monospace_font = os.getenv("MONOSPACE_FONT") or "Consolas"
+local fonts = local_system_monospace_font .. ",Symbols Nerd Font:h"
 local g_env = {}
 
 g_env.neovide = {
