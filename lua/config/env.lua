@@ -1,11 +1,11 @@
 local font_size = 15
 local local_system_monospace_font = os.getenv("MONOSPACE_FONT") or "Consolas"
-local fonts = local_system_monospace_font .. ",Symbols Nerd Font:h"
+local fonts = local_system_monospace_font .. ",Symbols Nerd Font Mono:h"
 local g_env = {}
 
 g_env.neovide = {
 	opt = {
-		linespace = -1,
+		linespace = 1,
 		guifont = fonts .. font_size,
 	},
 	g = {
