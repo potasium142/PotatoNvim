@@ -42,3 +42,5 @@ map({ "i", "n" }, "<F1>", "<nop>", opts)
 map("n", "<C-\\>", function()
 	open_terminal_session()
 end)
+
+map({ "v", "n", "i" }, "<C-[>", "<ESC>")

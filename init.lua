@@ -18,7 +18,6 @@ AutoGroup = vim.api.nvim_create_augroup
 local lg_plugins = require("loader.language").plugins
 require("loader.env")
 require("config.options")
-require("config.env")
 require("config.mapping")
 require("custom_script.tabout")
 require("lazy").setup({

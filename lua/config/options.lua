@@ -1,4 +1,6 @@
+local CONST = require("CONST")
 local options = {
+	guifont = CONST.FONTS .. CONST.FONT_SIZE,
 	tabstop = 4,
 	shiftwidth = 4,
 	number = true,

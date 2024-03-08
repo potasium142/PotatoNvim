@@ -90,7 +90,7 @@ return {
 				active = {
 					{ navic_winbar },
 					{},
-					{ lsp.errors, lsp.warns, lsp.hints, lsp.info, lsp.provider },
+					{ lsp.errors,  lsp.warns, lsp.hints, lsp.info, lsp.provider },
 				},
 				inactive = {},
 			},
