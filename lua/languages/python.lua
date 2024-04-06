@@ -23,6 +23,9 @@ cfg.formatter = {
 	name = {
 		"autopep8",
 	},
+	ft = {
+		"python"
+	}
 }
 
 return cfg

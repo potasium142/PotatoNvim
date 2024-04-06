@@ -29,7 +29,7 @@ local options = {
 	-- foldtext = "v:lua.vim.treesitter.foldtext()",
 	listchars = {
 		tab = "┃ ",
-		multispace = "┇ ",
+		multispace = "┇   ",
 	},
 	list = true,
 	showmode = false,

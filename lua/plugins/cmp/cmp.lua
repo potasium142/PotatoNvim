@@ -16,7 +16,6 @@ return {
 			"windwp/nvim-autopairs",
 			"L3MON4D3/LuaSnip",
 			"neovim/nvim-lspconfig",
-			"saadparwaiz1/cmp_luasnip",
 		},
 		opts = function()
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
