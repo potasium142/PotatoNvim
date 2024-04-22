@@ -1,4 +1,5 @@
 local icons = require("config.icons")
+local CONST = require("CONST")
 return {
 	"nvim-neo-tree/neo-tree.nvim",
 	dependencies = {
@@ -19,9 +20,7 @@ return {
 				open_in_explorer = function(state)
 					local node = state.tree:get_node()
 					local path = node:get_id()
-					if jit.os == "Windows" then
-						vim.fn.jobstart({ "explorer.exe", "/separate", "/e", "/select,", path }, { detach = true })
-					else
+					if not CONST.WIN32 then
 						vim.fn.jobstart({ "xdg-open", path }, { detach = true })
 					end
 				end,

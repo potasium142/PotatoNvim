@@ -65,6 +65,6 @@ return {
 		})
 	end,
 	keys = {
-		{ "<Home>", "<cmd>Alpha<cr>", mode = { "n", "v", "i" } },
+		{ "<Home>", "<cmd>Alpha<cr>", "n" },
 	},
 }

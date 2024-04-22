@@ -42,33 +42,23 @@ return {
 			return {
 				{
 					"tsf",
-					function()
-						builtin.find_files()
-					end,
+					builtin.find_files,
 				},
 				{
 					"tsg",
-					function()
-						builtin.live_grep()
-					end,
+					builtin.live_grep,
 				},
 				{
 					"tsh",
-					function()
-						builtin.help_tags()
-					end,
+					builtin.help_tags,
 				},
 				{
 					"tsm",
-					function()
-						builtin.marks()
-					end,
+					builtin.marks,
 				},
 				{
 					"tsr",
-					function()
-						builtin.resume()
-					end,
+					builtin.resume,
 				},
 			}
 		end,

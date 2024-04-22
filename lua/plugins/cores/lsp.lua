@@ -124,44 +124,32 @@ return {
 			return {
 				{
 					"<Space>ca",
-					function()
-						buf.code_action()
-					end,
+					buf.code_action,
 					opts,
 				},
 				{
 					"[d",
-					function()
-						diag.goto_prev()
-					end,
+					diag.goto_prev,
 					opts,
 				},
 				{
 					"<Space>rn",
-					function()
-						buf.rename()
-					end,
+					buf.rename,
 					opts,
 				},
 				{
 					"K",
-					function()
-						buf.hover()
-					end,
+					buf.hover,
 					opts,
 				},
 				{
-					"<Space>gd",
-					function()
-						buf.definition()
-					end,
+					"<Space>gr",
+					buf.references,
 					opts,
 				},
 				{
 					"]d",
-					function()
-						diag.goto_next()
-					end,
+					diag.goto_next,
 					opts,
 				},
 			}

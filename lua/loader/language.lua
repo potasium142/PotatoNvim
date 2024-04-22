@@ -58,6 +58,4 @@ for _, l in pairs(lang_list) do
 	end
 end
 
--- print(vim.inspect(M.formatter))
-
 return M

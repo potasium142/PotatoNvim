@@ -1,27 +1,24 @@
-local pairs_bracket = {
-	["("] = ")",
-	["["] = "]",
-	["<"] = ">",
-	["{"] = "}",
-	["'"] = "'",
-	['"'] = '"',
-	["|"] = "|",
-	["`"] = "`",
+local open_bracket = {
+	["("] = true,
+	["["] = true,
+	["<"] = true,
+	["{"] = true,
+	["'"] = true,
+	['"'] = true,
+	["|"] = true,
+	["`"] = true,
 }
 
----Generate pairs table
----@param pairs_table table
----@return table
-local generate_table = function(pairs_table)
-	local jump_table = {}
-	for op, en in pairs(pairs_table) do
-		jump_table[op] = true
-		jump_table[en] = true
-	end
-	return jump_table
-end
-
-local jump_tables = generate_table(pairs_bracket)
+local close_bracket = {
+	[")"] = true,
+	["]"] = true,
+	[">"] = true,
+	["}"] = true,
+	["'"] = true,
+	['"'] = true,
+	["|"] = true,
+	["`"] = true,
+}
 
 ---Check bracket
 ---@param brackets table
@@ -32,29 +29,24 @@ local check_bracket = function(brackets, column)
 	return brackets[current_char] and true or false
 end
 
----Offset cursor
----@param off_row integer
----@param off_col integer
----@param cur_col integer
----@param cur_row integer
-local offset_cursor = function(off_row, off_col, cur_col, cur_row)
-	vim.api.nvim_win_set_cursor(0, { cur_row + off_row, cur_col + off_col })
+local function tab(st_table, nd_table, offset, check_offset)
+	local pos = vim.api.nvim_win_get_cursor(0)
+	local exe_tab = function()
+		vim.api.nvim_win_set_cursor(0, { pos[1], pos[2] + offset })
+	end
+	if check_bracket(st_table, pos[2] + check_offset) then
+		exe_tab()
+	elseif check_bracket(nd_table, pos[2] + check_offset) then
+		exe_tab()
+	else
+		vim.api.nvim_put({ "\t" }, "c", false, true)
+	end
 end
 
 vim.keymap.set("i", "<Tab>", function()
-	local pos = vim.api.nvim_win_get_cursor(0)
-	if check_bracket(jump_tables, pos[2] + 1) then
-		offset_cursor(0, 1, pos[2], pos[1])
-	else
-		vim.api.nvim_put({ "\t" }, "c", false, true)
-	end
+	tab(open_bracket, close_bracket, 1, 1)
 end)
 
 vim.keymap.set("i", "<S-Tab>", function()
-	local pos = vim.api.nvim_win_get_cursor(0)
-	if check_bracket(jump_tables, pos[2]) then
-		offset_cursor(0, -1, pos[2], pos[1])
-	else
-		vim.api.nvim_put({ "\t" }, "c", false, true)
-	end
+	tab(close_bracket, open_bracket, -1, 0)
 end)

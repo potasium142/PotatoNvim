@@ -2,7 +2,6 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		lazy = false,
-		-- enabled = false,
 		dependencies = {
 			"windwp/nvim-ts-autotag",
 		},
@@ -21,7 +20,6 @@ return {
 			highlight = {
 				enable = true,
 				sync_install = true,
-				-- disable = { "scss" },
 			},
 			autotag = {
 				enable = true,

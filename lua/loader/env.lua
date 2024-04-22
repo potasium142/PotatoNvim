@@ -8,8 +8,6 @@ for _, e in pairs(env_list) do
 		goto continue
 	end
 
-	print(env)
-
 	local cfg = require("environments." .. env)
 
 	for opt, c in pairs(cfg) do

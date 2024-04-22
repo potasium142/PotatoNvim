@@ -12,7 +12,6 @@ return {
 	opts = function()
 		return {
 			formatters_by_ft = formatters,
-
 			format_after_save = {
 				lsp_fallback = true,
 			},

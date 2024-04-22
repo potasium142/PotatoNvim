@@ -1,10 +1,18 @@
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
+local CONST = require("CONST")
 
+local term_command = function()
+	if CONST.WIN32 then
+	else
+	end
+end
 local open_terminal_session = function()
-	vim.fn.jobstart({ "wezterm", "start", "--workspace", "neovim", "--cwd", vim.fn.getcwd() }, {
-		detach = false,
-	})
+	if not pcall(function()
+		term_command()
+	end) then
+		vim.api.nvim_echo({ { "Cannot spawn external terminal", "error" } }, true, {})
+	end
 end
 
 --Tabbing
@@ -42,5 +50,3 @@ map({ "i", "n" }, "<F1>", "<nop>", opts)
 map("n", "<C-\\>", function()
 	open_terminal_session()
 end)
-
-map({ "v", "n", "i" }, "<C-[>", "<ESC>")

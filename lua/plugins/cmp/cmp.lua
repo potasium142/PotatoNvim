@@ -62,21 +62,14 @@ return {
 					end, { "i", "s" }),
 				},
 				formatting = {
-					fields = { "kind", "abbr", "menu" },
+					fields = { "kind", "abbr" },
 					format = function(entry, vim_item)
 						vim_item.kind = string.format(" %s ", icons.kind_icons[vim_item.kind])
-						vim_item.menu = ({
-							luasnip = "LuaSnip",
-							nvim_lsp = "LSP",
-							path = "Path",
-							async_path = "APath",
-							cmp_yanky = "Yanky",
-						})[entry.source.name]
 						return vim_item
 					end,
 				},
 				sources = {
-					{ name = "nvim_lsp",   priority = 5 },
+					{ name = "nvim_lsp", priority = 5 },
 					{ name = "async_path", priority = 4 },
 					{
 						name = "luasnip",
