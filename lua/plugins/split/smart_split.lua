@@ -1,6 +1,7 @@
 return {
 	"mrjones2014/smart-splits.nvim",
 	lazy = true,
+	enabled = true,
 	dependencies = { "kwkarlwang/bufresize.nvim" },
 	opts = {
 		ignored_filetypes = {

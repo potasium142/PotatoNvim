@@ -3,8 +3,8 @@ return {
 	{
 		"rcarriga/nvim-notify",
 		enabled = true,
-		config = function()
-			require("notify").setup({
+		opts = function()
+			return {
 				render = "wrapped-compact",
 				stages = "slide",
 				timeout = 1000,
@@ -18,7 +18,7 @@ return {
 						)
 					end
 				end,
-			})
+			}
 		end,
 	},
 	{
@@ -97,9 +97,7 @@ return {
 					opts = { skip = true },
 				},
 			},
-			config = function(opts, _)
-				require("noice").setup(opts)
-			end,
+			config = true
 		},
 	},
 }

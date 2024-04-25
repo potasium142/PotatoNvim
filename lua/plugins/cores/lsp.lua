@@ -162,9 +162,8 @@ return {
 			"nvim-lua/plenary.nvim",
 			"nvim-neo-tree/neo-tree.nvim",
 		},
-		config = function()
-			require("lsp-file-operations").setup()
-		end,
+		name = "lsp-file-operations",
+		config = true
 	},
 	{
 		url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
@@ -174,9 +173,8 @@ return {
 		dependencies = {
 			"neovim/nvim-lspconfig",
 		},
-		config = function()
-			require("lsp_lines").setup()
-		end,
+		name = "lsp_lines",
+		config = true
 	},
 	{
 		"folke/trouble.nvim",

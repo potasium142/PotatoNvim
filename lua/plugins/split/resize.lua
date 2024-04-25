@@ -6,8 +6,6 @@ return {
 		event = {
 			"VimResized",
 		},
-		config = function(_, opts)
-			require("bufresize").setup(opts)
-		end,
+		config = true
 	},
 }
