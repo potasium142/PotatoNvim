@@ -1,7 +1,5 @@
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
-local CONST = require("CONST")
-
 --Tabbing
 map("n", ">", ":><cr>", opts)
 map("n", "<", ":<<cr>", opts)
@@ -17,18 +15,15 @@ map("n", "<Right>", "<nop>", opts)
 map("n", "<Left>", "<nop>", opts)
 
 --Globle buffer paste
-map("n", "gp", '"+p<CR>', opts)
-map({ "v", "n" }, "gy", '"+y<CR>', opts)
+map({ "v", "n" }, "\\", '"+', opts)
+--Void regsiter
+map({ "n", "v" }, "<BS>", '"_', opts)
 
 map("n", "<CR>", ":noh<cr><cr>", opts)
 
 --Save
 map("n", "<Space>w", "<cmd>:w<cr>")
 map("n", "<Space>W", "<cmd>:wa<cr>")
-
---Delete
--- map({ "n", "v" }, "x", '"_x', opts)
-map({ "n", "v" }, "<BS>", '"_', opts)
 
 --Half buffer jump
 map({ "n", "v" }, "<C-j>", "<C-d>zz")
