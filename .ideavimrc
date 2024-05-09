@@ -1,0 +1,13 @@
+source ~/.config/nvim/mapping.vim
+
+set relativenumber
+set scrolloff=7
+set swapfile=false
+set incsearch
+
+set highlightedyank
+set surround
+set commentary
+
+nmap <silent> <Space>ca <Action>(ShowIndentionActions)
+nmap <silent> <Space>rn <Action>(RenameElement)

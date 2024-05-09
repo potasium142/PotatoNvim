@@ -69,7 +69,7 @@ return {
 					end,
 				},
 				sources = {
-					{ name = "nvim_lsp", priority = 5 },
+					{ name = "nvim_lsp",   priority = 5 },
 					{ name = "async_path", priority = 4 },
 					{
 						name = "luasnip",
