@@ -1,6 +1,6 @@
 local CONST = require("CONST")
 local options = {
-	guifont = CONST.FONTS .. CONST.FONT_SIZE,
+	guifont = CONST.FONTS,
 	tabstop = 4,
 	shiftwidth = 4,
 	number = true,
@@ -26,7 +26,6 @@ local options = {
 	foldexpr = "nvim_treesitter#foldexpr()",
 	foldlevelstart = 69,
 	laststatus = 3,
-	-- foldtext = "v:lua.vim.treesitter.foldtext()",
 	listchars = {
 		tab = "┃ ",
 		multispace = "┇   ",

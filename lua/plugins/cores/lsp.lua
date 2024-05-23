@@ -1,12 +1,12 @@
 local border = {
-	{ "┏", "FloatBorder" },
-	{ "━", "FloatBorder" },
-	{ "┓", "FloatBorder" },
-	{ "┃", "FloatBorder" },
-	{ "┛", "FloatBorder" },
-	{ "━", "FloatBorder" },
-	{ "┗", "FloatBorder" },
-	{ "┃", "FloatBorder" },
+	{ "",  "FloatBorder" },
+	{ "",  "FloatBorder" },
+	{ "",  "FloatBorder" },
+	{ " ", "FloatBorder" },
+	{ "",  "FloatBorder" },
+	{ "",  "FloatBorder" },
+	{ "",  "FloatBorder" },
+	{ " ", "FloatBorder" },
 }
 
 local opts = { noremap = true, silent = true }
@@ -178,6 +178,7 @@ return {
 	},
 	{
 		"folke/trouble.nvim",
+		enabled = false,
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 			"neovim/nvim-lspconfig",

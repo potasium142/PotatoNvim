@@ -27,7 +27,11 @@ return {
 							["<C-l>"] = actions.preview_scrolling_right,
 						},
 					},
-					borderchars = { "━", "┃", "━", "┃", "┏", "┓", "┛", "┗" },
+					borderchars = {
+						prompt = { "", "", "━", "┃", "┏", "", "", "┗" },
+						preview = { "━", "┃", "━", "┃", "┏", "┓", "┛", "┗" },
+						results = { "", "", "", "┃", "┏", "", "", "┗" },
+					},
 					layout_config = {
 						horizontal = {
 							width = 0.9,

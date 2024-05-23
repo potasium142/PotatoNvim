@@ -1,7 +1,7 @@
 local M = {}
 
 M.opt = {
-	linespace = 0,
+	linespace = -1,
 }
 M.g = {
 	neovide_floating_z_height = 3,

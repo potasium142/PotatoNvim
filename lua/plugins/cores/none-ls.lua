@@ -1,6 +1,7 @@
 local linters = require("loader.language").lint
 return {
 	"nvimtools/none-ls.nvim",
+	enabled = false,
 	config = function()
 		local null_ls = require("null-ls")
 

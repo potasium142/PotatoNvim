@@ -1,6 +1,6 @@
 return {
 	"luukvbaal/statuscol.nvim",
-	enabled = true,
+	enabled = false,
 	opts = function()
 		local builtin = require("statuscol.builtin")
 		return {
@@ -9,7 +9,9 @@ return {
 				{ text = { builtin.foldfunc, " " } },
 				{ text = { builtin.lnumfunc, " " } },
 				{
-					sign = { name = { "Diagnostic" } },
+					sign = {
+						namespace = { 'Diagnostic' },
+					},
 				},
 				{
 					sign = {

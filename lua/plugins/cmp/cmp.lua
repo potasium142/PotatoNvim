@@ -1,33 +1,25 @@
 local icons = require("config.icons")
 return {
 	{
-		"L3MON4D3/LuaSnip",
-		event = { "LspAttach" },
-		dependencies = { "rafamadriz/friendly-snippets" },
-	},
-	{
 		"hrsh7th/nvim-cmp",
 		event = { "LspAttach" },
-		commit = "b356f2c80cb6c5bae2a65d7f9c82dd5c3fdd6038",
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"FelipeLema/cmp-async-path",
 			"nvim-tree/nvim-web-devicons",
 			"windwp/nvim-autopairs",
-			"L3MON4D3/LuaSnip",
 			"neovim/nvim-lspconfig",
 		},
+		name = "cmp",
 		opts = function()
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-			local luasnip = require("luasnip")
 			local cmp = require("cmp")
 			local mapping = cmp.mapping
-			require("luasnip.loaders.from_vscode").lazy_load()
 			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 			return {
 				snippet = {
-					expand = function(args)
-						luasnip.lsp_expand(args.body) -- For `luasnip` users.
+					expand = function(arg)
+						vim.snippet.expand(arg.body)
 					end,
 				},
 				mapping = {
@@ -45,8 +37,8 @@ return {
 					["<Tab>"] = mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
-						elseif luasnip.expand_or_locally_jumpable() then
-							luasnip.expand_or_jump()
+						elseif vim.snippet.active({ direction = 1 }) then
+							vim.snippet.jump(1)
 						else
 							fallback()
 						end
@@ -54,8 +46,8 @@ return {
 					["<S-Tab>"] = mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
-						elseif luasnip.locally_jumpable(-1) then
-							luasnip.jump(-1)
+						elseif vim.snippet.active({ direction = -1 }) then
+							vim.snippet.jump(-1)
 						else
 							fallback()
 						end
@@ -87,8 +79,9 @@ return {
 						side_padding = 0,
 						border = { "", "", "┃", "┃", "┃", "", "", "" },
 					},
+
 					documentation = {
-						border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
+						border = { "", "", "", " ", "", "", "", " " },
 					},
 				},
 				view = {
@@ -99,18 +92,6 @@ return {
 				},
 			}
 		end,
-		config = function(_, opts)
-			require("cmp").setup(opts)
-			AutoCMD("InsertLeave", {
-				callback = function()
-					if
-						require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
-						and not require("luasnip").session.jump_active
-					then
-						require("luasnip").unlink_current()
-					end
-				end,
-			})
-		end,
+		config = true
 	},
 }
