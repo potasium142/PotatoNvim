@@ -18,56 +18,52 @@ return {
 		local icons = require("config.icons")
 		navic.setup(opts)
 
+		local seperator = {
+			blank = { provider = " " },
+			cleft = { provider = "[" },
+			cright = { provider = "]" }
+		}
 		local lsp = {
 			provider = {
 				provider = "lsp_client_names",
 				icon = " ",
 				hl = {
-					fg = "bg",
-					bg = "cyan",
+					fg = "cyan",
 				},
-				left_sep = "block",
-				right_sep = "block",
+				right_sep = " ",
+				left_sep = " ",
 			},
 			errors = {
 				provider = "diagnostic_errors",
-				icon = icons.diagnostics.Error,
+				icon = icons.diagnostics.Error .. " ",
 				hl = {
 					fg = "red",
-					bg = "bg_blue",
 				},
-				left_sep = "block",
-				right_sep = "block",
+				left_sep = " ",
 			},
 			warns = {
 				provider = "diagnostic_warnings",
 				icon = icons.diagnostics.Warn,
 				hl = {
 					fg = "yellow",
-					bg = "bg_blue",
 				},
-				left_sep = "block",
-				right_sep = "block",
+				left_sep = " ",
 			},
 			hints = {
 				provider = "diagnostic_hints",
 				icon = icons.diagnostics.Hint,
 				hl = {
 					fg = "cyan",
-					bg = "bg_blue",
 				},
-				left_sep = "block",
-				right_sep = "block",
+				left_sep = " ",
 			},
 			info = {
 				provider = "diagnostic_info",
 				icon = icons.diagnostics.Info,
 				hl = {
 					fg = "green",
-					bg = "bg_blue",
 				},
-				left_sep = "block",
-				right_sep = "block",
+				left_sep = " ",
 			},
 		}
 
@@ -90,7 +86,14 @@ return {
 				active = {
 					{ navic_winbar },
 					{},
-					{ lsp.errors,  lsp.warns, lsp.hints, lsp.info, lsp.provider },
+					{
+						seperator.cleft,
+						lsp.errors,
+						lsp.warns,
+						lsp.hints,
+						lsp.info,
+						lsp.provider,
+						seperator.cright },
 				},
 				inactive = {},
 			},

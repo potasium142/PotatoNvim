@@ -35,6 +35,9 @@ return {
 					bg = palette.bg1,
 				},
 				{
+					text = "[",
+				},
+				{
 					text = function(buffer)
 						local diagnostic = function()
 							local diag = buffer.diagnostics
@@ -67,20 +70,20 @@ return {
 						end
 
 						local icon = state() or diagnostic() or buffer.devicon.icon
-						return " " .. icon .. " "
+						return icon
 					end,
+					-- fg = function(buffer)
+					-- 	return buffer.is_focused and palette.bg_dim or palette.fg
+					-- end,
 					fg = function(buffer)
-						return buffer.is_focused and palette.bg_dim or palette.fg
-					end,
-					bg = function(buffer)
-						return buffer.is_focused and (buffer.is_readonly and palette.red or palette.green)
-							or palette.bg_yellow
+						return buffer.is_focused and (buffer.is_readonly and palette.red or palette.fg)
+							or palette.fg
 					end,
 					bold = is_picking_focus(),
 				},
 				{
 					text = function()
-						return is_picking_focus() and "░ " or " "
+						return is_picking_focus() and "| " or " "
 					end,
 				},
 				{
@@ -92,7 +95,7 @@ return {
 					end,
 				},
 				{
-					text = " ",
+					text = "] ",
 				},
 			},
 		}

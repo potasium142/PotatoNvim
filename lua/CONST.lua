@@ -8,5 +8,6 @@ local LOCAL_SYSTEM_FONT_SIZE = os.getenv("MONOSPACE_FONT_SIZE") or WIN32 and 15 
 M.FONTS = LOCAL_SYSTEM_MONOSPACE_FONT .. ",Symbols Nerd Font Mono" .. ":h" .. LOCAL_SYSTEM_FONT_SIZE
 M.FONT_WEIGHT = os.getenv("MONOSPACE_FONT_WEIGHT") or "Medium"
 M.WIN32 = WIN32
+-- M.PALETTE = require("everforest.colours").generate_palette(require("everforest").config, vim.o.background)
 
 return M

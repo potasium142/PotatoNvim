@@ -39,7 +39,9 @@ return {
 		}
 
 		local seperator = {
-			provider = " ",
+			blank = { provider = " " },
+			cleft = { provider = "[" },
+			cright = { provider = "]" }
 		}
 
 		local vim_mode = {
@@ -54,24 +56,25 @@ return {
 				hl = function()
 					return {
 						fg = "fg",
-						bg = "bg_" .. require("feline.providers.vi_mode").get_mode_color(),
+						-- bg = "bg_" .. require("feline.providers.vi_mode").get_mode_color(),
 						style = "bold",
 						name = "NeovimModeHLColor",
 					}
 				end,
-				left_sep = "block",
-				right_sep = "block",
+				right_sep = " ",
 			},
 			neovim_icon = {
-				provider = "   ",
+				provider = "  ",
 				hl = function()
 					return {
-						fg = "bg",
-						bg = require("feline.providers.vi_mode").get_mode_color(),
+						-- fg = "bg",
+						-- bg = require("feline.providers.vi_mode").get_mode_color(),
+						fg = require("feline.providers.vi_mode").get_mode_color(),
 						style = "bold",
 						name = "NeovimModeHLColor",
 					}
 				end,
+				left_sep = " "
 			},
 		}
 
@@ -80,43 +83,35 @@ return {
 				provider = "git_branch",
 				icon = icons.git.Branch .. " ",
 				hl = {
-					fg = "bg",
-					bg = "yellow",
+					-- fg = "bg",
+					fg = "yellow",
 				},
-				left_sep = "block",
-				right_sep = "block",
+				left_sep = " ",
+				right_sep = " ",
 			},
 			add = {
 				provider = "git_diff_added",
 				icon = icons.git.LineAdded,
 				hl = {
 					fg = "green",
-					bg = "bg_yellow",
 				},
-				left_sep = "block",
-				right_sep = "block",
+				right_sep = " ",
 			},
 			change = {
 				provider = "git_diff_changed",
 				icon = icons.git.LineModified,
 				hl = {
 					fg = "orange",
-					bg = "bg_yellow",
 				},
-
-				left_sep = "block",
-				right_sep = "block",
+				right_sep = " ",
 			},
 			remove = {
 				provider = "git_diff_removed",
 				icon = icons.git.LineRemoved,
 				hl = {
 					fg = "red",
-					bg = "bg_yellow",
 				},
-
-				left_sep = "block",
-				right_sep = "block",
+				right_sep = " ",
 			},
 		}
 
@@ -124,21 +119,15 @@ return {
 			provider = {
 				name = "position",
 				opts = {
-					format = "  {line}:{col} ",
+					format = " {line}:{col} ",
 				},
-			},
-			hl = {
-				bg = "bg_yellow",
 			},
 		}
 		local line_percentage = {
 			provider = "line_percentage",
 			hl = {
-				fg = "bg",
-				bg = "yellow",
+				fg = "yellow",
 			},
-			left_sep = "block",
-			right_sep = "block",
 		}
 
 		local file = {
@@ -147,69 +136,73 @@ return {
 					name = "file_type",
 					opts = {
 						filetype_icon = true,
-						colored_icon = false,
+						colored_icon = true,
 					},
 				},
 				hl = {
-					fg = "bg",
-					bg = "skyblue",
+					-- fg = "bg",
+					fg = "skyblue",
 					style = "bold",
 				},
-				left_sep = "block",
-				right_sep = "block",
+				left_sep = " "
 			},
 			name = {
 				provider = function()
 					return vim.fn.expand("%:t:r")
 				end,
-				hl = {
-					bg = "bg_blue",
-				},
-				left_sep = "block",
-				right_sep = "block",
+				right_sep = " "
 			},
 			encoding = {
 				provider = "file_encoding",
 				hl = {
-					bg = "bg_visual",
+					fg = "fg",
 				},
-				left_sep = "block",
-				right_sep = "block",
 			},
 			format = {
 				provider = "file_format",
 				hl = {
-					bg = "red",
-					fg = "bg",
+					fg = "red",
 				},
-				left_sep = "block",
-				right_sep = "block",
 			},
 		}
 
 		local left = {
-			seperator,
+			seperator.blank,
+			seperator.cleft,
 			vim_mode.neovim_icon,
 			vim_mode.mode_name,
-			seperator,
+			seperator.cright,
+			seperator.blank,
+			seperator.cleft,
 			git.branch,
 			git.add,
 			git.change,
 			git.remove,
-			seperator,
+			seperator.cright,
+			seperator.blank,
+			seperator.cleft,
 			file.type,
+			seperator.blank,
 			file.name,
-			seperator,
+			seperator.cright,
 		}
 		local middle = {}
 		local right = {
-			seperator,
+			seperator.cleft,
+			seperator.blank,
 			file.encoding,
+			seperator.blank,
 			file.format,
-			seperator,
+			seperator.blank,
+			seperator.cright,
+			seperator.blank,
+			seperator.cleft,
+			seperator.blank,
 			position,
 			line_percentage,
-			seperator,
+			seperator.blank,
+			seperator.cright,
+			seperator.blank,
 		}
 		local components = {
 			active = {
@@ -219,8 +212,10 @@ return {
 			},
 			inactive = {
 				{
-					seperator,
+					seperator.cleft,
 					file.type,
+					seperator.blank,
+					seperator.cright
 				},
 				{},
 				{},

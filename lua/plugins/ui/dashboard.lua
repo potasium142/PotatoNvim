@@ -44,6 +44,7 @@ return {
 
 		-- Set menu
 		dashboard.section.buttons.val = {
+			dashboard.button("n", "  > New file (temp)", ":e /tmp/nvim<CR>"),
 			dashboard.button("p", "  > Project", ":Telescope projects<CR>"),
 			dashboard.button("s", "  > Settings", ":e $MYVIMRC | :cd %:p:h <CR>"),
 			dashboard.button("u", "  > Update", "", {
