@@ -56,7 +56,6 @@ return {
 				hl = function()
 					return {
 						fg = "fg",
-						-- bg = "bg_" .. require("feline.providers.vi_mode").get_mode_color(),
 						style = "bold",
 						name = "NeovimModeHLColor",
 					}
@@ -67,8 +66,6 @@ return {
 				provider = "  ",
 				hl = function()
 					return {
-						-- fg = "bg",
-						-- bg = require("feline.providers.vi_mode").get_mode_color(),
 						fg = require("feline.providers.vi_mode").get_mode_color(),
 						style = "bold",
 						name = "NeovimModeHLColor",
@@ -83,7 +80,6 @@ return {
 				provider = "git_branch",
 				icon = icons.git.Branch .. " ",
 				hl = {
-					-- fg = "bg",
 					fg = "yellow",
 				},
 				left_sep = " ",
@@ -140,7 +136,6 @@ return {
 					},
 				},
 				hl = {
-					-- fg = "bg",
 					fg = "skyblue",
 					style = "bold",
 				},
@@ -212,6 +207,7 @@ return {
 			},
 			inactive = {
 				{
+					seperator.blank,
 					seperator.cleft,
 					file.type,
 					seperator.blank,

@@ -1,9 +1,9 @@
 " mapping for other application
-nmap <silent> > :><cr>
-nmap <silent> < :<<cr>
+nmap <silent> <expr> > :><cr>
+nmap <silent> <expr> < :<<cr>
 
-vmap <silent> > :><cr>gv
-vmap <silent> < :<<cr>gv
+vmap <silent> <expr> > :><cr>gv
+vmap <silent> <expr> < :<<cr>gv
 
 nmap <silent> <cr> :noh<cr><cr>
 

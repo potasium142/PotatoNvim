@@ -1,5 +1,6 @@
 return {
 	"numToStr/FTerm.nvim",
+	enabled = false,
 	name = "FTerm",
 	opts = function()
 		return {

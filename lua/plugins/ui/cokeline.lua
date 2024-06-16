@@ -31,11 +31,7 @@ return {
 			},
 			components = {
 				{
-					text = " ",
-					bg = palette.bg1,
-				},
-				{
-					text = "[",
+					text = "[ ",
 				},
 				{
 					text = function(buffer)
@@ -83,7 +79,7 @@ return {
 				},
 				{
 					text = function()
-						return is_picking_focus() and "| " or " "
+						return is_picking_focus() and " |" or " "
 					end,
 				},
 				{
@@ -95,7 +91,7 @@ return {
 					end,
 				},
 				{
-					text = "] ",
+					text = " ]",
 				},
 			},
 		}
