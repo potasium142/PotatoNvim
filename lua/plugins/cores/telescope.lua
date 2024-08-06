@@ -1,3 +1,4 @@
+local border = { "━", "┃", "━", "┃", "┏", "┓", "┛", "┗" }
 return {
 	{
 		"nvim-telescope/telescope.nvim",
@@ -28,9 +29,9 @@ return {
 						},
 					},
 					borderchars = {
-						prompt = { "", "", "━", "┃", "┏", "", "", "┗" },
-						preview = { "━", "┃", "━", "┃", "┏", "┓", "┛", "┗" },
-						results = { "", "", "", "┃", "┏", "", "", "┗" },
+						prompt = border,
+						preview = border,
+						results = border,
 					},
 					layout_config = {
 						horizontal = {

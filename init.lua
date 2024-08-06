@@ -15,10 +15,9 @@ AutoCMD = vim.api.nvim_create_autocmd
 AutoGroup = vim.api.nvim_create_augroup
 
 local lg_plugins = require("loader.language").plugins
-require("loader.env")
 require("config.options")
 require("config.mapping")
-require("custom_script.tabout")
+require("scripts.tabout")
 require("lazy").setup({
 	defaults = {
 		lazy = false,
@@ -33,7 +32,6 @@ require("lazy").setup({
 		{ import = "plugins.utils" },
 		{ import = "plugins.split" },
 		{ import = "plugins.cmp" },
-		{ import = "plugins.remote" },
 		lg_plugins,
 	},
 	performance = {
@@ -42,3 +40,5 @@ require("lazy").setup({
 		},
 	},
 })
+
+require("loader.env")

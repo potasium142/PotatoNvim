@@ -1,12 +1,10 @@
 local cfg = {}
 
-cfg.name = {
-	"toml",
-}
+cfg.default_ft = "yaml"
 
 cfg.formatter = {
 	name = {
-		"taplo",
+		"yamlfmt",
 	},
 }
 

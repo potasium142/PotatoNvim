@@ -106,13 +106,13 @@ return {
 				end,
 			}
 
-			for k, v in pairs(lsp_cfg.lsp_external) do
-				local cfg = lsp_cfg.lsp_config[k]
-				local merge_cfg = vim.tbl_deep_extend("force", default_setup, cfg or {})
-				if v then
-					require("lspconfig")[k].setup(merge_cfg)
+			for name, config in pairs(lsp_cfg.lsp) do
+				local setup = vim.tbl_deep_extend("force", default_setup, config or {})
+
+				if lsp_cfg.lsp_external[name] then
+					require("lspconfig")[name].setup(setup)
 				else
-					handlers.k = merge_cfg
+					handlers[name] = setup
 				end
 			end
 
@@ -164,37 +164,5 @@ return {
 		},
 		name = "lsp-file-operations",
 		config = true
-	},
-	{
-		url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-		enabled = false,
-		lazy = true,
-		event = { "LspAttach" },
-		dependencies = {
-			"neovim/nvim-lspconfig",
-		},
-		name = "lsp_lines",
-		config = true
-	},
-	{
-		"folke/trouble.nvim",
-		enabled = false,
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-			"neovim/nvim-lspconfig",
-		},
-		event = { "LspAttach" },
-		lazy = true,
-		opts = {
-			padding = true,
-		},
-		keys = {
-			{
-				"<Space>tt",
-				function()
-					require("trouble").toggle()
-				end,
-			},
-		},
 	},
 }

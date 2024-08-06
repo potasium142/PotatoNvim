@@ -1,24 +1,19 @@
 local cfg = {}
 
-cfg.name = {
-	"rust"
-}
-
-cfg.ft = {
-	"rs"
-}
+cfg.default_ft = "rs"
 
 cfg.plugins = {
 	{
 		"saecki/crates.nvim",
 		event = { "BufRead Cargo.toml" },
 		dependencies = { "nvim-lua/plenary.nvim" },
-		config = true
+		config = true,
 	},
 }
 
 cfg.formatter = {
 	name = { "rustfmt" },
+	ft = "rust",
 }
 
 cfg.lsp = {
@@ -34,14 +29,14 @@ cfg.lsp = {
 		capabilities = {
 			semanticTokensProvider = nil,
 			textDocument = {
-				semanticTokens = nil
+				semanticTokens = nil,
 			},
 
 			workspace = {
-				semanticTokens = nil
-			}
+				semanticTokens = nil,
+			},
 		},
-	}
+	},
 }
 
 return cfg

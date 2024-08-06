@@ -32,6 +32,7 @@ local options = {
 	},
 	list = true,
 	showmode = false,
+	-- stc = "%s%=%#Fg#%{v:relnum == 0 ? v:lnum : v:relnum}%#StatusColumnBorder#▐%#StatusColumnBuffer# ",
 }
 
 for k, v in pairs(options) do

@@ -1,4 +1,5 @@
 local formatters = require("loader.language").formatter
+local fmt_args = require("loader.formatter_cfg")
 return {
 	"stevearc/conform.nvim",
 	lazy = true,
@@ -13,7 +14,7 @@ return {
 		return {
 			formatters_by_ft = formatters,
 			format_after_save = {
-				lsp_fallback = true,
+				lsp_fallback = false,
 			},
 		}
 	end,
@@ -21,11 +22,8 @@ return {
 		local conform = require("conform")
 		conform.setup(opts)
 
-		conform.formatters.clang_format = {
-			prepend_args = {
-				"--style",
-				"{IndentWidth: 4}",
-			},
-		}
+		for fmt, args in pairs(fmt_args) do
+			conform.formatters[fmt] = args
+		end
 	end,
 }

@@ -1,9 +1,5 @@
 local cfg = {}
 
-cfg.ft = {
-	"py",
-}
-
 cfg.lsp = {
 	name = "pyright",
 	config = {
@@ -20,12 +16,10 @@ cfg.lsp = {
 }
 
 cfg.formatter = {
-	name = {
-		"autopep8",
-	},
-	ft = {
-		"python"
-	}
+	name = { "autopep8" },
+	ft = "python",
 }
+
+cfg.default_ft = "py"
 
 return cfg

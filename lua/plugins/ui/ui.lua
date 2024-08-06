@@ -20,6 +20,10 @@ return {
 				end,
 			}
 		end,
+		config = function(_, opts)
+			require("notify").setup(opts)
+			vim.notify = require("notify")
+		end
 	},
 	{
 		"stevearc/dressing.nvim",

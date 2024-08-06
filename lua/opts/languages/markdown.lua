@@ -1,17 +1,5 @@
 local cfg = {}
 
-cfg.lint = {
-	name = { "vale" },
-}
-
-cfg.name = {
-	"markdown",
-}
-
-cfg.ft = {
-	"md",
-}
-
 cfg.formatter = {
 	name = { "prettier" },
 }
@@ -35,5 +23,7 @@ cfg.plugins = {
 		end,
 	},
 }
+
+cfg.default_ft = "md"
 --Markdown
 return cfg

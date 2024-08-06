@@ -18,10 +18,6 @@ cfg.formatter = {
 	name = { "stylua" },
 }
 
-cfg.name = { "lua" }
-
-cfg.ft = {
-	"lua",
-}
+cfg.default_ft = "lua"
 
 return cfg
