@@ -9,61 +9,65 @@ return {
 	event = { "LspAttach" },
 	opts = function()
 		return {
-			icons = require("config.icons").kind_icons,
+			icons = require("const.icons").kinds,
 			highlight = true,
 		}
 	end,
 	config = function(_, opts)
 		local navic = require("nvim-navic")
-		local icons = require("config.icons")
+		local icons = require("const.icons")
 		navic.setup(opts)
 
-		local seperator = {
-			blank = { provider = " " },
-			cleft = { provider = "[" },
-			cright = { provider = "]" }
-		}
 		local lsp = {
 			provider = {
 				provider = "lsp_client_names",
 				icon = " ",
 				hl = {
-					fg = "cyan",
+					fg = "bg",
+					bg = "purple",
 				},
-				right_sep = " ",
-				left_sep = " ",
+				left_sep = "block",
+				right_sep = "block",
 			},
 			errors = {
 				provider = "diagnostic_errors",
-				icon = icons.diagnostics.Error .. " ",
+				icon = icons.diagnostics.Error,
 				hl = {
 					fg = "red",
+					bg = "bg",
 				},
-				left_sep = " ",
+				left_sep = "block",
+				right_sep = "block",
 			},
 			warns = {
 				provider = "diagnostic_warnings",
 				icon = icons.diagnostics.Warn,
 				hl = {
 					fg = "yellow",
+					bg = "bg",
 				},
-				left_sep = " ",
+				left_sep = "block",
+				right_sep = "block",
 			},
 			hints = {
 				provider = "diagnostic_hints",
 				icon = icons.diagnostics.Hint,
 				hl = {
-					fg = "cyan",
+					fg = "blue",
+					bg = "bg",
 				},
-				left_sep = " ",
+				left_sep = "block",
+				right_sep = "block",
 			},
 			info = {
 				provider = "diagnostic_info",
 				icon = icons.diagnostics.Info,
 				hl = {
 					fg = "green",
+					bg = "bg",
 				},
-				left_sep = " ",
+				left_sep = "block",
+				right_sep = "block",
 			},
 		}
 
@@ -86,14 +90,7 @@ return {
 				active = {
 					{ navic_winbar },
 					{},
-					{
-						seperator.cleft,
-						lsp.errors,
-						lsp.warns,
-						lsp.hints,
-						lsp.info,
-						lsp.provider,
-						seperator.cright },
+					{ lsp.errors, lsp.warns, lsp.hints, lsp.info, lsp.provider },
 				},
 				inactive = {},
 			},

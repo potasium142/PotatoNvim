@@ -1,3 +1,4 @@
+local get_hl = require("gtils").get_hl
 return {
 	"freddiehaddad/feline.nvim",
 	opts = {},
@@ -6,42 +7,22 @@ return {
 		"neanias/everforest-nvim",
 	},
 	config = function()
-		local icons = require("config.icons")
+		local icons = require("const.icons")
 		local feline = require("feline")
-		local palette = require("everforest.colours").generate_palette(require("everforest").config, vim.o.background)
-
-		local colors = {
-			fg = palette.fg,
-			bg = palette.bg0,
-			black = palette.bg_dim,
-			skyblue = palette.blue,
-			cyan = palette.aqua,
-			green = palette.green,
-			oceanblue = palette.blue,
-			magenta = palette.purple,
-			orange = palette.orange,
-			red = palette.red,
-			violet = palette.purple,
-			white = palette.fg,
-			yellow = palette.yellow,
-			----------------
-			bg_orange = palette.bg_visual,
-			bg_skyblue = palette.bg_blue,
-			bg_cyan = palette.bg_blue,
-			bg_green = palette.bg_green,
-			bg_oceanblue = palette.bg_blue,
-			bg_magenta = palette.bg_red,
-			bg_red = palette.bg_red,
-			bg_violet = palette.bg_visual,
-			bg_visual = palette.bg_visual,
-			bg_yellow = palette.bg_yellow,
-			bg_blue = palette.bg_blue,
-		}
 
 		local seperator = {
-			blank = { provider = " " },
-			cleft = { provider = "[" },
-			cright = { provider = "]" }
+			provider = " ",
+		}
+
+		local p = {
+			bg = get_hl("p_bg", "sp"),
+			fg = get_hl("p_fg", "sp"),
+			red = get_hl("p_red", "sp"),
+			orange = get_hl("p_orange", "sp"),
+			yellow = get_hl("p_yellow", "sp"),
+			green = get_hl("p_green", "sp"),
+			blue = get_hl("p_blue", "sp"),
+			purple = get_hl("p_purple", "sp"),
 		}
 
 		local vim_mode = {
@@ -55,23 +36,25 @@ return {
 				icon = "",
 				hl = function()
 					return {
-						fg = "fg",
+						fg = require("feline.providers.vi_mode").get_mode_color(),
+						bg = "bg",
 						style = "bold",
 						name = "NeovimModeHLColor",
 					}
 				end,
-				right_sep = " ",
+				left_sep = "block",
+				right_sep = "block",
 			},
 			neovim_icon = {
-				provider = "  ",
+				provider = "   ",
 				hl = function()
 					return {
-						fg = require("feline.providers.vi_mode").get_mode_color(),
+						fg = "bg",
+						bg = require("feline.providers.vi_mode").get_mode_color(),
 						style = "bold",
 						name = "NeovimModeHLColor",
 					}
 				end,
-				left_sep = " "
 			},
 		}
 
@@ -80,34 +63,44 @@ return {
 				provider = "git_branch",
 				icon = icons.git.Branch .. " ",
 				hl = {
-					fg = "yellow",
+					fg = "bg",
+					bg = "yellow",
+					style = "bold",
 				},
-				left_sep = " ",
-				right_sep = " ",
+				left_sep = "block",
+				right_sep = "block",
 			},
 			add = {
 				provider = "git_diff_added",
 				icon = icons.git.LineAdded,
 				hl = {
 					fg = "green",
+					bg = "bg",
 				},
-				right_sep = " ",
+				left_sep = "block",
+				right_sep = "block",
 			},
 			change = {
 				provider = "git_diff_changed",
 				icon = icons.git.LineModified,
 				hl = {
 					fg = "orange",
+					bg = "bg",
 				},
-				right_sep = " ",
+
+				left_sep = "block",
+				right_sep = "block",
 			},
 			remove = {
 				provider = "git_diff_removed",
 				icon = icons.git.LineRemoved,
 				hl = {
 					fg = "red",
+					bg = "bg",
 				},
-				right_sep = " ",
+
+				left_sep = "block",
+				right_sep = "block",
 			},
 		}
 
@@ -115,15 +108,22 @@ return {
 			provider = {
 				name = "position",
 				opts = {
-					format = " {line}:{col} ",
+					format = "  {line}:{col} ",
 				},
+			},
+			hl = {
+				fg = "orange",
+				bg = "bg",
 			},
 		}
 		local line_percentage = {
 			provider = "line_percentage",
 			hl = {
-				fg = "yellow",
+				fg = "bg",
+				bg = "orange",
 			},
+			left_sep = "block",
+			right_sep = "block",
 		}
 
 		local file = {
@@ -132,72 +132,71 @@ return {
 					name = "file_type",
 					opts = {
 						filetype_icon = true,
-						colored_icon = true,
+						colored_icon = false,
 					},
 				},
 				hl = {
-					fg = "skyblue",
+					fg = "bg",
+					bg = "blue",
 					style = "bold",
 				},
-				left_sep = " "
+				left_sep = "block",
+				right_sep = "block",
 			},
 			name = {
 				provider = function()
 					return vim.fn.expand("%:t:r")
 				end,
-				right_sep = " "
+				hl = {
+					bg = "bg",
+					fg = "blue",
+				},
+				left_sep = "block",
+				right_sep = "block",
 			},
 			encoding = {
 				provider = "file_encoding",
 				hl = {
-					fg = "fg",
+					fg = "red",
+					bg = "bg",
 				},
+				left_sep = "block",
+				right_sep = "block",
 			},
 			format = {
 				provider = "file_format",
 				hl = {
-					fg = "red",
+					bg = "red",
+					fg = "bg",
 				},
+				left_sep = "block",
+				right_sep = "block",
 			},
 		}
 
 		local left = {
-			seperator.blank,
-			seperator.cleft,
+			seperator,
 			vim_mode.neovim_icon,
 			vim_mode.mode_name,
-			seperator.cright,
-			seperator.blank,
-			seperator.cleft,
+			seperator,
 			git.branch,
 			git.add,
 			git.change,
 			git.remove,
-			seperator.cright,
-			seperator.blank,
-			seperator.cleft,
+			seperator,
 			file.type,
-			seperator.blank,
 			file.name,
-			seperator.cright,
+			seperator,
 		}
 		local middle = {}
 		local right = {
-			seperator.cleft,
-			seperator.blank,
+			seperator,
 			file.encoding,
-			seperator.blank,
 			file.format,
-			seperator.blank,
-			seperator.cright,
-			seperator.blank,
-			seperator.cleft,
-			seperator.blank,
+			seperator,
 			position,
 			line_percentage,
-			seperator.blank,
-			seperator.cright,
-			seperator.blank,
+			seperator,
 		}
 		local components = {
 			active = {
@@ -207,11 +206,8 @@ return {
 			},
 			inactive = {
 				{
-					seperator.blank,
-					seperator.cleft,
+					seperator,
 					file.type,
-					seperator.blank,
-					seperator.cright
 				},
 				{},
 				{},
@@ -219,7 +215,7 @@ return {
 		}
 
 		feline.setup({
-			theme = colors,
+			theme = p,
 			components = components,
 			force_inactive = {
 				buftypes = {

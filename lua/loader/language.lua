@@ -22,6 +22,7 @@ local default_cfg = {
 	plugins = {},
 	ft = false,
 	default_ft = false,
+	map_ft = false,
 }
 
 for _, l in pairs(lang_list) do
@@ -49,6 +50,16 @@ for _, l in pairs(lang_list) do
 
 	for _, fmt in pairs(formatter_ft) do
 		M.formatter[fmt] = vim.tbl_extend("keep", M.formatter[fmt] or {}, cfg.formatter.name)
+	end
+
+	if cfg.map_ft then
+		local mapped = {}
+		for _, map_ft in ipairs(cfg.map_ft) do
+			mapped[map_ft] = cfg.default_ft
+		end
+		vim.filetype.add({
+			extension = mapped,
+		})
 	end
 end
 

@@ -1,3 +1,4 @@
+local get_hl = require("gtils").get_hl
 return {
 	"willothy/nvim-cokeline",
 	dependencies = {
@@ -7,8 +8,17 @@ return {
 	lazy = false,
 	opts = function()
 		local is_picking_focus = require("cokeline.mappings").is_picking_focus
-		local palette = require("everforest.colours").generate_palette(require("everforest").config, vim.o.background)
-		local icons = require("config.icons")
+
+		local p = {
+			bg = get_hl("p_bg", "sp"),
+			fg = get_hl("p_fg", "sp"),
+			green = get_hl("p_green", "sp"),
+			dim3 = get_hl("p_dim3", "sp"),
+			dim4 = get_hl("p_dim4", "sp"),
+			dim5 = get_hl("p_dim5", "sp"),
+		}
+
+		local icons = require("const.icons")
 		return {
 			sidebar = {
 				filetype = { "NvimTree", "neo-tree" },
@@ -26,12 +36,13 @@ return {
 			},
 			default_hl = {
 				bg = function(buffer)
-					return buffer.is_focused and palette.bg_green or palette.bg_dim
+					return buffer.is_focused and p.dim4 or p.bg
 				end,
 			},
 			components = {
 				{
-					text = "[ ",
+					text = " ",
+					bg = p.bg,
 				},
 				{
 					text = function(buffer)
@@ -66,20 +77,22 @@ return {
 						end
 
 						local icon = state() or diagnostic() or buffer.devicon.icon
-						return icon
+						return " " .. icon .. " "
 					end,
-					-- fg = function(buffer)
-					-- 	return buffer.is_focused and palette.bg_dim or palette.fg
-					-- end,
 					fg = function(buffer)
-						return buffer.is_focused and (buffer.is_readonly and palette.red or palette.fg)
-							or palette.fg
+						return buffer.is_focused and p.bg or p.fg
 					end,
-					bold = is_picking_focus(),
+					bg = function(buffer)
+						return buffer.is_focused and (buffer.is_readonly and p.red or p.green) or p.dim4
+					end,
+					bold = true,
 				},
 				{
 					text = function()
-						return is_picking_focus() and " |" or " "
+						return is_picking_focus() and "░ " or " "
+					end,
+					bg = function(buffer)
+						return buffer.is_focused and p.dim4 or p.dim5
 					end,
 				},
 				{
@@ -89,9 +102,15 @@ return {
 					bold = function(buffer)
 						return buffer.is_focused
 					end,
+					bg = function(buffer)
+						return buffer.is_focused and p.dim4 or p.dim5
+					end,
 				},
 				{
-					text = " ]",
+					text = " ",
+					bg = function(buffer)
+						return buffer.is_focused and p.dim4 or p.dim5
+					end,
 				},
 			},
 		}

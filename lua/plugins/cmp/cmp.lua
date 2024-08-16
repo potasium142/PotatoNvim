@@ -1,4 +1,4 @@
-local icons = require("config.icons")
+local icons = require("const.icons")
 return {
 	{
 		"hrsh7th/nvim-cmp",
@@ -56,12 +56,12 @@ return {
 				formatting = {
 					fields = { "kind", "abbr" },
 					format = function(_, vim_item)
-						vim_item.kind = string.format(" %s ", icons.kind_icons[vim_item.kind])
+						vim_item.kind = string.format(" %s ", icons.kinds[vim_item.kind])
 						return vim_item
 					end,
 				},
 				sources = {
-					{ name = "nvim_lsp",   priority = 5 },
+					{ name = "nvim_lsp", priority = 5 },
 					{ name = "async_path", priority = 4 },
 					{
 						name = "luasnip",
@@ -92,6 +92,6 @@ return {
 				},
 			}
 		end,
-		config = true
+		config = true,
 	},
 }

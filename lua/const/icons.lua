@@ -1,9 +1,9 @@
 return {
 	diagnostics = {
-		Error = " ",
-		Warn = " ",
-		Hint = " ",
-		Info = " ",
+		Error = " ",
+		Warn = " ",
+		Hint = " ",
+		Info = " ",
 	},
 	buffer = {
 		Modified = "",
@@ -29,7 +29,7 @@ return {
 		Octoface = "",
 		Branch = "",
 	},
-	kind_icons = {
+	kinds = {
 		Array = " ",
 		Boolean = " ",
 		Key = " ",

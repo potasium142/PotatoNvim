@@ -1,6 +1,10 @@
-local CONST = require("CONST")
-local options = {
-	guifont = CONST.FONTS,
+local CONST = require("const.sys_var")
+local gtils = require("gtils")
+
+local M = {}
+
+M.opt = {
+	guifont = CONST.FONTS .. ":#h-none",
 	tabstop = 4,
 	shiftwidth = 4,
 	number = true,
@@ -32,20 +36,13 @@ local options = {
 	},
 	list = true,
 	showmode = false,
-	-- stc = "%s%=%#Fg#%{v:relnum == 0 ? v:lnum : v:relnum}%#StatusColumnBorder#▐%#StatusColumnBuffer# ",
 }
 
-for k, v in pairs(options) do
-	vim.opt[k] = v
-end
-
-vim.opt.fillchars:append({ fold = " " })
-
-local global = {
+M.g = {
 	loaded_netrwPlugin = 1,
 	loaded_netrw = 1,
 }
 
-for k, v in pairs(global) do
-	vim.g[k] = v
-end
+gtils.load_opt(M)
+
+vim.opt.fillchars:append({ fold = " " })

@@ -1,7 +1,10 @@
+local CONST = require("const.sys_var")
+local gtils = require("gtils")
 local M = {}
 
 M.opt = {
 	linespace = -1,
+	guifont = CONST.FONTS .. ":#h-none",
 }
 M.g = {
 	neovide_floating_z_height = 3,
@@ -11,4 +14,4 @@ M.g = {
 	neovide_scroll_animation_length = 0.2,
 }
 
-return M
+gtils.load_opt(M)

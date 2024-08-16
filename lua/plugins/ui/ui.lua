@@ -23,10 +23,11 @@ return {
 		config = function(_, opts)
 			require("notify").setup(opts)
 			vim.notify = require("notify")
-		end
+		end,
 	},
 	{
 		"stevearc/dressing.nvim",
+		enabled = true,
 		lazy = false,
 		opts = function()
 			return {
@@ -54,7 +55,7 @@ return {
 		lazy = false,
 		priority = 1000,
 		init = function()
-			local signs = require("config.icons").diagnostics
+			local signs = require("const.icons").diagnostics
 			for type, icon in pairs(signs) do
 				local hl = "DiagnosticSign" .. type
 				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -101,7 +102,7 @@ return {
 					opts = { skip = true },
 				},
 			},
-			config = true
+			config = true,
 		},
 	},
 }

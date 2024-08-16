@@ -1,3 +1,4 @@
+local gtils = require("gtils")
 local M = {}
 
 M.g = {
@@ -5,14 +6,14 @@ M.g = {
 		name = "wslclip",
 		copy = {
 			["+"] = "wslclip",
-			["*"] = "wslclip"
+			["*"] = "wslclip",
 		},
 		paste = {
 			["+"] = "wslclip -g",
-			["*"] = "wslclip -g"
+			["*"] = "wslclip -g",
 		},
 		cache_enable = 0,
-	}
+	},
 }
 
-return M
+gtils.load_opt(M)

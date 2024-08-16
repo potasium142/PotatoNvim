@@ -15,6 +15,7 @@ AutoCMD = vim.api.nvim_create_autocmd
 AutoGroup = vim.api.nvim_create_augroup
 
 local lg_plugins = require("loader.language").plugins
+local colorscheme = require("opts.colorscheme").plugins
 require("config.options")
 require("config.mapping")
 require("scripts.tabout")
@@ -26,6 +27,7 @@ require("lazy").setup({
 		enabled = true,
 	},
 	spec = {
+		colorscheme,
 		{ import = "plugins.cores" },
 		{ import = "plugins.ui" },
 		{ import = "plugins.buffers" },

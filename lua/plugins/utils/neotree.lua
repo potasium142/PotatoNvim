@@ -1,4 +1,4 @@
-local icons = require("config.icons")
+local icons = require("const.icons")
 return {
 	"nvim-neo-tree/neo-tree.nvim",
 	dependencies = {
