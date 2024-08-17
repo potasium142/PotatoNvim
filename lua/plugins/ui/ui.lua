@@ -44,7 +44,17 @@ return {
 					end,
 					builtin = {
 						relative = "cursor",
+						border = "single",
 					},
+					nui = {
+						border = { style = "single" },
+					},
+					telescope = {
+						borderchars = { "━", "┃", "━", "┃", "┏", "┓", "┛", "┗" },
+					},
+				},
+				input = {
+					border = "single",
 				},
 			}
 		end,

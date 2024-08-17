@@ -4,7 +4,7 @@ local gtils = require("gtils")
 local M = {}
 
 M.opt = {
-	guifont = CONST.FONTS .. ":#h-none",
+	guifont = CONST.FONTS,
 	tabstop = 4,
 	shiftwidth = 4,
 	number = true,
