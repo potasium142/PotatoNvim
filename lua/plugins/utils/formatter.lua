@@ -14,13 +14,20 @@ return {
 		return {
 			formatters_by_ft = formatters,
 			format_after_save = {
-				lsp_fallback = false,
+				lsp_fallback = true,
 			},
 		}
 	end,
 	config = function(_, opts)
 		local conform = require("conform")
 		conform.setup(opts)
+
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			pattern = "*",
+			callback = function(args)
+				conform.format({ bufnr = args.buf })
+			end,
+		})
 
 		for fmt, args in pairs(fmt_args) do
 			conform.formatters[fmt] = args
