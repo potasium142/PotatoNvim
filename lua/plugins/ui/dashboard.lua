@@ -1,3 +1,4 @@
+local ascii_potato = require("const.potato_ascii")
 return {
 	"goolord/alpha-nvim",
 	lazy = false,
@@ -12,39 +13,33 @@ return {
 		local dashboard = require("alpha.themes.dashboard")
 		--Footer
 		local function info()
-			local version = vim.version()
+			local ver = vim.version()
 			local stats = require("lazy").stats()
-			local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+			local ms = math.floor(stats.startuptime)
 			local startup = "󱐋 " .. stats.loaded .. "/" .. stats.count .. " loaded in " .. ms .. "ms"
-			return startup .. "     v" .. version.major .. "." .. version.minor .. "." .. version.patch
+			return startup .. "     v" .. ver.major .. "." .. ver.minor .. "." .. ver.patch
 		end
 
 		-- Set header
-		dashboard.section.header.val = {
-			"                        ██████                        ",
-			"                      ██▒▒▒▒▒▒██                      ",
-			"                    ██▒▒▒▒▒▒▒▒▒▒██                    ",
-			"                    ██▒▒▒▒▒▒▒▒▒▒██                    ",
-			"                      ██▒▒▒▒▒▒██                      ",
-			"                        ██░░██                        ",
-			"                  ████████░░████████                  ",
-			"              ████░░░░░░██░░▒▒░░░░▒▒████              ",
-			"            ██▒▒░░░░░░░░░░░░░░░░░░░░▒▒▒▒██            ",
-			"        ██░░░░░░░░░░░░░░▒▒▒▒░░░░░░░░  ▒▒░░▒▒██        ",
-			"      ██░░░░░░░░░░░░░░▒▒  ██▒▒░░░░░░████░░▒▒██        ",
-			"      ██▒▒░░░░░░▒▒░░░░▒▒████░░░░░░░░████░░░░▒▒██      ",
-			"    ██░░░░░░░░░░░░░░░░░░████▒▒░░░░░░▒▒▒▒░░░░▒▒██      ",
-			"    ██░░░░░░░░░░░░░░░░░░▒▒▒▒░░▒▒▒▒  ░░▒▒▒▒▒▒▒▒▒▒████  ",
-			"  ████████░░░░░░░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒████▒▒██",
-			"██▒▒██▒▒▒▒██████░░████████▒▒▒▒▒▒████▒▒░░██▒▒██▒▒▒▒████",
-			"██▒▒▒▒▒▒▒▒▒▒▒▒▒▒██▒▒▒▒▒▒▒▒██████▒▒▒▒████▒▒██▒▒▒▒▒▒██  ",
-			"      ██████▒▒██▒▒▒▒▒▒▒▒██▒▒▒▒██▒▒▒▒▒▒▒▒▒▒▒▒██████    ",
-			"            ██  ████████  ████  ████  ████████        ",
-		}
+		math.randomseed(os.time())
+		dashboard.section.header.val = ascii_potato[math.random(#ascii_potato)]
 
 		-- Set menu
 		dashboard.section.buttons.val = {
-			dashboard.button("n", "  > New file (temp)", ":e /tmp/nvim<CR>"),
+			dashboard.button("p", "  > Quick tempfile", ":e /tmp/nvim<CR>"),
+			dashboard.button("e", "  > New/Edit file", "", {
+				callback = function()
+					vim.ui.input({
+						prompt = "File path",
+						default = nil,
+						completion = "file",
+					}, function(f)
+						if f ~= nil then
+							vim.cmd.edit(f)
+						end
+					end)
+				end,
+			}),
 			dashboard.button("p", "  > Project", ":Telescope projects<CR>"),
 			dashboard.button("s", "  > Settings", ":e $MYVIMRC | :cd %:p:h <CR>"),
 			dashboard.button("u", "  > Update", "", {
@@ -63,6 +58,7 @@ return {
 				dashboard.section.footer.val = info()
 				pcall(vim.cmd.AlphaRedraw)
 			end,
+			once = true,
 		})
 	end,
 	keys = {

@@ -1,5 +1,6 @@
 local set_gr_hl = require("gtils").set_group_hl
 local load_opt = require("gtils").load_opt
+
 local M = {}
 M.plugins = {
 	{
@@ -57,10 +58,8 @@ M.plugins = {
 				purple = { sp = p.purple[1] },
 				dim1 = { sp = p.bg1[1] },
 				dim2 = { sp = p.bg2[1] },
-				dim3 = { sp = p.bg3[1] },
-				dim4 = { sp = p.bg4[1] },
-				dim5 = { sp = p.grey[1] },
 			}
+			set_gr_hl("p_", palette)
 
 			local hls = {
 				RainbowDelimiterRed = { fg = p.red[1] },
@@ -71,7 +70,6 @@ M.plugins = {
 				RainbowDelimiterViolet = { fg = p.purple[1] },
 				RainbowDelimiterCyan = { fg = p.fg[1] },
 			}
-			set_gr_hl("p_", palette)
 			set_gr_hl("", hls)
 		end,
 	},

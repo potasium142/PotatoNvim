@@ -15,7 +15,7 @@ end
 M.get_hl = function(name, key)
 	local dec_color = vim.api.nvim_get_hl(0, { name = name, link = false })[key]
 	if dec_color == nil then
-		return "#ff00dc"
+		return "#ff00ff"
 	end
 	return string.format("#%x", dec_color)
 end

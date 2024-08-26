@@ -63,6 +63,7 @@ return {
 		"folke/noice.nvim",
 		enabled = true,
 		lazy = false,
+		version = "4.4.7",
 		priority = 1000,
 		init = function()
 			local signs = require("const.icons").diagnostics

@@ -13,9 +13,8 @@ return {
 			bg = get_hl("p_bg", "sp"),
 			fg = get_hl("p_fg", "sp"),
 			green = get_hl("p_green", "sp"),
-			dim3 = get_hl("p_dim3", "sp"),
-			dim4 = get_hl("p_dim4", "sp"),
-			dim5 = get_hl("p_dim5", "sp"),
+			dim4 = get_hl("p_dim1", "sp"),
+			dim5 = get_hl("p_dim2", "sp"),
 		}
 
 		local icons = require("const.icons")

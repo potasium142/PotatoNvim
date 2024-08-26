@@ -1,23 +1,23 @@
 local open_bracket = {
-	["("] = true,
-	["["] = true,
-	["<"] = true,
-	["{"] = true,
-	["'"] = true,
-	['"'] = true,
-	["|"] = true,
-	["`"] = true,
+	"(",
+	"[",
+	"<",
+	"{",
+	"'",
+	'"',
+	"|",
+	"`",
 }
 
 local close_bracket = {
-	[")"] = true,
-	["]"] = true,
-	[">"] = true,
-	["}"] = true,
-	["'"] = true,
-	['"'] = true,
-	["|"] = true,
-	["`"] = true,
+	")",
+	"]",
+	">",
+	"}",
+	"'",
+	'"',
+	"|",
+	"`",
 }
 
 ---Check bracket
@@ -26,7 +26,7 @@ local close_bracket = {
 ---@return boolean
 local check_bracket = function(brackets, column)
 	local current_char = vim.api.nvim_get_current_line():sub(column, column)
-	return brackets[current_char] and true or false
+	return vim.tbl_contains(brackets, current_char) or false
 end
 
 local function tab(st_table, nd_table, offset, check_offset)
