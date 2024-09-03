@@ -22,6 +22,19 @@ cfg.plugins = {
 			vim.g.mkdp_theme = "light"
 		end,
 	},
+	{
+		"OXY2DEV/markview.nvim",
+		lazy = true,
+		ft = {
+			"md",
+			"markdown",
+		},
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+
+			"nvim-tree/nvim-web-devicons",
+		},
+	},
 }
 
 cfg.default_ft = "md"

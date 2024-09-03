@@ -1,27 +1,8 @@
-local set_gr_hl = require("gtils").set_group_hl
-local load_opt = require("gtils").load_opt
+local gtils = require("gtils")
 
 local M = {}
+
 M.plugins = {
-	{
-		"neanias/everforest-nvim",
-		enabled = false,
-		lazy = false,
-		priority = 1000,
-		opts = {
-			italics = false,
-			dim_inactive_windows = false,
-			background = "hard",
-			disable_italic_comment = true,
-			diagnostic_text_highlight = true,
-			diagnostic_virtual_text = "coloured",
-			diagnostic_line_highlight = true,
-		},
-		config = function(_, opts)
-			require("everforest").setup(opts)
-			require("everforest").load()
-		end,
-	},
 	{
 		"sainnhe/sonokai",
 		lazy = false,
@@ -40,7 +21,7 @@ M.plugins = {
 				},
 			}
 
-			load_opt(opts)
+			gtils.load_opt(opts)
 
 			vim.cmd.colorscheme("sonokai")
 
@@ -48,19 +29,31 @@ M.plugins = {
 			local p = vim.fn["sonokai#get_palette"](configuration.style, configuration.colors_override)
 
 			local palette = {
-				bg = { sp = p.bg0[1] },
-				fg = { sp = p.fg[1] },
-				red = { sp = p.red[1] },
-				orange = { sp = p.orange[1] },
-				yellow = { sp = p.yellow[1] },
-				green = { sp = p.green[1] },
-				blue = { sp = p.blue[1] },
-				purple = { sp = p.purple[1] },
-				dim1 = { sp = p.bg1[1] },
-				dim2 = { sp = p.bg2[1] },
+				p.black[1], --#1c1e1f 1
+				p.red[1], --#f76c7c 2
+				p.green[1], --#9cd57b 3
+				p.yellow[1], --#e3d367 4
+				p.blue[1], --#78cee9 5
+				p.purple[1], --#baa0f8 6
+				p.orange[1], --#f3a96a 7
+				p.fg[1], --#e1e2e3 8
+				p.black[1], --#1c1e1f 9
+				p.red[1], --#f76c7c 10
+				p.green[1], --#9cd57b 11
+				p.yellow[1], --#e3d367 12
+				p.blue[1], --#78cee9 13
+				p.purple[1], --#baa0f8 14
+				p.orange[1], --#f3a96a 15
+				p.fg[1], --#e1e2e3 16
 			}
-			set_gr_hl("p_", palette)
+			gtils.set_group_hl_non_label("p_", palette)
 
+			local dim_1 = tonumber(string.sub(p.bg_dim[1], 2), 16)
+			local fg = tonumber(string.sub(p.fg[1], 2), 16)
+
+			local grey24 = gtils.gradent_rgb(dim_1, fg, 24)
+
+			gtils.set_group_hl_non_label("g_", grey24)
 			local hls = {
 				RainbowDelimiterRed = { fg = p.red[1] },
 				RainbowDelimiterYellow = { fg = p.yellow[1] },
@@ -70,8 +63,9 @@ M.plugins = {
 				RainbowDelimiterViolet = { fg = p.purple[1] },
 				RainbowDelimiterCyan = { fg = p.fg[1] },
 			}
-			set_gr_hl("", hls)
+			gtils.set_group_hl("", hls)
 		end,
 	},
 }
+
 return M

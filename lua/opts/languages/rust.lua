@@ -16,27 +16,4 @@ cfg.formatter = {
 	ft = "rust",
 }
 
-cfg.lsp = {
-	external = true,
-	name = "rust_analyzer",
-	config = {
-		on_attach = function(client, bufnr)
-			if client.server_capabilities["documentSymbolProvider"] then
-				require("nvim-navic").attach(client, bufnr)
-			end
-			client.server_capabilities.semanticTokensProvider = nil
-		end,
-		capabilities = {
-			semanticTokensProvider = nil,
-			textDocument = {
-				semanticTokens = nil,
-			},
-
-			workspace = {
-				semanticTokens = nil,
-			},
-		},
-	},
-}
-
 return cfg

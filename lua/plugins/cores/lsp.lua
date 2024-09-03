@@ -1,17 +1,18 @@
 local border = {
-	{ "",  "FloatBorder" },
-	{ "",  "FloatBorder" },
-	{ "",  "FloatBorder" },
+	{ "", "FloatBorder" },
+	{ "", "FloatBorder" },
+	{ "", "FloatBorder" },
 	{ " ", "FloatBorder" },
-	{ "",  "FloatBorder" },
-	{ "",  "FloatBorder" },
-	{ "",  "FloatBorder" },
+	{ "", "FloatBorder" },
+	{ "", "FloatBorder" },
+	{ "", "FloatBorder" },
 	{ " ", "FloatBorder" },
 }
 
 local opts = { noremap = true, silent = true }
 
-local lsp_cfg = require("loader.language")
+-- local lsp_cfg = require("loader.language")
+local lsp_cfg = require("loader.lsp")
 
 local capabilities = {
 	textDocument = {
@@ -106,13 +107,15 @@ return {
 				end,
 			}
 
-			for name, config in pairs(lsp_cfg.lsp) do
-				local setup = vim.tbl_deep_extend("force", default_setup, config or {})
+			for name, config in pairs(lsp_cfg.external) do
+				local setup = vim.tbl_deep_extend("force", default_setup, config)
+				require("lspconfig")[name].setup(setup)
+			end
 
-				if lsp_cfg.lsp_external[name] then
+			for name, config in pairs(lsp_cfg.automatic) do
+				local setup = vim.tbl_deep_extend("force", default_setup, config)
+				handlers[name] = function()
 					require("lspconfig")[name].setup(setup)
-				else
-					handlers[name] = setup
 				end
 			end
 
@@ -163,6 +166,6 @@ return {
 			"nvim-neo-tree/neo-tree.nvim",
 		},
 		name = "lsp-file-operations",
-		config = true
+		config = true,
 	},
 }

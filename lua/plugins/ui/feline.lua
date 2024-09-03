@@ -3,9 +3,6 @@ return {
 	"freddiehaddad/feline.nvim",
 	opts = {},
 	enabled = true,
-	dependencies = {
-		"neanias/everforest-nvim",
-	},
 	config = function()
 		local icons = require("const.icons")
 		local feline = require("feline")
@@ -15,14 +12,15 @@ return {
 		}
 
 		local p = {
-			bg = get_hl("p_bg", "sp"),
-			fg = get_hl("p_fg", "sp"),
-			red = get_hl("p_red", "sp"),
-			orange = get_hl("p_orange", "sp"),
-			yellow = get_hl("p_yellow", "sp"),
-			green = get_hl("p_green", "sp"),
-			blue = get_hl("p_blue", "sp"),
-			purple = get_hl("p_purple", "sp"),
+			bg = get_hl("g_1", "sp"),
+			bg_dim = get_hl("g_2", "sp"),
+			red = get_hl("p_10", "sp"),
+			green = get_hl("p_11", "sp"),
+			yellow = get_hl("p_12", "sp"),
+			blue = get_hl("p_13", "sp"),
+			purple = get_hl("p_14", "sp"),
+			aqua = get_hl("p_15", "sp"),
+			fg = get_hl("p_16", "sp"),
 		}
 
 		local vim_mode = {
@@ -37,7 +35,7 @@ return {
 				hl = function()
 					return {
 						fg = require("feline.providers.vi_mode").get_mode_color(),
-						bg = "bg",
+						bg = "bg_dim",
 						style = "bold",
 						name = "NeovimModeHLColor",
 					}
@@ -49,7 +47,7 @@ return {
 				provider = "   ",
 				hl = function()
 					return {
-						fg = "bg",
+						fg = "bg_dim",
 						bg = require("feline.providers.vi_mode").get_mode_color(),
 						style = "bold",
 						name = "NeovimModeHLColor",
@@ -63,7 +61,7 @@ return {
 				provider = "git_branch",
 				icon = icons.git.Branch .. " ",
 				hl = {
-					fg = "bg",
+					fg = "bg_dim",
 					bg = "yellow",
 					style = "bold",
 				},
@@ -75,7 +73,7 @@ return {
 				icon = icons.git.LineAdded,
 				hl = {
 					fg = "green",
-					bg = "bg",
+					bg = "bg_dim",
 				},
 				left_sep = "block",
 				right_sep = "block",
@@ -84,8 +82,8 @@ return {
 				provider = "git_diff_changed",
 				icon = icons.git.LineModified,
 				hl = {
-					fg = "orange",
-					bg = "bg",
+					fg = "aqua",
+					bg = "bg_dim",
 				},
 
 				left_sep = "block",
@@ -96,7 +94,7 @@ return {
 				icon = icons.git.LineRemoved,
 				hl = {
 					fg = "red",
-					bg = "bg",
+					bg = "bg_dim",
 				},
 
 				left_sep = "block",
@@ -112,15 +110,15 @@ return {
 				},
 			},
 			hl = {
-				fg = "orange",
-				bg = "bg",
+				fg = "aqua",
+				bg = "bg_dim",
 			},
 		}
 		local line_percentage = {
 			provider = "line_percentage",
 			hl = {
-				fg = "bg",
-				bg = "orange",
+				fg = "bg_dim",
+				bg = "aqua",
 			},
 			left_sep = "block",
 			right_sep = "block",
@@ -136,7 +134,7 @@ return {
 					},
 				},
 				hl = {
-					fg = "bg",
+					fg = "bg_dim",
 					bg = "blue",
 					style = "bold",
 				},
@@ -148,7 +146,7 @@ return {
 					return vim.fn.expand("%:t:r")
 				end,
 				hl = {
-					bg = "bg",
+					bg = "bg_dim",
 					fg = "blue",
 				},
 				left_sep = "block",
@@ -158,7 +156,7 @@ return {
 				provider = "file_encoding",
 				hl = {
 					fg = "red",
-					bg = "bg",
+					bg = "bg_dim",
 				},
 				left_sep = "block",
 				right_sep = "block",
@@ -167,7 +165,7 @@ return {
 				provider = "file_format",
 				hl = {
 					bg = "red",
-					fg = "bg",
+					fg = "bg_dim",
 				},
 				left_sep = "block",
 				right_sep = "block",

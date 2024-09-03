@@ -10,11 +10,11 @@ return {
 		local is_picking_focus = require("cokeline.mappings").is_picking_focus
 
 		local p = {
-			bg = get_hl("p_bg", "sp"),
-			fg = get_hl("p_fg", "sp"),
-			green = get_hl("p_green", "sp"),
-			dim4 = get_hl("p_dim1", "sp"),
-			dim5 = get_hl("p_dim2", "sp"),
+			bg = get_hl("p_1", "sp"),
+			fg = get_hl("p_16", "sp"),
+			green = get_hl("p_3", "sp"),
+			dim4 = get_hl("g_4", "sp"),
+			dim5 = get_hl("g_5", "sp"),
 		}
 
 		local icons = require("const.icons")

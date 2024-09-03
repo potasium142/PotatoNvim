@@ -16,9 +16,12 @@ AutoGroup = vim.api.nvim_create_augroup
 
 local lg_plugins = require("loader.language").plugins
 local colorscheme = require("opts.colorscheme").plugins
+
 require("config.options")
 require("config.mapping")
 require("scripts.tabout")
+require("config.fallback_color")
+
 require("lazy").setup({
 	defaults = {
 		lazy = false,
@@ -44,3 +47,5 @@ require("lazy").setup({
 })
 
 require("loader.env")
+
+collectgarbage("collect")

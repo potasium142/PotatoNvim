@@ -30,27 +30,12 @@ for _, l in pairs(lang_list) do
 	local lua = require("opts.languages." .. lang)
 	local cfg = vim.tbl_deep_extend("force", default_cfg, lua)
 
-	-- LSP builder
-	if cfg.lsp.name then
-		M.lsp_external[cfg.lsp.name] = cfg.lsp.external
-		M.lsp[cfg.lsp.name] = cfg.lsp.config
-	end
-
 	-- plugins
 	for _, plug in pairs(cfg.plugins) do
 		table.insert(M.plugins, plug)
 	end
 
 	-- formatter
-	local formatter_ft = cfg.formatter.ft or cfg.default_ft
-
-	if type(formatter_ft) == "string" then
-		formatter_ft = { formatter_ft }
-	end
-
-	for _, fmt in pairs(formatter_ft) do
-		M.formatter[fmt] = vim.tbl_extend("keep", M.formatter[fmt] or {}, cfg.formatter.name)
-	end
 
 	if cfg.map_ft then
 		local mapped = {}
