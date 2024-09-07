@@ -113,9 +113,13 @@ return {
 			end
 
 			for name, config in pairs(lsp_cfg.automatic) do
-				local setup = vim.tbl_deep_extend("force", default_setup, config)
-				handlers[name] = function()
-					require("lspconfig")[name].setup(setup)
+				if type(config) == "table" then
+					local setup = vim.tbl_deep_extend("force", default_setup, config)
+					handlers[name] = function()
+						require("lspconfig")[name].setup(setup)
+					end
+				else
+					handlers[name] = config
 				end
 			end
 

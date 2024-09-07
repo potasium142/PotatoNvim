@@ -12,7 +12,6 @@ local lang_list = vim.fn.readdir(path)
 local default_cfg = {
 	formatter = {
 		name = {},
-		ft = false,
 	},
 	lsp = {
 		external = false,
@@ -36,6 +35,7 @@ for _, l in pairs(lang_list) do
 	end
 
 	-- formatter
+	M.formatter[cfg.ft or cfg.default_ft] = cfg.formatter.name
 
 	if cfg.map_ft then
 		local mapped = {}
