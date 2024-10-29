@@ -28,7 +28,7 @@ M.plugins = {
 			local configuration = vim.fn["sonokai#get_configuration"]()
 			local p = vim.fn["sonokai#get_palette"](configuration.style, configuration.colors_override)
 			local palette = {
-				p.bg0[1], --#1c1e1f 1
+				p.black[1], --#1c1e1f 1
 				p.red[1], --#f76c7c 2
 				p.green[1], --#9cd57b 3
 				p.yellow[1], --#e3d367 4
@@ -46,16 +46,6 @@ M.plugins = {
 				p.fg[1], --#e1e2e3 16
 			}
 			require("opts.colorscheme.utils").init_global_colors(palette)
-			-- local hls = {
-			-- 	RainbowDelimiterRed = { fg = p.red[1] },
-			-- 	RainbowDelimiterYellow = { fg = p.yellow[1] },
-			-- 	RainbowDelimiterBlue = { fg = p.blue[1] },
-			-- 	RainbowDelimiterOrange = { fg = p.orange[1] },
-			-- 	RainbowDelimiterGreen = { fg = p.green[1] },
-			-- 	RainbowDelimiterViolet = { fg = p.purple[1] },
-			-- 	RainbowDelimiterCyan = { fg = p.fg[1] },
-			-- }
-			-- gtils.set_group_hl("", hls)
 		end,
 	},
 }

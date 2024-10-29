@@ -8,18 +8,18 @@ M.init_global_colors = function(colors)
 
 		local color_table = {
 			fg = color,
-			bg = colors[1],
+			bg = "none",
 			sp = color,
-			ctermfg = i + 1,
-			ctermbg = 0,
+			ctermfg = i - 1,
+			ctermbg = "none",
 		}
 
 		local color_table_i = {
 			bg = color,
-			fg = colors[1],
+			fg = "bg",
 			sp = color,
 			ctermfg = 0,
-			ctermbg = 16 - i,
+			ctermbg = i - 1,
 		}
 
 		vim.api.nvim_set_hl(0, name, color_table)

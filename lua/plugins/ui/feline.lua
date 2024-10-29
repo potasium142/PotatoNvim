@@ -73,10 +73,13 @@ return {
 			}
 		end
 
+		local git_provider = require("feline.providers.git")
 		local git = {
 			branch = {
-				provider = "git_branch",
-				icon = icons.git.Branch .. " ",
+				provider = function()
+					return icons.git.Branch .. " " .. git_provider.git_branch()
+				end,
+				icon = "",
 				hl = "GlobalBase3I",
 				left_sep = {
 					str = " ",
@@ -89,7 +92,7 @@ return {
 			},
 			add = {
 				provider = "git_diff_added",
-				icon = icons.git.LineAdded,
+				icon = "",
 				hl = "GlobalBase10",
 				left_sep = {
 					str = " ",
@@ -102,7 +105,7 @@ return {
 			},
 			change = {
 				provider = "git_diff_changed",
-				icon = icons.git.LineModified,
+				icon = "",
 				hl = "GlobalBase14",
 
 				left_sep = {
@@ -116,7 +119,7 @@ return {
 			},
 			remove = {
 				provider = "git_diff_removed",
-				icon = icons.git.LineRemoved,
+				icon = "",
 				hl = "GlobalBase9",
 				left_sep = {
 					str = " ",
@@ -157,7 +160,7 @@ return {
 				provider = {
 					name = "file_type",
 					opts = {
-						filetype_icon = true,
+						filetype_icon = false,
 						colored_icon = false,
 					},
 				},

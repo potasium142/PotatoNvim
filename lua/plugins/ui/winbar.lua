@@ -15,13 +15,13 @@ return {
 	end,
 	config = function(_, opts)
 		local navic = require("nvim-navic")
-		local icons = require("const.icons")
+
 		navic.setup(opts)
 
 		local lsp = {
 			provider = {
 				provider = "lsp_client_names",
-				icon = " ",
+				icon = "",
 				hl = "GlobalBase13I",
 				left_sep = {
 					str = " ",
@@ -34,7 +34,7 @@ return {
 			},
 			errors = {
 				provider = "diagnostic_errors",
-				icon = icons.diagnostics.Error,
+				icon = "",
 				hl = "GlobalBase9",
 				left_sep = {
 					str = " ",
@@ -47,7 +47,7 @@ return {
 			},
 			warns = {
 				provider = "diagnostic_warnings",
-				icon = icons.diagnostics.Warn,
+				icon = "",
 				hl = "GlobalBase11",
 				left_sep = {
 					str = " ",
@@ -60,7 +60,7 @@ return {
 			},
 			hints = {
 				provider = "diagnostic_hints",
-				icon = icons.diagnostics.Hint,
+				icon = "",
 				hl = "GlobalBase14",
 				left_sep = {
 					str = " ",
@@ -73,7 +73,7 @@ return {
 			},
 			info = {
 				provider = "diagnostic_info",
-				icon = icons.diagnostics.Info,
+				icon = "",
 				hl = "GlobalBase10",
 				left_sep = {
 					str = " ",
