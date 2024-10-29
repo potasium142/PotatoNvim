@@ -22,64 +22,86 @@ return {
 			provider = {
 				provider = "lsp_client_names",
 				icon = " ",
-				hl = {
-					fg = "bg",
-					bg = "purple",
+				hl = "GlobalBase13I",
+				left_sep = {
+					str = " ",
+					hl = "GlobalBase13I",
 				},
-				left_sep = "block",
-				right_sep = "block",
+				right_sep = {
+					str = " ",
+					hl = "GlobalBase13I",
+				},
 			},
 			errors = {
 				provider = "diagnostic_errors",
 				icon = icons.diagnostics.Error,
-				hl = {
-					fg = "red",
-					bg = "bg",
+				hl = "GlobalBase9",
+				left_sep = {
+					str = " ",
+					hl = "GlobalBase9",
 				},
-				left_sep = "block",
-				right_sep = "block",
+				right_sep = {
+					str = " ",
+					hl = "GlobalBase9",
+				},
 			},
 			warns = {
 				provider = "diagnostic_warnings",
 				icon = icons.diagnostics.Warn,
-				hl = {
-					fg = "yellow",
-					bg = "bg",
+				hl = "GlobalBase11",
+				left_sep = {
+					str = " ",
+					hl = "GlobalBase11",
 				},
-				left_sep = "block",
-				right_sep = "block",
+				right_sep = {
+					str = " ",
+					hl = "GlobalBase11",
+				},
 			},
 			hints = {
 				provider = "diagnostic_hints",
 				icon = icons.diagnostics.Hint,
-				hl = {
-					fg = "blue",
-					bg = "bg",
+				hl = "GlobalBase14",
+				left_sep = {
+					str = " ",
+					hl = "GlobalBase14",
 				},
-				left_sep = "block",
-				right_sep = "block",
+				right_sep = {
+					str = " ",
+					hl = "GlobalBase14",
+				},
 			},
 			info = {
 				provider = "diagnostic_info",
 				icon = icons.diagnostics.Info,
-				hl = {
-					fg = "green",
-					bg = "bg",
+				hl = "GlobalBase10",
+				left_sep = {
+					str = " ",
+					hl = "GlobalBase10",
 				},
-				left_sep = "block",
-				right_sep = "block",
+				right_sep = {
+					str = " ",
+					hl = "GlobalBase10",
+				},
 			},
 		}
 
 		local navic_winbar = {
 			provider = function()
-				return "  " .. navic.get_location()
+				return " " .. navic.get_location()
 			end,
 			enabled = function()
 				return navic.is_available()
 			end,
-			left_sep = "block",
-			right_sep = "block",
+			hl = "GlobalBase16",
+			left_sep = {
+				str = " ",
+				hl = "GlobalBase0",
+			},
+			right_sep = {
+				str = " ",
+				hl = "GlobalBase0",
+			},
 		}
 
 		local winbar_components = {

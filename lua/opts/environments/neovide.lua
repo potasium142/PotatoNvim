@@ -7,6 +7,7 @@ M.opt = {
 	guifont = CONST.FONTS .. ":h13:#h-none",
 	winblend = 40,
 	pumblend = 40,
+	termguicolors = false,
 }
 
 M.g = {

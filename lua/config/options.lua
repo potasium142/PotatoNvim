@@ -2,7 +2,6 @@ local CONST = require("const.sys_var")
 local gtils = require("gtils")
 
 local M = {}
-
 M.opt = {
 	guifont = CONST.FONTS,
 	tabstop = 4,
@@ -12,7 +11,7 @@ M.opt = {
 	cursorline = true,
 	showmatch = true,
 	autoread = true,
-	termguicolors = true,
+	termguicolors = false,
 	updatetime = 100,
 	splitbelow = true,
 	wildmode = "longest,full",

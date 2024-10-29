@@ -27,9 +27,8 @@ M.plugins = {
 
 			local configuration = vim.fn["sonokai#get_configuration"]()
 			local p = vim.fn["sonokai#get_palette"](configuration.style, configuration.colors_override)
-
 			local palette = {
-				p.black[1], --#1c1e1f 1
+				p.bg0[1], --#1c1e1f 1
 				p.red[1], --#f76c7c 2
 				p.green[1], --#9cd57b 3
 				p.yellow[1], --#e3d367 4
@@ -46,24 +45,17 @@ M.plugins = {
 				p.orange[1], --#f3a96a 15
 				p.fg[1], --#e1e2e3 16
 			}
-			gtils.set_group_hl_non_label("p_", palette)
-
-			local dim_1 = tonumber(string.sub(p.bg_dim[1], 2), 16)
-			local fg = tonumber(string.sub(p.fg[1], 2), 16)
-
-			local grey24 = gtils.gradent_rgb(dim_1, fg, 24)
-
-			gtils.set_group_hl_non_label("g_", grey24)
-			local hls = {
-				RainbowDelimiterRed = { fg = p.red[1] },
-				RainbowDelimiterYellow = { fg = p.yellow[1] },
-				RainbowDelimiterBlue = { fg = p.blue[1] },
-				RainbowDelimiterOrange = { fg = p.orange[1] },
-				RainbowDelimiterGreen = { fg = p.green[1] },
-				RainbowDelimiterViolet = { fg = p.purple[1] },
-				RainbowDelimiterCyan = { fg = p.fg[1] },
-			}
-			gtils.set_group_hl("", hls)
+			require("opts.colorscheme.utils").init_global_colors(palette)
+			-- local hls = {
+			-- 	RainbowDelimiterRed = { fg = p.red[1] },
+			-- 	RainbowDelimiterYellow = { fg = p.yellow[1] },
+			-- 	RainbowDelimiterBlue = { fg = p.blue[1] },
+			-- 	RainbowDelimiterOrange = { fg = p.orange[1] },
+			-- 	RainbowDelimiterGreen = { fg = p.green[1] },
+			-- 	RainbowDelimiterViolet = { fg = p.purple[1] },
+			-- 	RainbowDelimiterCyan = { fg = p.fg[1] },
+			-- }
+			-- gtils.set_group_hl("", hls)
 		end,
 	},
 }

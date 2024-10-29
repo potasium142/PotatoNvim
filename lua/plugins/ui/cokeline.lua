@@ -1,4 +1,3 @@
-local get_hl = require("gtils").get_hl
 return {
 	"willothy/nvim-cokeline",
 	dependencies = {
@@ -8,14 +7,6 @@ return {
 	lazy = false,
 	opts = function()
 		local is_picking_focus = require("cokeline.mappings").is_picking_focus
-
-		local p = {
-			bg = get_hl("p_1", "sp"),
-			fg = get_hl("p_16", "sp"),
-			green = get_hl("p_3", "sp"),
-			dim4 = get_hl("g_4", "sp"),
-			dim5 = get_hl("g_5", "sp"),
-		}
 
 		local icons = require("const.icons")
 		return {
@@ -33,21 +24,15 @@ return {
 			rendering = {
 				max_buffer_width = 40,
 			},
-			default_hl = {
-				bg = function(buffer)
-					return buffer.is_focused and p.dim4 or p.bg
-				end,
-			},
+			default_hl = "GlobalBase0",
 			components = {
 				{
 					text = " ",
-					bg = p.bg,
 				},
 				{
 					text = function(buffer)
 						local diagnostic = function()
 							local diag = buffer.diagnostics
-
 							if diag.errors ~= 0 then
 								return icons.diagnostics.Error
 							end
@@ -78,11 +63,8 @@ return {
 						local icon = state() or diagnostic() or buffer.devicon.icon
 						return " " .. icon .. " "
 					end,
-					fg = function(buffer)
-						return buffer.is_focused and p.bg or p.fg
-					end,
-					bg = function(buffer)
-						return buffer.is_focused and (buffer.is_readonly and p.red or p.green) or p.dim4
+					highlight = function(buffer)
+						return buffer.is_focused and "GlobalBase10I" or "GlobalBase14I"
 					end,
 					bold = true,
 				},
@@ -90,25 +72,16 @@ return {
 					text = function()
 						return is_picking_focus() and "░ " or " "
 					end,
-					bg = function(buffer)
-						return buffer.is_focused and p.dim4 or p.dim5
+					highlight = function(buffer)
+						return buffer.is_focused and "GlobalBase15" or "GlobalBase0"
 					end,
 				},
 				{
 					text = function(buffer)
-						return buffer.filename
+						return buffer.filename .. " "
 					end,
-					bold = function(buffer)
-						return buffer.is_focused
-					end,
-					bg = function(buffer)
-						return buffer.is_focused and p.dim4 or p.dim5
-					end,
-				},
-				{
-					text = " ",
-					bg = function(buffer)
-						return buffer.is_focused and p.dim4 or p.dim5
+					highlight = function(buffer)
+						return buffer.is_focused and "GlobalBase10" or "GlobalBase14"
 					end,
 				},
 			},

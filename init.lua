@@ -9,19 +9,15 @@ if not vim.loop.fs_stat(lazypath) then
 		lazypath,
 	})
 end
-
 vim.opt.runtimepath:prepend(lazypath)
+
 AutoCMD = vim.api.nvim_create_autocmd
 AutoGroup = vim.api.nvim_create_augroup
-
 local lg_plugins = require("loader.language").plugins
-local colorscheme = require("opts.colorscheme").plugins
-
+local colorscheme = require("opts.colorscheme.colorscheme").plugins
 require("config.options")
 require("config.mapping")
 require("scripts.tabout")
-require("config.fallback_color")
-
 require("lazy").setup({
 	defaults = {
 		lazy = false,

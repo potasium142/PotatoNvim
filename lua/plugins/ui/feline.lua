@@ -1,4 +1,3 @@
-local get_hl = require("gtils").get_hl
 return {
 	"freddiehaddad/feline.nvim",
 	opts = {},
@@ -11,94 +10,122 @@ return {
 			provider = " ",
 		}
 
-		local p = {
-			bg = get_hl("g_1", "sp"),
-			bg_dim = get_hl("g_2", "sp"),
-			red = get_hl("p_10", "sp"),
-			green = get_hl("p_11", "sp"),
-			yellow = get_hl("p_12", "sp"),
-			blue = get_hl("p_13", "sp"),
-			purple = get_hl("p_14", "sp"),
-			aqua = get_hl("p_15", "sp"),
-			fg = get_hl("p_16", "sp"),
+		local mode_hl_i = {
+			NORMAL = "GlobalBase2I",
+			OP = "GlobalBase2I",
+			COMMAND = "GlobalBase2I",
+			SHELL = "GlobalBase2I",
+			TERM = "GlobalBase2I",
+			NONE = "GlobalBase12I",
+			INSERT = "GlobalBase1I",
+			VISUAL = "GlobalBase3I",
+			BLOCK = "GlobalBase3I",
+			LINES = "GlobalBase3I",
 		}
 
-		local vim_mode = {
-			mode_name = {
+		local mode_hl = {
+			NORMAL = "GlobalBase2",
+			OP = "GlobalBase2",
+			COMMAND = "GlobalBase2",
+			SHELL = "GlobalBase2",
+			TERM = "GlobalBase2",
+			NONE = "GlobalBase12",
+			INSERT = "GlobalBase1",
+			VISUAL = "GlobalBase3",
+			BLOCK = "GlobalBase3",
+			LINES = "GlobalBase3",
+		}
+
+		local neovim_icon = function()
+			local vim_mode_hl = function()
+				local hl = require("feline.providers.vi_mode").get_vim_mode()
+				return mode_hl_i[hl]
+			end
+			return {
+				provider = "   ",
+				hl = vim_mode_hl,
+			}
+		end
+
+		local mode_name = function()
+			local vim_mode_hl = function()
+				local hl = require("feline.providers.vi_mode").get_vim_mode()
+				return mode_hl[hl]
+			end
+
+			return {
 				provider = {
 					name = "vi_mode",
 					opts = {
 						show_mode_name = true,
 					},
 				},
+				hl = vim_mode_hl,
 				icon = "",
-				hl = function()
-					return {
-						fg = require("feline.providers.vi_mode").get_mode_color(),
-						bg = "bg_dim",
-						style = "bold",
-						name = "NeovimModeHLColor",
-					}
-				end,
-				left_sep = "block",
-				right_sep = "block",
-			},
-			neovim_icon = {
-				provider = "   ",
-				hl = function()
-					return {
-						fg = "bg_dim",
-						bg = require("feline.providers.vi_mode").get_mode_color(),
-						style = "bold",
-						name = "NeovimModeHLColor",
-					}
-				end,
-			},
-		}
+				left_sep = {
+					str = " ",
+					hl = vim_mode_hl,
+				},
+				right_sep = {
+					str = " ",
+					hl = vim_mode_hl,
+				},
+			}
+		end
 
 		local git = {
 			branch = {
 				provider = "git_branch",
 				icon = icons.git.Branch .. " ",
-				hl = {
-					fg = "bg_dim",
-					bg = "yellow",
-					style = "bold",
+				hl = "GlobalBase3I",
+				left_sep = {
+					str = " ",
+					hl = "GlobalBase3I",
 				},
-				left_sep = "block",
-				right_sep = "block",
+				right_sep = {
+					str = " ",
+					hl = "GlobalBase3I",
+				},
 			},
 			add = {
 				provider = "git_diff_added",
 				icon = icons.git.LineAdded,
-				hl = {
-					fg = "green",
-					bg = "bg_dim",
+				hl = "GlobalBase10",
+				left_sep = {
+					str = " ",
+					hl = "GlobalBase10",
 				},
-				left_sep = "block",
-				right_sep = "block",
+				right_sep = {
+					str = " ",
+					hl = "GlobalBase10",
+				},
 			},
 			change = {
 				provider = "git_diff_changed",
 				icon = icons.git.LineModified,
-				hl = {
-					fg = "aqua",
-					bg = "bg_dim",
-				},
+				hl = "GlobalBase14",
 
-				left_sep = "block",
-				right_sep = "block",
+				left_sep = {
+					str = " ",
+					hl = "GlobalBase14",
+				},
+				right_sep = {
+					str = " ",
+					hl = "GlobalBase14",
+				},
 			},
 			remove = {
 				provider = "git_diff_removed",
 				icon = icons.git.LineRemoved,
-				hl = {
-					fg = "red",
-					bg = "bg_dim",
+				hl = "GlobalBase9",
+				left_sep = {
+					str = " ",
+					hl = "GlobalBase9",
 				},
-
-				left_sep = "block",
-				right_sep = "block",
+				right_sep = {
+					str = " ",
+					hl = "GlobalBase9",
+				},
 			},
 		}
 
@@ -109,19 +136,20 @@ return {
 					format = "  {line}:{col} ",
 				},
 			},
-			hl = {
-				fg = "aqua",
-				bg = "bg_dim",
-			},
+			hl = "GlobalBase14",
 		}
 		local line_percentage = {
 			provider = "line_percentage",
-			hl = {
-				fg = "bg_dim",
-				bg = "aqua",
+			hl = "GlobalBase14I",
+
+			left_sep = {
+				str = " ",
+				hl = "GlobalBase14I",
 			},
-			left_sep = "block",
-			right_sep = "block",
+			right_sep = {
+				str = " ",
+				hl = "GlobalBase14I",
+			},
 		}
 
 		local file = {
@@ -133,49 +161,60 @@ return {
 						colored_icon = false,
 					},
 				},
-				hl = {
-					fg = "bg_dim",
-					bg = "blue",
-					style = "bold",
+				hl = "GlobalBase14I",
+				left_sep = {
+					str = " ",
+					hl = "GlobalBase14I",
 				},
-				left_sep = "block",
-				right_sep = "block",
+				right_sep = {
+					str = " ",
+					hl = "GlobalBase14I",
+				},
 			},
 			name = {
 				provider = function()
 					return vim.fn.expand("%:t:r")
 				end,
-				hl = {
-					bg = "bg_dim",
-					fg = "blue",
+				hl = "GlobalBase14",
+				left_sep = {
+					str = " ",
+					hl = "GlobalBase14",
 				},
-				left_sep = "block",
-				right_sep = "block",
+				right_sep = {
+					str = " ",
+					hl = "GlobalBase14",
+				},
 			},
 			encoding = {
 				provider = "file_encoding",
-				hl = {
-					fg = "red",
-					bg = "bg_dim",
+				hl = "GlobalBase9",
+				left_sep = {
+					str = " ",
+					hl = "GlobalBase9",
 				},
-				left_sep = "block",
-				right_sep = "block",
+				right_sep = {
+					str = " ",
+					hl = "GlobalBase9",
+				},
 			},
 			format = {
 				provider = "file_format",
-				hl = {
-					bg = "red",
-					fg = "bg_dim",
+				hl = "GlobalBase9I",
+				left_sep = {
+					str = " ",
+					hl = "GlobalBase9I",
 				},
-				left_sep = "block",
-				right_sep = "block",
+				right_sep = {
+					str = " ",
+					hl = "GlobalBase9I",
+				},
 			},
 		}
 
 		local left = {
 			seperator,
-			vim_mode.neovim_icon,
-			vim_mode.mode_name,
+			neovim_icon(),
+			mode_name(),
 			seperator,
 			git.branch,
 			git.add,
@@ -213,7 +252,6 @@ return {
 		}
 
 		feline.setup({
-			theme = p,
 			components = components,
 			force_inactive = {
 				buftypes = {

@@ -26,7 +26,7 @@ return {
 
 		-- Set menu
 		dashboard.section.buttons.val = {
-			dashboard.button("p", "  > Quick tempfile", ":e /tmp/nvim<CR>"),
+			dashboard.button("t", "  > Quick tempfile", ":e /tmp/nvim<CR>"),
 			dashboard.button("e", "  > New/Edit file", "", {
 				callback = function()
 					vim.ui.input({

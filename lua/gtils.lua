@@ -32,8 +32,23 @@ end
 
 M.set_group_hl_non_label = function(prefix, hls)
 	for index, color in ipairs(hls) do
-		color = { sp = color }
-		vim.api.nvim_set_hl(0, prefix .. index, color)
+		color = {
+			sp = color,
+			fg = color,
+			bg = color,
+		}
+		vim.api.nvim_set_hl(0, prefix .. (index - 1), color)
+	end
+end
+
+M.set_group_hl_non_label_cterm = function(prefix, hls)
+	for index, color in ipairs(hls) do
+		color = {
+			cterm = color,
+			ctermfg = color,
+			ctermbg = color,
+		}
+		vim.api.nvim_set_hl(0, prefix .. (index - 1), color)
 	end
 end
 
