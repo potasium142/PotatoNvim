@@ -9,7 +9,7 @@ return {
 	event = { "LspAttach" },
 	opts = function()
 		return {
-			icons = require("const.icons").kinds,
+			icons = require("const.icons_text").kinds,
 			highlight = true,
 		}
 	end,

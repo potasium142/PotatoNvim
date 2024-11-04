@@ -1,6 +1,7 @@
-local icons = require("const.icons")
+local icons = require("const.icons_text")
 return {
 	{
+
 		"hrsh7th/nvim-cmp",
 		event = { "LspAttach" },
 		dependencies = {
@@ -56,7 +57,7 @@ return {
 				formatting = {
 					fields = { "kind", "abbr" },
 					format = function(_, vim_item)
-						vim_item.kind = string.format(" %s ", icons.kinds[vim_item.kind])
+						vim_item.kind = string.format("%s", icons.kinds[vim_item.kind])
 						return vim_item
 					end,
 				},
@@ -74,8 +75,8 @@ return {
 				},
 				window = {
 					completion = {
-						winhighlight = "Normal:Pmenu,FloatBorder:None,Search:None",
-						col_offset = -4,
+						-- winhighlight = "Normal:Pmenu,FloatBorder:None,Search:None",
+						-- col_offset = -7,
 						side_padding = 0,
 						border = { "", "", "┃", "┃", "┃", "", "", "" },
 					},

@@ -16,8 +16,8 @@ return {
 			local ver = vim.version()
 			local stats = require("lazy").stats()
 			local ms = math.floor(stats.startuptime)
-			local startup = "󱐋 " .. stats.loaded .. "/" .. stats.count .. " loaded in " .. ms .. "ms"
-			return startup .. "     v" .. ver.major .. "." .. ver.minor .. "." .. ver.patch
+			local startup = stats.loaded .. "/" .. stats.count .. " loaded in " .. ms .. "ms"
+			return startup .. "     v" .. ver.major .. "." .. ver.minor .. "." .. ver.patch
 		end
 
 		-- Set header
@@ -26,8 +26,8 @@ return {
 
 		-- Set menu
 		dashboard.section.buttons.val = {
-			dashboard.button("t", "  > Quick tempfile", ":e /tmp/nvim<CR>"),
-			dashboard.button("e", "  > New/Edit file", "", {
+			dashboard.button("t", "Quick tempfile", ":e /tmp/nvim<CR>"),
+			dashboard.button("e", "New/Edit file", "", {
 				callback = function()
 					vim.ui.input({
 						prompt = "File path",
@@ -40,14 +40,14 @@ return {
 					end)
 				end,
 			}),
-			dashboard.button("p", "  > Project", ":Telescope projects<CR>"),
-			dashboard.button("s", "  > Settings", ":e $MYVIMRC | :cd %:p:h <CR>"),
-			dashboard.button("u", "  > Update", "", {
+			dashboard.button("p", "Project", ":Telescope projects<CR>"),
+			dashboard.button("s", "Settings", ":e $MYVIMRC | :cd %:p:h <CR>"),
+			dashboard.button("u", "Update", "", {
 				callback = function()
 					update()
 				end,
 			}),
-			dashboard.button("q", "󰗼  > Quit", ":qa<CR>"),
+			dashboard.button("q", "Quit", ":qa<CR>"),
 		}
 
 		alpha.setup(dashboard.opts)

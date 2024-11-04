@@ -83,7 +83,16 @@ return {
 		"williamboman/mason.nvim",
 		cmd = "Mason",
 		lazy = true,
-		config = true,
+		opts = {
+			ui = {
+				icons = {
+					package_installed = "O",
+					package_pending = "!",
+					package_uninstalled = "X",
+				},
+			},
+		},
+		-- config = true,
 	},
 	{
 		"neovim/nvim-lspconfig",

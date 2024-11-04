@@ -66,7 +66,7 @@ return {
 		version = "4.4.7",
 		priority = 1000,
 		init = function()
-			local signs = require("const.icons").diagnostics
+			local signs = require("const.icons_text").diagnostics
 			for type, icon in pairs(signs) do
 				local hl = "DiagnosticSign" .. type
 				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -78,6 +78,35 @@ return {
 			"MunifTanjim/nui.nvim",
 		},
 		opts = {
+			cmdline = {
+				format = {
+					cmdline = { icon = ">" },
+					search_down = { icon = "\\/" },
+					search_up = { icon = "/\\" },
+					filter = { icon = "$" },
+					lua = { icon = "L" },
+					help = { icon = "?" },
+				},
+			},
+			format = {
+				level = {
+					icons = {
+						error = "X",
+						warn = "W",
+						info = "i",
+					},
+				},
+			},
+			popupmenu = {
+				kind_icons = false,
+			},
+			inc_rename = {
+				cmdline = {
+					format = {
+						IncRename = { icon = "R" },
+					},
+				},
+			},
 			lsp = {
 				override = {
 					["vim.lsp.util.convert_input_to_markdown_lines"] = true,

@@ -8,7 +8,7 @@ return {
 	opts = function()
 		local is_picking_focus = require("cokeline.mappings").is_picking_focus
 
-		local icons = require("const.icons")
+		local icons = require("const.icons_text")
 		return {
 			sidebar = {
 				filetype = { "NvimTree", "neo-tree" },
@@ -28,6 +28,7 @@ return {
 			components = {
 				{
 					text = " ",
+					highlight = "bg",
 				},
 				{
 					text = function(buffer)
@@ -46,22 +47,26 @@ return {
 
 						local state = function()
 							if is_picking_focus() then
-								return buffer.pick_letter
+								return buffer.is_focused and "" or buffer.pick_letter
 							end
 
 							if buffer.is_modified then
-								return icons.buffer.Modified .. " "
+								return icons.buffer.Modified
 							end
 
 							if buffer.is_readonly then
-								return icons.buffer.Readonly .. " "
+								return icons.buffer.Readonly
 							end
 
 							return false
 						end
 
-						local icon = state() or diagnostic() or buffer.devicon.icon
-						return " " .. icon .. " "
+						local focus = function()
+							return buffer.is_focused and "" or " "
+						end
+
+						local icon = state() or diagnostic() or focus()
+						return icon
 					end,
 					highlight = function(buffer)
 						return buffer.is_focused and "GlobalBase10I" or "GlobalBase14I"
@@ -69,19 +74,14 @@ return {
 					bold = true,
 				},
 				{
-					text = function()
-						return is_picking_focus() and "░ " or " "
-					end,
-					highlight = function(buffer)
-						return buffer.is_focused and "GlobalBase15" or "GlobalBase0"
-					end,
-				},
-				{
 					text = function(buffer)
-						return buffer.filename .. " "
+						return " " .. buffer.filename .. " "
 					end,
 					highlight = function(buffer)
-						return buffer.is_focused and "GlobalBase10" or "GlobalBase14"
+						return buffer.is_focused and "GlobalBase10I" or "GlobalBase14"
+					end,
+					bold = function(buffer)
+						return buffer.is_focused
 					end,
 				},
 			},

@@ -3,11 +3,11 @@ return {
 	opts = {},
 	enabled = true,
 	config = function()
-		local icons = require("const.icons")
 		local feline = require("feline")
 
 		local seperator = {
 			provider = " ",
+			hl = "bg",
 		}
 
 		local mode_hl_i = {
@@ -23,7 +23,7 @@ return {
 			LINES = "GlobalBase3I",
 		}
 
-		local mode_hl = {
+		local _mode_hl = {
 			NORMAL = "GlobalBase2",
 			OP = "GlobalBase2",
 			COMMAND = "GlobalBase2",
@@ -36,21 +36,10 @@ return {
 			LINES = "GlobalBase3",
 		}
 
-		local neovim_icon = function()
-			local vim_mode_hl = function()
-				local hl = require("feline.providers.vi_mode").get_vim_mode()
-				return mode_hl_i[hl]
-			end
-			return {
-				provider = "   ",
-				hl = vim_mode_hl,
-			}
-		end
-
 		local mode_name = function()
 			local vim_mode_hl = function()
 				local hl = require("feline.providers.vi_mode").get_vim_mode()
-				return mode_hl[hl]
+				return mode_hl_i[hl]
 			end
 
 			return {
@@ -72,13 +61,17 @@ return {
 				},
 			}
 		end
+		local git_provider = function(type, sign)
+			local gsd = vim.b.gitsigns_status_dict
+			if gsd and gsd[type] > 0 then
+				return sign .. vim.b.gitsigns_status_dict[type]
+			end
+			return ""
+		end
 
-		local git_provider = require("feline.providers.git")
 		local git = {
 			branch = {
-				provider = function()
-					return icons.git.Branch .. " " .. git_provider.git_branch()
-				end,
+				provider = "git_branch",
 				icon = "",
 				hl = "GlobalBase3I",
 				left_sep = {
@@ -91,7 +84,9 @@ return {
 				},
 			},
 			add = {
-				provider = "git_diff_added",
+				provider = function()
+					return git_provider("added", "+")
+				end,
 				icon = "",
 				hl = "GlobalBase10",
 				left_sep = {
@@ -104,7 +99,9 @@ return {
 				},
 			},
 			change = {
-				provider = "git_diff_changed",
+				provider = function()
+					return git_provider("changed", "~")
+				end,
 				icon = "",
 				hl = "GlobalBase14",
 
@@ -118,7 +115,9 @@ return {
 				},
 			},
 			remove = {
-				provider = "git_diff_removed",
+				provider = function()
+					return git_provider("removed", "-")
+				end,
 				icon = "",
 				hl = "GlobalBase9",
 				left_sep = {
@@ -136,7 +135,7 @@ return {
 			provider = {
 				name = "position",
 				opts = {
-					format = "  {line}:{col} ",
+					format = " {line}:{col} ",
 				},
 			},
 			hl = "GlobalBase14",
@@ -216,7 +215,6 @@ return {
 
 		local left = {
 			seperator,
-			neovim_icon(),
 			mode_name(),
 			seperator,
 			git.branch,
