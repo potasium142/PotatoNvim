@@ -67,11 +67,11 @@ local capabilities = {
 
 local default_setup = {
 	capabilities = capabilities,
-	on_attach = function(client, bufnr)
-		if client.server_capabilities["documentSymbolProvider"] then
-			require("nvim-navic").attach(client, bufnr)
-		end
-	end,
+	-- on_attach = function(client, bufnr)
+	-- 	if client.server_capabilities["documentSymbolProvider"] then
+	-- 		require("nvim-navic").attach(client, bufnr)
+	-- 	end
+	-- end,
 	textDocument = {
 		hover = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
 		signatureHelp = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),

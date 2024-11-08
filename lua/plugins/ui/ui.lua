@@ -1,8 +1,8 @@
 return {
-	{ "nvim-tree/nvim-web-devicons" },
+	-- { "nvim-tree/nvim-web-devicons" },
 	{
 		"rcarriga/nvim-notify",
-		enabled = true,
+		enabled = false,
 		opts = function()
 			return {
 				render = "wrapped-compact",
@@ -74,7 +74,7 @@ return {
 		end,
 		dependencies = {
 			"rcarriga/nvim-notify",
-			"nvim-tree/nvim-web-devicons",
+			-- "nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
 		},
 		opts = {

@@ -1,6 +1,6 @@
 return {
 	"SmiteshP/nvim-navic",
-	enabled = true,
+	enabled = false,
 	lazy = true,
 	dependencies = {
 		"neovim/nvim-lspconfig",
@@ -88,7 +88,7 @@ return {
 
 		local navic_winbar = {
 			provider = function()
-				return " " .. navic.get_location()
+				return "||" .. navic.get_location()
 			end,
 			enabled = function()
 				return navic.is_available()

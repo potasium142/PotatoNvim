@@ -38,8 +38,8 @@ M.opt = {
 }
 
 M.g = {
-	loaded_netrwPlugin = 1,
-	loaded_netrw = 1,
+	-- loaded_netrwPlugin = 1,
+	-- loaded_netrw = 1,
 }
 
 gtils.load_opt(M)

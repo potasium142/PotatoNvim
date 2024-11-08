@@ -2,7 +2,7 @@ return {
 	"willothy/nvim-cokeline",
 	dependencies = {
 		"nvim-lua/plenary.nvim", -- Required for v0.4.0+
-		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+		-- "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 	},
 	lazy = false,
 	opts = function()
