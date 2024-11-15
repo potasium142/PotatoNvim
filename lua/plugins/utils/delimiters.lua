@@ -9,6 +9,7 @@ return {
 		-- 	RainbowDelimiterGreen = { fg = p.green[1] },
 		-- 	RainbowDelimiterViolet = { fg = p.purple[1] },
 		-- 	RainbowDelimiterCyan = { fg = p.fg[1] },
+		--
 		set_hl(0, "RainbowDelimiterRed", { link = "GlobalBase9" })
 		set_hl(0, "RainbowDelimiterGreen", { link = "GlobalBase10" })
 		set_hl(0, "RainbowDelimiterYellow", { link = "GlobalBase11" })

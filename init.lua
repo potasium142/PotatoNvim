@@ -18,6 +18,7 @@ local colorscheme = require("opts.colorscheme.colorscheme").plugins
 require("config.options")
 require("config.mapping")
 require("scripts.tabout")
+require("loader.env")
 require("lazy").setup({
 	defaults = {
 		lazy = false,
@@ -41,5 +42,3 @@ require("lazy").setup({
 		},
 	},
 })
-
-require("loader.env")

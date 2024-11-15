@@ -2,11 +2,11 @@ return {
 	-- { "nvim-tree/nvim-web-devicons" },
 	{
 		"rcarriga/nvim-notify",
-		enabled = false,
+		enabled = true,
 		opts = function()
 			return {
-				render = "wrapped-compact",
-				stages = "slide",
+				render = "minimal",
+				stages = "static",
 				timeout = 1000,
 				top_down = true,
 				fps = 5,

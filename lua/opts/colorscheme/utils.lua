@@ -8,7 +8,7 @@ M.init_global_colors = function(colors)
 
 		local color_table = {
 			fg = color,
-			bg = "none",
+			bg = "bg",
 			sp = color,
 			ctermfg = i - 1,
 			ctermbg = "none",

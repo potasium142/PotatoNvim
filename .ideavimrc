@@ -8,6 +8,6 @@ set incsearch
 set highlightedyank
 set surround
 set commentary
-
+nmap <silent> <Space>w <Action>(SaveAll)
 nmap <silent> <Space>ca <Action>(ShowIndentionActions)
 nmap <silent> <Space>rn <Action>(RenameElement)
