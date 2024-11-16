@@ -63,6 +63,12 @@ return {
 		end
 		local git_provider = function(type, sign)
 			local gsd = vim.b.gitsigns_status_dict
+			if gsd == nil then
+				return ""
+			end
+			if gsd[type] == nil then
+				return ""
+			end
 			if gsd and gsd[type] > 0 then
 				return sign .. vim.b.gitsigns_status_dict[type]
 			end
