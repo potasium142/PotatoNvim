@@ -86,9 +86,9 @@ return {
 		opts = {
 			ui = {
 				icons = {
-					package_installed = "O",
+					package_installed = "+",
 					package_pending = "!",
-					package_uninstalled = "X",
+					package_uninstalled = "-",
 				},
 			},
 		},

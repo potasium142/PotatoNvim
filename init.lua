@@ -1,4 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
@@ -16,6 +17,7 @@ AutoGroup = vim.api.nvim_create_augroup
 
 local lg_plugins = require("loader.language").plugins
 local colorscheme = require("opts.colorscheme.colorscheme").plugins
+local icon = require("const.icons_text")
 
 require("config.options")
 require("config.mapping")
@@ -24,6 +26,9 @@ require("loader.env")
 require("lazy").setup({
 	defaults = {
 		lazy = false,
+	},
+	ui = {
+		icons = icon.lazy,
 	},
 	checker = {
 		enabled = true,

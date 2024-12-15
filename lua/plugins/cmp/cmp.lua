@@ -57,7 +57,7 @@ return {
 				formatting = {
 					fields = { "kind", "abbr" },
 					format = function(_, vim_item)
-						vim_item.kind = string.format("%s", icons.kinds[vim_item.kind])
+						vim_item.kind = string.format("[%s]", icons.kinds[vim_item.kind])
 						return vim_item
 					end,
 				},

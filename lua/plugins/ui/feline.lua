@@ -4,7 +4,105 @@ return {
 	enabled = true,
 	config = function()
 		local feline = require("feline")
+		local diagnostic = vim.diagnostic
 
+		local get_diag_count = function(severity, sign)
+			local opts = severity and { severity = severity }
+
+			local count = diagnostic.count(0, opts)[severity]
+
+			if count == nil then
+				return ""
+			end
+
+			if count > 0 then
+				return count .. sign
+			end
+
+			return ""
+		end
+
+		local lsp = {
+			provider = {
+				provider = function()
+					local lsp_client = ""
+					for _, client in pairs(vim.lsp.get_clients({ bufnr = 0 })) do
+						lsp_client = client.name
+					end
+					return lsp_client
+				end,
+				icon = "",
+				hl = "GlobalBase13I",
+				left_sep = {
+					str = " ",
+					hl = "GlobalBase13I",
+				},
+				right_sep = {
+					str = " ",
+					hl = "GlobalBase13I",
+				},
+			},
+			errors = {
+				provider = function()
+					return get_diag_count(vim.diagnostic.severity.ERROR, "X")
+				end,
+				icon = "",
+				hl = "GlobalBase9",
+				left_sep = {
+					str = " ",
+					hl = "GlobalBase9",
+				},
+				right_sep = {
+					str = " ",
+					hl = "GlobalBase9",
+				},
+			},
+			warns = {
+				provider = function()
+					return get_diag_count(vim.diagnostic.severity.WARN, "W")
+				end,
+				icon = "",
+				hl = "GlobalBase11",
+				left_sep = {
+					str = " ",
+					hl = "GlobalBase11",
+				},
+				right_sep = {
+					str = " ",
+					hl = "GlobalBase11",
+				},
+			},
+			hints = {
+				provider = function()
+					return get_diag_count(vim.diagnostic.severity.HINT, "!")
+				end,
+				icon = "",
+				hl = "GlobalBase14",
+				left_sep = {
+					str = " ",
+					hl = "GlobalBase14",
+				},
+				right_sep = {
+					str = " ",
+					hl = "GlobalBase14",
+				},
+			},
+			info = {
+				provider = function()
+					return get_diag_count(vim.diagnostic.severity.INFO, "?")
+				end,
+				icon = "",
+				hl = "GlobalBase10",
+				left_sep = {
+					str = " ",
+					hl = "GlobalBase10",
+				},
+				right_sep = {
+					str = " ",
+					hl = "GlobalBase10",
+				},
+			},
+		}
 		local seperator = {
 			provider = " ",
 			hl = "bg",
@@ -234,6 +332,12 @@ return {
 		}
 		local middle = {}
 		local right = {
+			seperator,
+			lsp.errors,
+			lsp.warns,
+			lsp.hints,
+			lsp.info,
+			lsp.provider,
 			seperator,
 			file.encoding,
 			file.format,
