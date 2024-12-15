@@ -30,66 +30,32 @@ return {
 					highlight = "bg",
 				},
 				{
-					text = "[",
-					highlight = "bg",
-				},
-				{
 					text = function(buffer)
-						local diagnostic = function()
-							local diag = buffer.diagnostics
-							if diag.errors ~= 0 then
-								return icons.diag.Error
-							end
-
-							if diag.warnings ~= 0 then
-								return icons.diag.Warn
-							end
-
-							return false
+						if is_picking_focus() then
+							return buffer.is_focused and "|" or buffer.pick_letter
 						end
 
-						local state = function()
-							if is_picking_focus() then
-								return buffer.is_focused and "|" or buffer.pick_letter
-							end
-
-							if buffer.is_modified then
-								return icons.buffer.Modified
-							end
-
-							if buffer.is_readonly then
-								return icons.buffer.Readonly
-							end
-
-							return false
+						if buffer.is_modified then
+							return icons.buffer.Modified
 						end
 
-						local focus = function()
-							return buffer.is_focused and "|" or " "
+						if buffer.is_readonly then
+							return icons.buffer.Readonly
 						end
 
-						local icon = state() or diagnostic() or focus()
-						return icon
+						return " "
 					end,
 					highlight = function(buffer)
-						return buffer.is_focused and "GlobalBase10I" or "GlobalBase14I"
+						return buffer.is_focused and "bg" or is_picking_focus() and "GlobalBase14I" or "GlobalBase14"
 					end,
-					bold = true,
 				},
 				{
 					text = function(buffer)
 						return " " .. buffer.filename .. " "
 					end,
 					highlight = function(buffer)
-						return buffer.is_focused and "GlobalBase10I" or "GlobalBase14"
+						return buffer.is_focused and "GlobalBase10I" or "GlobalBase14I"
 					end,
-					bold = function(buffer)
-						return buffer.is_focused
-					end,
-				},
-				{
-					text = "]",
-					highlight = "bg",
 				},
 			},
 		}
