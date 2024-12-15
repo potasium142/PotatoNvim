@@ -28,7 +28,7 @@ return {
 				folder_closed = "-",
 				folder_open = "+",
 				folder_empty = "|",
-				provider = function(icon, node, state)
+				provider = function(icon, _, _)
 					icon.text = icon.text
 					icon.highlight = icon.highlight
 				end,

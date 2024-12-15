@@ -1,3 +1,4 @@
+local icon = require("const.icons_text")
 return {
 	"freddiehaddad/feline.nvim",
 	opts = {},
@@ -44,7 +45,7 @@ return {
 			},
 			errors = {
 				provider = function()
-					return get_diag_count(vim.diagnostic.severity.ERROR, "X")
+					return get_diag_count(vim.diagnostic.severity.ERROR, icon.diag.Error)
 				end,
 				icon = "",
 				hl = "GlobalBase9",
@@ -59,7 +60,7 @@ return {
 			},
 			warns = {
 				provider = function()
-					return get_diag_count(vim.diagnostic.severity.WARN, "W")
+					return get_diag_count(vim.diagnostic.severity.WARN, icon.diag.Warn)
 				end,
 				icon = "",
 				hl = "GlobalBase11",
@@ -74,7 +75,7 @@ return {
 			},
 			hints = {
 				provider = function()
-					return get_diag_count(vim.diagnostic.severity.HINT, "!")
+					return get_diag_count(vim.diagnostic.severity.HINT, icon.diag.Hint)
 				end,
 				icon = "",
 				hl = "GlobalBase14",
@@ -89,7 +90,7 @@ return {
 			},
 			info = {
 				provider = function()
-					return get_diag_count(vim.diagnostic.severity.INFO, "?")
+					return get_diag_count(vim.diagnostic.severity.INFO, icon.diag.Info)
 				end,
 				icon = "",
 				hl = "GlobalBase10",
@@ -119,19 +120,6 @@ return {
 			VISUAL = "GlobalBase3I",
 			BLOCK = "GlobalBase3I",
 			LINES = "GlobalBase3I",
-		}
-
-		local _mode_hl = {
-			NORMAL = "GlobalBase2",
-			OP = "GlobalBase2",
-			COMMAND = "GlobalBase2",
-			SHELL = "GlobalBase2",
-			TERM = "GlobalBase2",
-			NONE = "GlobalBase12",
-			INSERT = "GlobalBase1",
-			VISUAL = "GlobalBase3",
-			BLOCK = "GlobalBase3",
-			LINES = "GlobalBase3",
 		}
 
 		local mode_name = function()

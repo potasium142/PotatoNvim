@@ -11,7 +11,7 @@ return {
 			},
 		}
 	end,
-	name = 'project_nvim',
+	name = "project_nvim",
 	cmd = {
 		"Telescope projects",
 	},

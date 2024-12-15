@@ -1,8 +1,7 @@
 return {
 	"willothy/nvim-cokeline",
 	dependencies = {
-		"nvim-lua/plenary.nvim", -- Required for v0.4.0+
-		-- "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+		"nvim-lua/plenary.nvim",
 	},
 	lazy = false,
 	opts = function()
@@ -31,15 +30,19 @@ return {
 					highlight = "bg",
 				},
 				{
+					text = "[",
+					highlight = "bg",
+				},
+				{
 					text = function(buffer)
 						local diagnostic = function()
 							local diag = buffer.diagnostics
 							if diag.errors ~= 0 then
-								return icons.diagnostics.Error
+								return icons.diag.Error
 							end
 
 							if diag.warnings ~= 0 then
-								return icons.diagnostics.Warn
+								return icons.diag.Warn
 							end
 
 							return false
@@ -47,7 +50,7 @@ return {
 
 						local state = function()
 							if is_picking_focus() then
-								return buffer.is_focused and "" or buffer.pick_letter
+								return buffer.is_focused and "|" or buffer.pick_letter
 							end
 
 							if buffer.is_modified then
@@ -62,7 +65,7 @@ return {
 						end
 
 						local focus = function()
-							return buffer.is_focused and "" or " "
+							return buffer.is_focused and "|" or " "
 						end
 
 						local icon = state() or diagnostic() or focus()
@@ -83,6 +86,10 @@ return {
 					bold = function(buffer)
 						return buffer.is_focused
 					end,
+				},
+				{
+					text = "]",
+					highlight = "bg",
 				},
 			},
 		}

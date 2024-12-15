@@ -7,7 +7,6 @@ return {
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"FelipeLema/cmp-async-path",
-			-- "nvim-tree/nvim-web-devicons",
 			"windwp/nvim-autopairs",
 			"neovim/nvim-lspconfig",
 		},
@@ -75,9 +74,6 @@ return {
 				},
 				window = {
 					completion = {
-						-- winhighlight = "Normal:Pmenu,FloatBorder:None,Search:None",
-						-- col_offset = -7,
-						-- side_padding = 0,
 						border = { "", "", "┃", "┃", "┃", "", "", "" },
 					},
 

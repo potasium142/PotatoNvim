@@ -30,8 +30,8 @@ M.opt = {
 	foldlevelstart = 69,
 	laststatus = 3,
 	listchars = {
-		tab = "┃ ",
-		multispace = "┇   ",
+		tab = "│ ",
+		multispace = "║   ",
 	},
 	list = true,
 	showmode = false,

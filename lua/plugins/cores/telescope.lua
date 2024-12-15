@@ -1,4 +1,4 @@
-local border = { "━", "┃", "━", "┃", "┏", "┓", "┛", "┗" }
+local border = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
 return {
 	{
 		"nvim-telescope/telescope.nvim",

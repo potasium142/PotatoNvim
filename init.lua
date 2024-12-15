@@ -10,6 +10,7 @@ if not vim.loop.fs_stat(lazypath) then
 		lazypath,
 	})
 end
+
 vim.opt.runtimepath:prepend(lazypath)
 
 AutoCMD = vim.api.nvim_create_autocmd
