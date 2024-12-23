@@ -346,7 +346,7 @@ return {
 					file.type,
 				},
 				{},
-				{},
+				{ seperator },
 			},
 		}
 
