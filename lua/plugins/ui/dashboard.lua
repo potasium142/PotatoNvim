@@ -26,7 +26,6 @@ return {
 
 		-- Set menu
 		dashboard.section.buttons.val = {
-			dashboard.button("t", "Quick tempfile", ":e /tmp/nvim<CR>"),
 			dashboard.button("e", "New/Edit file", "", {
 				callback = function()
 					vim.ui.input({
@@ -34,13 +33,14 @@ return {
 						default = nil,
 						completion = "file",
 					}, function(f)
-						if f ~= nil then
+						if #f == 0 then
+							vim.cmd.edit("/tmp/nvim_tmp")
+						elseif f ~= nil then
 							vim.cmd.edit(f)
 						end
 					end)
 				end,
 			}),
-			dashboard.button("p", "Project", ":Telescope projects<CR>"),
 			dashboard.button("s", "Settings", ":e $MYVIMRC | :cd %:p:h <CR>"),
 			dashboard.button("u", "Update", "", {
 				callback = function()

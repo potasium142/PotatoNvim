@@ -1,6 +1,7 @@
 return {
 	"ahmedkhalf/project.nvim",
 	lazy = false,
+	enabled = false,
 	opts = function()
 		return {
 			sync_root_with_cwd = true,

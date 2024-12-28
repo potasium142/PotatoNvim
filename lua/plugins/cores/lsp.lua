@@ -165,15 +165,4 @@ return {
 			}
 		end,
 	},
-	{
-		"antosha417/nvim-lsp-file-operations",
-		enabled = false,
-		event = { "LspAttach" },
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-neo-tree/neo-tree.nvim",
-		},
-		name = "lsp-file-operations",
-		config = true,
-	},
 }
