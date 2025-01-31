@@ -18,8 +18,8 @@ M.plugins = {
 					gruvbox_material_diagnostic_line_highlight = true,
 					gruvbox_material_diagnostic_virtual_text = "colored",
 					gruvbox_material_inlay_hints_background = "dimmed",
-					gruvbox_material_background = "hard",
-					gruvbox_material_foreground = "mix",
+					gruvbox_material_background = "medium",
+					gruvbox_material_foreground = "material",
 				},
 				o = {
 					background = "light",

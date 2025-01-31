@@ -33,10 +33,8 @@ for _, l in pairs(lang_list) do
 	for _, plug in pairs(cfg.plugins) do
 		table.insert(M.plugins, plug)
 	end
-
 	-- formatter
 	M.formatter[cfg.ft or cfg.default_ft] = cfg.formatter.name
-
 	if cfg.map_ft then
 		local mapped = {}
 		for _, map_ft in ipairs(cfg.map_ft) do

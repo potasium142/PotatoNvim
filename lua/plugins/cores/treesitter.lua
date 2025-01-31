@@ -2,9 +2,6 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		lazy = false,
-		dependencies = {
-			"windwp/nvim-ts-autotag",
-		},
 		build = ":TSUpdate",
 		opts = {
 			auto_install = true,
@@ -20,9 +17,6 @@ return {
 			highlight = {
 				enable = true,
 				sync_install = true,
-			},
-			autotag = {
-				enable = true,
 			},
 			indent = {
 				enable = true,
