@@ -1,0 +1,4 @@
+local _ = {
+	name = "",
+	config = {},
+}

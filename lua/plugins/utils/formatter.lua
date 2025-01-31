@@ -1,9 +1,10 @@
 local formatters = require("loader.language").formatter
-local fmt_args = require("loader.formatter_cfg")
+local fmt_args = require("userspace.loader.formatter")
 return {
 	"stevearc/conform.nvim",
 	lazy = true,
 	event = "BufWritePre",
+	cmd = { "ConformInfo" },
 	dependencies = {
 		"neovim/nvim-lspconfig",
 	},
@@ -14,7 +15,7 @@ return {
 		return {
 			formatters_by_ft = formatters,
 			format_after_save = {
-				lsp_fallback = true,
+				lsp_fallback = false,
 			},
 		}
 	end,

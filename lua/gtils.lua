@@ -1,4 +1,3 @@
-local b = require("bit")
 local M = {}
 
 M.load_opt = function(opt_table)
@@ -6,6 +5,15 @@ M.load_opt = function(opt_table)
 		for opt, cfg in pairs(value) do
 			vim[key][opt] = cfg
 		end
+	end
+end
+
+---@param path string
+M.run_by_file = function(path, callback)
+	local dir_items = vim.fn.readdir(path)
+
+	for _, f in pairs(dir_items) do
+		callback(f)
 	end
 end
 

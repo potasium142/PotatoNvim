@@ -23,7 +23,9 @@ local icon = require("const.icons_text")
 require("config.options")
 require("config.mapping")
 require("scripts.tabout")
-require("loader.env")
+
+require("userspace.loader.env")
+
 require("lazy").setup({
 	defaults = {
 		lazy = false,
