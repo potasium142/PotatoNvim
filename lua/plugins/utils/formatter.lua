@@ -1,4 +1,4 @@
-local formatters = require("loader.language").formatter
+local formatters = require("userspace.loader.lang").formatters
 local fmt_args = require("userspace.loader.formatter")
 return {
 	"stevearc/conform.nvim",
