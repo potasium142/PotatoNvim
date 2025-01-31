@@ -13,7 +13,10 @@ M.run_by_file = function(path, callback)
 	local dir_items = vim.fn.readdir(path)
 
 	for _, f in pairs(dir_items) do
-		callback(f)
+		local status, _ = pcall(callback, f)
+		if not status then
+			print("**Error occur at file [" .. f .. "]**")
+		end
 	end
 end
 

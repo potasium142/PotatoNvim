@@ -16,7 +16,7 @@ vim.opt.runtimepath:prepend(lazypath)
 AutoCMD = vim.api.nvim_create_autocmd
 AutoGroup = vim.api.nvim_create_augroup
 
-local lg_plugins = require("loader.language").plugins
+local lg_plugins = require("userspace.loader.lang").plugs
 local colorscheme = require("opts.colorscheme.colorscheme").plugins
 local icon = require("const.icons_text")
 

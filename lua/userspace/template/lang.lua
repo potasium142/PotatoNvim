@@ -1,5 +1,6 @@
 local _ = {
-	ft = {},
+	ft = "",
 	formatter = {},
 	plugin = {},
+	map_ft = {},
 }
