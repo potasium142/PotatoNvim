@@ -1,7 +1,7 @@
 return {
 	{
 		"rcarriga/nvim-notify",
-		enabled = true,
+		enabled = false,
 		opts = function()
 			return {
 				render = "minimal",

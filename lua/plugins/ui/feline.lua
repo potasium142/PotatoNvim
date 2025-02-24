@@ -2,7 +2,7 @@ local icon = require("const.icons_text")
 return {
 	"freddiehaddad/feline.nvim",
 	opts = {},
-	enabled = true,
+	enabled = false,
 	config = function()
 		local feline = require("feline")
 		local diagnostic = vim.diagnostic

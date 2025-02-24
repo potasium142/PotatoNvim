@@ -1,7 +1,9 @@
+local detection = function()
+	return vim.fn.has("wsl") == 1
+end
 return {
 	opts = {
 		g = {
-
 			clipboard = {
 				name = "wslclip",
 				copy = {
@@ -16,7 +18,5 @@ return {
 			},
 		},
 	},
-	on = function()
-		return vim.fn.has("wsl") == 1
-	end,
+	on = detection(),
 }

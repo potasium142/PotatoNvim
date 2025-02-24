@@ -1,6 +1,7 @@
 return {
 	"gbprod/yanky.nvim",
 	config = true,
+	enabled = false,
 	keys = {
 		{
 			"tsy",
