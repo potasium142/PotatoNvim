@@ -13,12 +13,11 @@ return {
 			},
 			sections = {
 				lualine_a = { "mode" },
-				lualine_b = { "filename", "branch" },
+				lualine_b = { "filename", { "branch", icon = "" }, { "diff" } },
 				lualine_c = {},
 				lualine_x = {
 					{ "diagnostics", symbols = { error = "E", warn = "W", info = "I", hint = "H" } },
 					{
-						-- Lsp server name .
 						function()
 							local msg = ""
 							local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
@@ -34,7 +33,6 @@ return {
 							end
 							return msg
 						end,
-						color = { fg = "cterm01" },
 					},
 				},
 				lualine_y = { "encoding" },

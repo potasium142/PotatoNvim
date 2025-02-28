@@ -23,16 +23,15 @@ return {
 			rendering = {
 				max_buffer_width = 40,
 			},
-			default_hl = "GlobalBase0",
 			components = {
 				{
 					text = " ",
-					highlight = "bg",
+					highlight = "Normal",
 				},
 				{
 					text = function(buffer)
 						if is_picking_focus() then
-							return buffer.is_focused and "|" or buffer.pick_letter
+							return buffer.is_focused and ">" or buffer.pick_letter
 						end
 
 						if buffer.is_modified then
@@ -46,7 +45,7 @@ return {
 						return " "
 					end,
 					highlight = function(buffer)
-						return buffer.is_focused and "bg" or is_picking_focus() and "GlobalBase14I" or "GlobalBase14"
+						return buffer.is_focused and "Normal" or is_picking_focus() and "ColorColumn" or "ColorColumn"
 					end,
 				},
 				{
@@ -54,7 +53,7 @@ return {
 						return " " .. buffer.filename .. " "
 					end,
 					highlight = function(buffer)
-						return buffer.is_focused and "GlobalBase10I" or "GlobalBase14I"
+						return buffer.is_focused and "Normal" or is_picking_focus() and "ColorColumn" or "bg"
 					end,
 				},
 			},
