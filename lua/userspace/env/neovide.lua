@@ -13,6 +13,8 @@ local option = {
 		termguicolors = false,
 	},
 	g = {
+		neovide_cursor_trail_size = 0.7,
+		neovide_cursor_animation_length = 0.14,
 		neovide_padding_top = 10,
 		neovide_padding_bottom = 10,
 		neovide_padding_left = 3,

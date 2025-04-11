@@ -96,7 +96,8 @@ return {
 			vim.diagnostic.config({
 				underline = false,
 				virtual_text = false,
-				virtual_lines = { only_current_line = true },
+				virtual_lines = false,
+				-- virtual_lines = { only_current_line = false },
 				float = { border = border },
 			})
 

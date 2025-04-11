@@ -20,9 +20,9 @@ M.plugins = {
 			})
 
 			if sysvar.IS_TTY then
-				vim.cmd.colorscheme("base16-gruvbox-dark-medium")
+				vim.cmd.colorscheme("base16-catppuccin")
 			else
-				vim.cmd.colorscheme("base16-gruvbox-light-medium")
+				vim.cmd.colorscheme("base16-catppuccin-latte")
 			end
 		end,
 	},

@@ -8,12 +8,6 @@ map("n", "<", ":<<cr>", opts)
 map("v", ">", ":><cr>gv", opts)
 map("v", "<", ":<<cr>gv", opts)
 
---Disable arrow
-map("n", "<Up>", "<nop>", opts)
-map("n", "<Down>", "<nop>", opts)
-map("n", "<Right>", "<nop>", opts)
-map("n", "<Left>", "<nop>", opts)
-
 --Globle buffer paste
 map({ "v", "n" }, "\\", '"+', opts)
 --Void regsiter
