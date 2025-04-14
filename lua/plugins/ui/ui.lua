@@ -1,29 +1,5 @@
 return {
 	{
-		"rcarriga/nvim-notify",
-		enabled = false,
-		opts = function()
-			return {
-				render = "minimal",
-				stages = "static",
-				timeout = 1000,
-				top_down = true,
-				on_open = function(win)
-					if vim.api.nvim_win_is_valid(win) then
-						vim.api.nvim_win_set_config(
-							win,
-							{ border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" } }
-						)
-					end
-				end,
-			}
-		end,
-		config = function(_, opts)
-			require("notify").setup(opts)
-			vim.notify = require("notify")
-		end,
-	},
-	{
 		"stevearc/dressing.nvim",
 		enabled = true,
 		lazy = false,
@@ -70,7 +46,6 @@ return {
 			end
 		end,
 		dependencies = {
-			"rcarriga/nvim-notify",
 			"MunifTanjim/nui.nvim",
 		},
 		opts = {

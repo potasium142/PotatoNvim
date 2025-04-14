@@ -1,6 +1,4 @@
-local gtils = require("gtils")
 local sysvar = require("const.sys_var")
-local set_hl = vim.api.nvim_set_hl
 
 local M = {}
 
@@ -9,21 +7,24 @@ M.plugins = {
 		"RRethy/base16-nvim",
 		priority = 1000,
 		config = function()
-			require("base16-colorscheme").with_config({
-				telescope = true,
-				indentblankline = true,
-				notify = true,
-				ts_rainbow = true,
-				cmp = true,
-				illuminate = true,
-				dapui = true,
-			})
+			-- if sysvar.IS_TTY then
+			-- 	vim.cmd.colorscheme("base16-catppuccin")
+			-- else
+			-- 	vim.cmd.colorscheme("base16-rose-pine-dawn")
+			-- end
+		end,
+	},
+	{
 
-			if sysvar.IS_TTY then
-				vim.cmd.colorscheme("base16-catppuccin")
-			else
-				vim.cmd.colorscheme("base16-catppuccin-latte")
-			end
+		"neanias/everforest-nvim",
+		version = false,
+		lazy = false,
+		priority = 1000, -- make sure to load this before all the other start plugins
+		config = function()
+			require("everforest").setup({
+				-- Your config here
+			})
+			vim.cmd.colorscheme("everforest")
 		end,
 	},
 }
