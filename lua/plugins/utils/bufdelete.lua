@@ -1,6 +1,7 @@
 return {
 	"famiu/bufdelete.nvim",
 	lazy = true,
+	enabled = false,
 	event = {
 		"BufDelete",
 	},

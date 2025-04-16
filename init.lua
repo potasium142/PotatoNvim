@@ -11,6 +11,8 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 
+vim.cmd.colorscheme("unokai")
+
 vim.opt.runtimepath:prepend(lazypath)
 
 AutoCMD = vim.api.nvim_create_autocmd
