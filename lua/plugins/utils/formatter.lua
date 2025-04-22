@@ -15,7 +15,7 @@ return {
 		return {
 			formatters_by_ft = formatters,
 			format_after_save = {
-				lsp_fallback = false,
+				lsp_fallback = true,
 			},
 		}
 	end,

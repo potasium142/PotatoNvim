@@ -32,7 +32,7 @@ M.opt = {
 	laststatus = 3,
 	listchars = {
 		tab = "│ ",
-		multispace = "║   ",
+		-- multispace = "║   ",
 	},
 	list = true,
 	showmode = false,

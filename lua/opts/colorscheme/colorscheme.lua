@@ -7,9 +7,9 @@ M.plugins = {
 		"RRethy/base16-nvim",
 		priority = 1000,
 		config = function()
-			-- if sysvar.IS_TTY then
-			-- 	vim.cmd.colorscheme("base16-rose-pine-dawn")
-			-- end
+			if not sysvar.IS_TTY then
+				vim.cmd.colorscheme("base16-gruvbox-material-light-soft")
+			end
 		end,
 	},
 	{
@@ -17,7 +17,7 @@ M.plugins = {
 		"neanias/everforest-nvim",
 		version = false,
 		lazy = false,
-		enabled = true,
+		enabled = false,
 		priority = 1000, -- make sure to load this before all the other start plugins
 		config = function()
 			require("everforest").setup({

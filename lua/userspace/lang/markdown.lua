@@ -1,5 +1,5 @@
 return {
-	ft = "md",
+	ft = "markdown",
 	plugin = {
 		{
 			"iamcco/markdown-preview.nvim",
@@ -32,6 +32,6 @@ return {
 			},
 		},
 	},
-	formatter = { "prettier" },
-	map_ft = {},
+	formatter = { "cbfmt", "prettier" },
+	map_ft = { "md" },
 }
