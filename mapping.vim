@@ -1,9 +1,10 @@
 " mapping for other application
-nmap <silent> <expr> > :><cr>
-nmap <silent> <expr> < :<<cr>
+nnoremap > :><CR>
+nnoremap < :<<CR>
 
-vmap <silent> <expr> > :><cr>gv
-vmap <silent> <expr> < :<<cr>gv
+" Visual tabbing
+vnoremap > :><CR>gv
+vnoremap < :<<CR>gv
 
 nmap <silent> <cr> :noh<cr><cr>
 
