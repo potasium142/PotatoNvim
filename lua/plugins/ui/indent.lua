@@ -4,8 +4,7 @@ return {
 	dependencies = {
 		"rainbow-delimiters.nvim",
 	},
-	opts = {},
-	config = function(opts, _)
+	opts = function()
 		local highlight = {
 			"RainbowDelimiterRed",
 			"RainbowDelimiterYellow",
@@ -15,9 +14,7 @@ return {
 			"RainbowDelimiterViolet",
 			"RainbowDelimiterCyan",
 		}
-		local hooks = require("ibl.hooks")
-
-		require("ibl").setup({
+		return {
 			scope = {
 				enabled = true,
 				include = {
@@ -25,7 +22,13 @@ return {
 				},
 				highlight = highlight,
 			},
-		})
+			indent = { char = "🭰" },
+		}
+	end,
+	config = function(_, opts)
+		local hooks = require("ibl.hooks")
+
+		require("ibl").setup(opts)
 
 		hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
 	end,

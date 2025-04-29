@@ -12,7 +12,7 @@ M.opt = {
 	cursorline = true,
 	showmatch = true,
 	autoread = true,
-	termguicolors = true,
+	termguicolors = false,
 	updatetime = 100,
 	splitbelow = true,
 	wildmode = "longest,full",
@@ -30,11 +30,11 @@ M.opt = {
 	foldexpr = "nvim_treesitter#foldexpr()",
 	foldlevelstart = 69,
 	laststatus = 3,
-	listchars = {
-		tab = "│ ",
-		-- multispace = "║   ",
-	},
-	list = true,
+	-- listchars = {
+	-- 	tab = "🭰 ",
+	-- 	multispace = "🭰 ┊ ",
+	-- },
+	list = false,
 	showmode = false,
 }
 
