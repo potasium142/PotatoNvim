@@ -1,4 +1,0 @@
-local _ = {
-	name = "",
-	config = {},
-}

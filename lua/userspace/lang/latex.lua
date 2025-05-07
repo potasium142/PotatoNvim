@@ -1,3 +1,4 @@
+--- @type LangConfig
 return {
 	ft = "tex",
 	formatter = {

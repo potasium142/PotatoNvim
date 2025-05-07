@@ -1,3 +1,4 @@
+--- @type LangConfig
 return {
 	ft = "rust",
 	formatter = { "rustfmt" },
@@ -9,5 +10,4 @@ return {
 			config = true,
 		},
 	},
-	map_ft = {},
 }

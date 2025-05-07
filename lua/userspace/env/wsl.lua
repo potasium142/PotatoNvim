@@ -1,8 +1,9 @@
 local detection = function()
 	return vim.fn.has("wsl") == 1
 end
+--- @type EnvConfig
 return {
-	opts = {
+	opt = {
 		g = {
 			clipboard = {
 				name = "wslclip",
@@ -18,5 +19,5 @@ return {
 			},
 		},
 	},
-	on = detection(),
+	detection = detection(),
 }

@@ -8,6 +8,8 @@ local maps_ft = {}
 
 gtils.run_by_file(path, function(file)
 	local f = file:gsub("%.lua$", "")
+
+	--- @type LangConfig
 	local cfg = require("userspace.lang." .. f)
 
 	local map_ft = {}
@@ -16,7 +18,7 @@ gtils.run_by_file(path, function(file)
 	local local_map_ft = cfg.map_ft or {}
 
 	for _, ft in ipairs(local_map_ft) do
-		map_ft[ft] = cfg.default_ft
+		map_ft[ft] = cfg.ft
 	end
 	maps_ft = vim.tbl_deep_extend("error", maps_ft, map_ft or {})
 

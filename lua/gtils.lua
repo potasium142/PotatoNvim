@@ -1,5 +1,6 @@
 local M = {}
 
+---@param opt_table table
 M.load_opt = function(opt_table)
 	for key, value in pairs(opt_table) do
 		for opt, cfg in pairs(value) do
@@ -9,6 +10,7 @@ M.load_opt = function(opt_table)
 end
 
 ---@param path string
+---@param callback function
 M.run_by_file = function(path, callback)
 	local dir_items = vim.fn.readdir(path)
 

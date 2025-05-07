@@ -1,5 +1,5 @@
+--- @type LangConfig
 return {
-	plugin = {},
 	formatter = {
 		"clang_format",
 	},

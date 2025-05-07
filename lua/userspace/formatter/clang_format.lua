@@ -1,3 +1,4 @@
+--- @type FormatterConfig
 return {
 	name = "clang_format",
 	config = {
@@ -5,5 +6,5 @@ return {
 			"--style",
 			"{IndentWidth: 4}",
 		},
-	}
+	},
 }

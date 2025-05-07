@@ -1,3 +1,4 @@
+--- @type LspConfig
 return {
 	name = "lua_ls",
 	config = {

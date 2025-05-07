@@ -1,3 +1,4 @@
+--- @type LspConfig
 return {
 	name = "rust_analyzer",
 	config = {

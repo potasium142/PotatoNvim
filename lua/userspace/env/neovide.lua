@@ -30,7 +30,8 @@ local option = {
 	},
 }
 
+--- @type EnvConfig
 return {
-	opts = option,
-	on = detection(),
+	opt = option,
+	detection = detection(),
 }

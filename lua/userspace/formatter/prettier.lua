@@ -1,3 +1,4 @@
+--- @type FormatterConfig
 return {
 	name = "prettier",
 	opts = {
