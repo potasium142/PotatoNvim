@@ -61,7 +61,7 @@ return {
 	end,
 	keys = {
 		{
-			"<Space>j",
+			"<leader>j",
 			"<Plug>(cokeline-pick-focus)",
 		},
 	},

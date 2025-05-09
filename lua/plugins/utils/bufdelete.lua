@@ -7,7 +7,7 @@ return {
 	},
 	keys = {
 		{
-			"<space>dd",
+			"<leader>dd",
 			function()
 				require("bufdelete").bufdelete(0, true)
 			end,

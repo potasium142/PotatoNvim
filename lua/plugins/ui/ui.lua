@@ -115,5 +115,11 @@ return {
 			},
 			config = true,
 		},
+		keys = {
+			{
+				"tss",
+				"<cmd>Telescope noice<cr>",
+			},
+		},
 	},
 }

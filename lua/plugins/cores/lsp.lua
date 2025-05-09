@@ -90,7 +90,7 @@ return {
 		"neovim/nvim-lspconfig",
 		lazy = false,
 		dependencies = {
-			"williamboman/mason-lspconfig.nvim",
+			-- "williamboman/mason-lspconfig.nvim",
 		},
 		config = function()
 			vim.diagnostic.config({
@@ -101,27 +101,31 @@ return {
 				float = { border = border },
 			})
 
-			require("mason-lspconfig").setup()
-
-			local handlers = {
-				function(server_name) -- default handler (optional)
-					require("lspconfig")[server_name].setup(default_setup)
-				end,
-			}
+			-- local handlers = {
+			-- 	function(server_name) -- default handler (optional)
+			-- 		-- require("lspconfig")[server_name].setup(default_setup)
+			-- 	end,
+			-- }
 
 			for name, config in pairs(lsp_cfg) do
 				local setup = vim.tbl_deep_extend("force", default_setup, config)
-				require("lspconfig")[name].setup(setup)
+				-- require("lspconfig")[name].setup(setup)
+				vim.lsp.enable(name)
+				vim.lsp.config(name, setup)
+				-- print(vim.inspect(setup))
 			end
 
-			require("mason-lspconfig").setup_handlers(handlers)
+			-- require("mason-lspconfig").setup({
+			-- 	automatic_enable = true,
+			-- })
+			-- require("mason-lspconfig").setup_handlers(handlers)
 		end,
 		keys = function()
 			local buf = vim.lsp.buf
 			local diag = vim.diagnostic
 			return {
 				{
-					"<Space>ca",
+					"<leader>ca",
 					buf.code_action,
 					opts,
 				},
@@ -131,7 +135,7 @@ return {
 					opts,
 				},
 				{
-					"<Space>rn",
+					"<leader>rn",
 					buf.rename,
 					opts,
 				},
@@ -141,7 +145,7 @@ return {
 					opts,
 				},
 				{
-					"<Space>gr",
+					"<leader>gr",
 					buf.references,
 					opts,
 				},

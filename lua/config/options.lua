@@ -41,6 +41,7 @@ M.opt = {
 M.g = {
 	loaded_netrwPlugin = 1,
 	loaded_netrw = 1,
+	mapleader = " ",
 }
 
 gtils.load_opt(M)
