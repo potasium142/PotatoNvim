@@ -1,7 +1,7 @@
 return {
 	{
 		"stevearc/dressing.nvim",
-		enabled = true,
+		enabled = false,
 		lazy = false,
 		opts = function()
 			return {

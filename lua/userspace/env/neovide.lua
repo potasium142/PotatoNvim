@@ -8,8 +8,8 @@ local option = {
 	opt = {
 		linespace = -1,
 		guifont = CONST.FONTS .. ":h13:#h-none",
-		winblend = 40,
-		pumblend = 40,
+		winblend = 20,
+		pumblend = 20,
 		termguicolors = false,
 	},
 	g = {

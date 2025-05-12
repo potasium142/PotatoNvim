@@ -13,6 +13,8 @@ map({ "v", "n" }, "\\", '"+', opts)
 --Void regsiter
 map({ "n", "v" }, "<BS>", '"_', opts)
 
+map({ "n", "v" }, "x", '"_x', opts)
+
 map("n", "<CR>", ":noh<cr><cr>", opts)
 
 --Save

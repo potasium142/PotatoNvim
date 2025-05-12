@@ -18,7 +18,7 @@ M.opt = {
 	wildmode = "longest,full",
 	smartindent = true,
 	autoindent = true,
-	signcolumn = "yes",
+	signcolumn = "yes:2",
 	ffs = "unix,dos",
 	swapfile = false,
 	mouse = "",
@@ -36,6 +36,7 @@ M.opt = {
 	-- },
 	list = false,
 	showmode = false,
+	cmdheight = 1,
 }
 
 M.g = {
@@ -47,3 +48,4 @@ M.g = {
 gtils.load_opt(M)
 
 vim.opt.fillchars:append({ fold = " " })
+vim.opt.formatoptions:remove({ "c", "r", "o" })

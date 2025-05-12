@@ -101,12 +101,6 @@ return {
 				float = { border = border },
 			})
 
-			-- local handlers = {
-			-- 	function(server_name) -- default handler (optional)
-			-- 		-- require("lspconfig")[server_name].setup(default_setup)
-			-- 	end,
-			-- }
-
 			for name, config in pairs(lsp_cfg) do
 				local setup = vim.tbl_deep_extend("force", default_setup, config)
 				-- require("lspconfig")[name].setup(setup)
@@ -124,6 +118,12 @@ return {
 			local buf = vim.lsp.buf
 			local diag = vim.diagnostic
 			return {
+
+				{
+					"<leader>gd",
+					buf.definition,
+					opts,
+				},
 				{
 					"<leader>ca",
 					buf.code_action,
@@ -156,5 +156,14 @@ return {
 				},
 			}
 		end,
+	},
+	{
+		"rmagatti/goto-preview",
+		dependencies = { "rmagatti/logger.nvim" },
+		event = { "LspAttach" },
+		config = true,
+		keys function ()
+			
+		end
 	},
 }

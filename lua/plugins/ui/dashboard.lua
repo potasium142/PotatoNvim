@@ -53,7 +53,7 @@ return {
 
 		alpha.setup(dashboard.opts)
 
-		AutoCMD("User", {
+		vim.api.nvim_create_autocmd("User", {
 			pattern = "LazyVimStarted",
 			callback = function()
 				dashboard.section.footer.val = info()

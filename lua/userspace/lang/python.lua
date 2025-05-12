@@ -1,5 +1,5 @@
 --- @type LangConfig
 return {
 	ft = "python",
-	formatter = { "ruff" },
+	formatter = { "ruff", "autopep8" },
 }

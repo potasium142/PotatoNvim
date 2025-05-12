@@ -16,6 +16,9 @@ nmap <silent> \ "+
 vmap <silent> <BS> "_
 vmap <silent> \ "+
 
+nmap <silent> x "_x
+vmap <silent> x "_x
+
 nmap <silent> <C-j> <C-d>zz
 nmap <silent> <C-k> <C-u>zz
 

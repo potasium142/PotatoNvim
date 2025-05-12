@@ -12,11 +12,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 
 vim.cmd.colorscheme("unokai")
-
 vim.opt.runtimepath:prepend(lazypath)
-
-AutoCMD = vim.api.nvim_create_autocmd
-AutoGroup = vim.api.nvim_create_augroup
 
 local lg_plugins = require("userspace.loader.lang").plugs
 local colorscheme = require("opts.colorscheme.colorscheme").plugins
@@ -27,6 +23,8 @@ require("config.mapping")
 require("scripts.tabout")
 
 require("userspace.loader.env")
+
+require("autocmd")
 
 require("lazy").setup({
 	defaults = {

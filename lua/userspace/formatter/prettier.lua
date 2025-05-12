@@ -6,6 +6,7 @@ return {
 			ft_parsers = {
 				markdown = "md",
 			},
+			indent_style = "tab",
 		},
 	},
 }

@@ -4,7 +4,7 @@ return {
 	enabled = true,
 	version = false,
 	init = function()
-		local ignore_filetypes = { "neo-tree" }
+		local ignore_filetypes = { "neo-tree", "gitsigns-blame" }
 		local ignore_buftypes = { "nofile", "prompt", "popup" }
 
 		local augroup = vim.api.nvim_create_augroup("FocusDisable", { clear = true })
