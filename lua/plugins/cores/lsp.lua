@@ -118,12 +118,6 @@ return {
 			local buf = vim.lsp.buf
 			local diag = vim.diagnostic
 			return {
-
-				{
-					"<leader>gd",
-					buf.definition,
-					opts,
-				},
 				{
 					"<leader>ca",
 					buf.code_action,
@@ -145,7 +139,7 @@ return {
 					opts,
 				},
 				{
-					"<leader>gr",
+					"<leader>cr",
 					buf.references,
 					opts,
 				},
@@ -162,8 +156,26 @@ return {
 		dependencies = { "rmagatti/logger.nvim" },
 		event = { "LspAttach" },
 		config = true,
-		keys function ()
-			
-		end
+		keys = function()
+			local gt = require("goto-preview")
+			return {
+				{
+					"<leader>vd",
+					gt.goto_preview_definition,
+				},
+				{
+					"<leader>vq",
+					gt.close_all_win,
+				},
+				{
+					"<leader>vi",
+					gt.goto_preview_implementation,
+				},
+				{
+					"<leader>vd",
+					gt.goto_preview_declaration,
+				},
+			}
+		end,
 	},
 }
