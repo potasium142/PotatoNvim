@@ -14,7 +14,7 @@ return {
 				},
 				"encoding",
 			},
-			lualine_y = { "location", "progress" },
+			lualine_y = {},
 			lualine_z = { "filename" },
 		}
 		require("lualine").setup({
@@ -27,8 +27,9 @@ return {
 				component_separators = " ",
 				section_separators = { left = " ", right = " " },
 				refresh = { -- sets how often lualine should refresh it's contents (in ms)
-					statusline = 1000,
-					winbar = 1000,
+					tabline = 0,
+					statusline = 1,
+					winbar = 0,
 				},
 				disabled_filetypes = {
 					statusline = {},
@@ -57,6 +58,22 @@ return {
 			winbar = winbar,
 			inactive_winbar = winbar,
 			tabline = {},
+		})
+		vim.api.nvim_create_autocmd({ "BufEnter" }, {
+			callback = function()
+				require("lualine").refresh({
+					place = { "winbar" },
+				})
+			end,
+		})
+		vim.api.nvim_create_autocmd({ "User" }, {
+			pattern = "GitSignsUpdate",
+			callback = function()
+				require("lualine").refresh({
+					place = { "statusline" },
+				})
+				-- print("update")
+			end,
 		})
 	end,
 }
