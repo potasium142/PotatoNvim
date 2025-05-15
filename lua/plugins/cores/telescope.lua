@@ -1,10 +1,16 @@
 local border = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
+
 return {
 	{
 		"nvim-telescope/telescope.nvim",
 		lazy = false,
 		dependencies = {
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				build = "make",
+			},
 			"nvim-lua/plenary.nvim",
+			"debugloop/telescope-undo.nvim",
 			"folke/noice.nvim",
 		},
 		opts = function()
@@ -42,6 +48,10 @@ return {
 				},
 			}
 		end,
+		config = function(_, opts)
+			require("telescope").setup(opts)
+			require("telescope").load_extension("undo")
+		end,
 		keys = function()
 			local builtin = require("telescope.builtin")
 			return {
@@ -64,6 +74,14 @@ return {
 				{
 					"tsr",
 					builtin.resume,
+				},
+				{
+					"tsb",
+					builtin.buffers,
+				},
+				{
+					"tsu",
+					require("telescope").extensions.undo.undo,
 				},
 			}
 		end,
