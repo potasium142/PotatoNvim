@@ -8,6 +8,23 @@ return {
 		local is_picking_focus = require("cokeline.mappings").is_picking_focus
 
 		local icons = require("const.icons_text")
+
+		local highlight = function(buffer)
+			if buffer.is_readonly then
+				return "lualine_a_visual"
+			end
+
+			if buffer.is_focused then
+				return "lualine_a_insert"
+			end
+
+			if is_picking_focus() then
+				return "lualine_a_replace"
+			end
+
+			return "Normal"
+		end
+
 		return {
 			sidebar = {
 				filetype = { "NvimTree", "neo-tree" },
@@ -26,7 +43,7 @@ return {
 			components = {
 				{
 					text = " ",
-					highlight = "Normal",
+					highlight = "Green",
 				},
 				{
 					text = function(buffer)
@@ -44,17 +61,13 @@ return {
 
 						return " "
 					end,
-					highlight = function(buffer)
-						return buffer.is_focused and "Normal" or is_picking_focus() and "ColorColumn" or "ColorColumn"
-					end,
+					highlight = highlight,
 				},
 				{
 					text = function(buffer)
-						return " " .. buffer.filename .. " "
+						return " " .. buffer.filename
 					end,
-					highlight = function(buffer)
-						return buffer.is_focused and "Normal" or is_picking_focus() and "ColorColumn" or "bg"
-					end,
+					highlight = highlight,
 				},
 			},
 		}

@@ -11,7 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 
-vim.cmd.colorscheme("unokai")
+vim.cmd.colorscheme("default")
 vim.opt.runtimepath:prepend(lazypath)
 
 local lg_plugins = require("userspace.loader.lang").plugs
