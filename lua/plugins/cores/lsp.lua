@@ -90,7 +90,7 @@ return {
 		"neovim/nvim-lspconfig",
 		lazy = false,
 		dependencies = {
-			-- "williamboman/mason-lspconfig.nvim",
+			"williamboman/mason.nvim",
 		},
 		config = function()
 			vim.diagnostic.config({

@@ -10,6 +10,4 @@ local M = {
 	IS_TTY = (os.getenv("DISPLAY") == nil) and (WIN32 == 0),
 }
 
-print(M.IS_WIN32)
-
 return M
