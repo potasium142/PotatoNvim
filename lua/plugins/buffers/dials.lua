@@ -13,6 +13,11 @@ return {
 					cyclic = true,
 				}),
 				augend.constant.new({
+					elements = { "True", "False" },
+					word = false,
+					cyclic = true,
+				}),
+				augend.constant.new({
 					elements = { "and", "or" },
 					word = true,
 					cyclic = true,
