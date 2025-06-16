@@ -14,7 +14,7 @@ return {
 				}),
 				augend.constant.new({
 					elements = { "True", "False" },
-					word = false,
+					word = true,
 					cyclic = true,
 				}),
 				augend.constant.new({

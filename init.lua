@@ -11,18 +11,20 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 
-vim.cmd.colorscheme("default")
 vim.opt.runtimepath:prepend(lazypath)
 
-local lg_plugins = require("userspace.loader.lang").plugs
-local colorscheme = require("opts.colorscheme.colorscheme").plugins
+local lg_plugins = require("loader.lang").plugs
+local default_colorscheme = require("opts.colorscheme.default")
+
+local colorscheme = require("userspace.colorscheme") or default_colorscheme
+
 local icon = require("const.icons_text")
 
 require("config.options")
 require("config.mapping")
 require("scripts.tabout")
 
-require("userspace.loader.env")
+require("loader.env")
 
 require("autocmd")
 

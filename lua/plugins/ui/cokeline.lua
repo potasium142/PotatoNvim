@@ -65,7 +65,7 @@ return {
 				},
 				{
 					text = function(buffer)
-						return " " .. buffer.filename
+						return " " .. buffer.filename .. " "
 					end,
 					highlight = highlight,
 				},

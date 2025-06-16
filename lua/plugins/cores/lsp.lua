@@ -11,7 +11,7 @@ local border = {
 
 local opts = { noremap = true, silent = true }
 
-local lsp_cfg = require("userspace.loader.lsp")
+local lsp_cfg = require("loader.lsp")
 
 local default_setup = {
 	capabilities = {

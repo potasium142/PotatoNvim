@@ -188,40 +188,6 @@ return {
 		end,
 	},
 	{
-		"stevearc/dressing.nvim",
-		enabled = false,
-		lazy = false,
-		opts = function()
-			return {
-				select = {
-					get_config = function(opts)
-						if opts.kind == "codeaction" then
-							return {
-								backend = "builtin",
-								nui = {
-									relative = "cursor",
-								},
-							}
-						end
-					end,
-					builtin = {
-						relative = "cursor",
-						border = "single",
-					},
-					nui = {
-						border = { style = "single" },
-					},
-					telescope = {
-						borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
-					},
-				},
-				input = {
-					border = "single",
-				},
-			}
-		end,
-	},
-	{
 		"folke/noice.nvim",
 		enabled = true,
 		lazy = false,
