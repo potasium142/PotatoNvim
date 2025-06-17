@@ -14,9 +14,13 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 local lg_plugins = require("loader.lang").plugs
-local default_colorscheme = require("opts.colorscheme.default")
+local colorscheme = require("opts.colorscheme.default")
 
-local colorscheme = require("userspace.colorscheme") or default_colorscheme
+local user_colorscheme = require("userspace.colorscheme")
+
+if type(user_colorscheme) == "table" then
+	colorscheme = user_colorscheme
+end
 
 local icon = require("const.icons_text")
 

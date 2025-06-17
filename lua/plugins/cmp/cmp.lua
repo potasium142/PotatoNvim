@@ -2,7 +2,7 @@ local icons = require("const.icons_text")
 return {
 	{
 		"hrsh7th/nvim-cmp",
-		event = { "LspAttach" },
+		event = { "BufEnter" },
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"FelipeLema/cmp-async-path",
