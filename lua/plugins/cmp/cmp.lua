@@ -2,6 +2,7 @@ local icons = require("const.icons_text")
 return {
 	{
 		"hrsh7th/nvim-cmp",
+		enabled = false,
 		event = { "BufEnter" },
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",

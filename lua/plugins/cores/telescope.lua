@@ -5,10 +5,6 @@ return {
 		"nvim-telescope/telescope.nvim",
 		lazy = false,
 		dependencies = {
-			{
-				"nvim-telescope/telescope-fzf-native.nvim",
-				build = "make",
-			},
 			"nvim-lua/plenary.nvim",
 			"debugloop/telescope-undo.nvim",
 			"folke/noice.nvim",
@@ -62,6 +58,10 @@ return {
 				{
 					"tsg",
 					builtin.live_grep,
+				},
+				{
+					"tsd",
+					builtin.diagnostics,
 				},
 				{
 					"tsh",

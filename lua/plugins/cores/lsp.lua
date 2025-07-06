@@ -1,74 +1,8 @@
-local border = {
-	{ "", "FloatBorder" },
-	{ "", "FloatBorder" },
-	{ "", "FloatBorder" },
-	{ " ", "FloatBorder" },
-	{ "", "FloatBorder" },
-	{ "", "FloatBorder" },
-	{ "", "FloatBorder" },
-	{ " ", "FloatBorder" },
-}
-
 local opts = { noremap = true, silent = true }
 
 local lsp_cfg = require("loader.lsp")
 
-local default_setup = {
-	capabilities = {
-		textDocument = {
-			completion = {
-				dynamicRegistration = false,
-				completionItem = {
-					snippetSupport = true,
-					commitCharactersSupport = true,
-					deprecatedSupport = true,
-					preselectSupport = true,
-					tagSupport = {
-						valueSet = {
-							1, -- Deprecated
-						},
-					},
-					insertReplaceSupport = true,
-					resolveSupport = {
-						properties = {
-							"documentation",
-							"detail",
-							"additionalTextEdits",
-							"sortText",
-							"filterText",
-							"insertText",
-							"textEdit",
-							"insertTextFormat",
-							"insertTextMode",
-						},
-					},
-					insertTextModeSupport = {
-						valueSet = {
-							1, -- asIs
-							2, -- adjustIndentation
-						},
-					},
-					labelDetailsSupport = true,
-				},
-				contextSupport = true,
-				insertTextMode = 1,
-				completionList = {
-					itemDefaults = {
-						"commitCharacters",
-						"editRange",
-						"insertTextFormat",
-						"insertTextMode",
-						"data",
-					},
-				},
-			},
-		},
-	},
-	textDocument = {
-		hover = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
-		signatureHelp = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
-	},
-}
+local default_setup = require("userspace.lsp_capabilities")
 
 return {
 	{
@@ -90,19 +24,27 @@ return {
 		"neovim/nvim-lspconfig",
 		lazy = false,
 		dependencies = {
-			"williamboman/mason.nvim",
+			{
+				"mason-org/mason-lspconfig.nvim",
+				dependencies = {
+					"williamboman/mason.nvim",
+				},
+				opts = {
+					automatic_enable = true,
+				},
+			},
 		},
 		config = function()
 			vim.diagnostic.config({
 				underline = false,
 				virtual_text = false,
-				virtual_lines = false,
-				-- virtual_lines = { only_current_line = false },
-				float = { border = border },
+				virtual_lines = { current_line = true },
+				float = { border = default_setup.border },
+				severity_sort = true,
 			})
 
 			for name, config in pairs(lsp_cfg) do
-				local setup = vim.tbl_deep_extend("force", default_setup, config)
+				local setup = vim.tbl_deep_extend("force", default_setup.capabilities, config)
 				-- require("lspconfig")[name].setup(setup)
 				vim.lsp.enable(name)
 				vim.lsp.config(name, setup)
