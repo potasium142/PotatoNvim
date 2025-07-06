@@ -23,7 +23,6 @@ return {
 				},
 				highlight = highlight,
 			},
-			indent = { char = "🭰" },
 		}
 	end,
 	config = function(_, opts)

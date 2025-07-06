@@ -16,7 +16,7 @@ local config = {
 			},
 		},
 		textDocument = {
-
+			documentColor = true,
 			foldingRange = {
 				dynamicRegistration = false,
 				lineFoldingOnly = true,

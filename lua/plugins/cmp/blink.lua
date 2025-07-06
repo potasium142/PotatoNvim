@@ -4,7 +4,6 @@ return {
 		"saghen/blink.cmp",
 		version = "1.*",
 		opts = {
-
 			keymap = {
 				preset = "enter",
 				["<Tab>"] = {
@@ -31,7 +30,7 @@ return {
 			completion = {
 				list = {
 					selection = {
-						preselect = false,
+						preselect = true,
 					},
 				},
 				menu = {
@@ -48,7 +47,6 @@ return {
 					},
 				},
 			},
-
 			appearance = { kind_icons = icons },
 		},
 	},
