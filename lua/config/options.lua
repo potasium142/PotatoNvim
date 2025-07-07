@@ -30,10 +30,6 @@ M.opt = {
 	foldexpr = "nvim_treesitter#foldexpr()",
 	foldlevelstart = 69,
 	laststatus = 3,
-	-- listchars = {
-	-- 	tab = "🭰 ",
-	-- 	multispace = "🭰 ┊ ",
-	-- },
 	list = false,
 	showmode = false,
 	cmdheight = 1,

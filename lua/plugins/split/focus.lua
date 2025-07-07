@@ -2,7 +2,6 @@ return {
 	"nvim-focus/focus.nvim",
 	lazy = false,
 	enabled = true,
-	version = false,
 	init = function()
 		local ignore_filetypes = { "neo-tree", "gitsigns-blame" }
 		local ignore_buftypes = { "nofile", "prompt", "popup" }

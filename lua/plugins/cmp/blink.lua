@@ -41,7 +41,6 @@ return {
 							},
 							{
 								"label",
-								gap = 1,
 							},
 						},
 					},
