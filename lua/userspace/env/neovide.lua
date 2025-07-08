@@ -2,17 +2,13 @@ local detection = function()
 	return vim.g.neovide
 end
 
-local CONST = require("const.sys_var")
-
 local option = {
 	opt = {
-		linespace = -1,
-		guifont = CONST.FONTS .. ":h13:#h-none",
 		winblend = 20,
 		pumblend = 20,
-		termguicolors = false,
 	},
 	g = {
+		neovide_opacity = 0.9,
 		neovide_cursor_trail_size = 0.7,
 		neovide_cursor_animation_length = 0.14,
 		neovide_padding_top = 10,

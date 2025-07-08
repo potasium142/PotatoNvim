@@ -1,9 +1,7 @@
-local CONST = require("const.sys_var")
 local gtils = require("gtils")
 
 local M = {}
 M.opt = {
-	guifont = CONST.FONTS,
 	background = "light",
 	tabstop = 4,
 	shiftwidth = 4,
