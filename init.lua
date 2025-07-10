@@ -14,6 +14,7 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 local lg_plugins = require("loader.lang").plugs
+
 local colorscheme = require("opts.colorscheme.default")
 
 local user_colorscheme = require("userspace.colorscheme")
@@ -58,3 +59,5 @@ require("lazy").setup({
 		},
 	},
 })
+
+require("loader.lsp")

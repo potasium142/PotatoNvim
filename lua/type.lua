@@ -1,6 +1,7 @@
 --- @class LspConfig
 --- @field name string
 --- @field config? table
+--- @field ft_pattern table
 
 --- @class EnvConfig
 --- @field opt table

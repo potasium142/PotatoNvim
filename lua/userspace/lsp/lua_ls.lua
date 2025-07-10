@@ -10,4 +10,5 @@ return {
 			},
 		},
 	},
+	ft_pattern = { "*.lua" },
 }

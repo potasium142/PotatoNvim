@@ -43,9 +43,10 @@ return {
 				},
 				signature = { enabled = true },
 				completion = {
+					accept = { auto_brackets = { enabled = true } },
 					list = {
 						selection = {
-							preselect = function(ctx)
+							preselect = function(_)
 								return not require("blink.cmp").snippet_active({ direction = 1 })
 							end,
 

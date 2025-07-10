@@ -28,8 +28,9 @@ return {
 				section_separators = { left = " ", right = " " },
 				refresh = { -- sets how often lualine should refresh it's contents (in ms)
 					tabline = 0,
-					statusline = 1,
+					statusline = 0,
 					winbar = 0,
+					refresh_time = 700,
 				},
 				disabled_filetypes = {
 					statusline = {},

@@ -6,7 +6,6 @@ return {
 		lazy = false,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			"debugloop/telescope-undo.nvim",
 			"folke/noice.nvim",
 		},
 		opts = function()
@@ -44,10 +43,6 @@ return {
 				},
 			}
 		end,
-		config = function(_, opts)
-			require("telescope").setup(opts)
-			require("telescope").load_extension("undo")
-		end,
 		keys = function()
 			local builtin = require("telescope.builtin")
 			return {
@@ -78,10 +73,6 @@ return {
 				{
 					"tsb",
 					builtin.buffers,
-				},
-				{
-					"tsu",
-					require("telescope").extensions.undo.undo,
 				},
 			}
 		end,

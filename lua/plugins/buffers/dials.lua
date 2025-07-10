@@ -40,8 +40,21 @@ return {
 			},
 		})
 	end,
-	keys = {
-		{ "<C-a>", "<Plug>(dial-increment)", mode = { "n", "v" } },
-		{ "<C-x>", "<Plug>(dial-decrement)", mode = { "n", "v" } },
-	},
+	keys = function()
+		local dial = require("dial.map").manipulate
+		return {
+			{
+				"<C-a>",
+				function()
+					dial("increment", "normal")
+				end,
+			},
+			{
+				"<C-x>",
+				function()
+					dial("decrement", "normal")
+				end,
+			},
+		}
+	end,
 }
