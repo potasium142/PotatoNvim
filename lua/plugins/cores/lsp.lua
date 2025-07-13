@@ -6,7 +6,7 @@ return {
 	{
 		"williamboman/mason.nvim",
 		cmd = "Mason",
-		lazy = true,
+		lazy = false,
 		opts = {
 			ui = {
 				icons = {
