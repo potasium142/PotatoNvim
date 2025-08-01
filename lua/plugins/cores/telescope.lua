@@ -11,6 +11,11 @@ return {
 		opts = function()
 			local actions = require("telescope.actions")
 			return {
+				pickers = {
+					colorscheme = {
+						enable_preview = true,
+					},
+				},
 				defaults = {
 					mappings = {
 						n = {

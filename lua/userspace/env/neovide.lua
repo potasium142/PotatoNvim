@@ -8,7 +8,6 @@ local option = {
 		pumblend = 20,
 	},
 	g = {
-		neovide_opacity = 0.9,
 		neovide_cursor_trail_size = 0.7,
 		neovide_cursor_animation_length = 0.14,
 		neovide_padding_top = 10,

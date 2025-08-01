@@ -15,11 +15,11 @@ return {
 			end
 
 			if buffer.is_focused then
-				return "lualine_a_insert"
+				return "IncSearch"
 			end
 
 			if is_picking_focus() then
-				return "lualine_a_replace"
+				return "Search"
 			end
 
 			return "Normal"
@@ -42,8 +42,7 @@ return {
 			},
 			components = {
 				{
-					text = " ",
-					highlight = "Green",
+					text = "|",
 				},
 				{
 					text = function(buffer)

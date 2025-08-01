@@ -21,6 +21,10 @@ return {
 				"RainbowDelimiterViolet",
 				"RainbowDelimiterCyan",
 			},
+			char = "|",
+		},
+		indent = {
+			char = "|",
 		},
 	},
 	config = function(_, opts)

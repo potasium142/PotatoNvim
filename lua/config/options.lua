@@ -1,8 +1,9 @@
 local gtils = require("gtils")
 
 local M = {}
+local is_tty = require("env").IS_TTY
+
 M.opt = {
-	background = "light",
 	tabstop = 4,
 	shiftwidth = 4,
 	number = true,
@@ -10,7 +11,7 @@ M.opt = {
 	cursorline = true,
 	showmatch = true,
 	autoread = true,
-	termguicolors = true,
+	termguicolors = false,
 	updatetime = 100,
 	splitbelow = true,
 	wildmode = "longest,full",
@@ -32,6 +33,8 @@ M.opt = {
 	showmode = false,
 	cmdheight = 1,
 }
+
+M.opt["background"] = is_tty and "dark" or "light"
 
 M.g = {
 	loaded_netrwPlugin = 1,

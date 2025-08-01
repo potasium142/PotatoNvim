@@ -13,6 +13,14 @@ end
 
 vim.opt.runtimepath:prepend(lazypath)
 
+local is_tty = require("env").IS_TTY
+
+if is_tty then
+	vim.cmd.colorscheme("default")
+else
+	vim.cmd.colorscheme("retrobox")
+end
+
 local lg_plugins = require("loader.lang").plugs
 
 local colorscheme = require("opts.colorscheme.default")
