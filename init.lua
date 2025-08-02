@@ -69,3 +69,4 @@ require("lazy").setup({
 })
 
 require("loader.lsp")
+require("customcmd")

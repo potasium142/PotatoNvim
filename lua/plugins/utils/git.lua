@@ -14,14 +14,5 @@ return {
 				untracked = { text = "░" },
 			},
 		},
-		keys = function()
-			local gs = require("gitsigns")
-
-			return {
-				{ "<leader>gd", gs.diffthis },
-				{ "<leader>gb", gs.blame },
-				{ "<leader>gtb", gs.toggle_current_line_blame },
-			}
-		end,
 	},
 }

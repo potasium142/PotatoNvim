@@ -3,7 +3,17 @@ return {
 	enabled = true,
 	config = function()
 		local winbar = {
-			lualine_x = {
+			lualine_c = {
+				{ "diagnostics", symbols = { error = "E", warn = "W", info = "I", hint = "H" } },
+			},
+			lualine_a = {
+				{
+					"lsp_status",
+					icon = "",
+				},
+			},
+			lualine_b = { { "diff" } },
+			lualine_y = {
 				{
 					"fileformat",
 					symbols = {
@@ -14,7 +24,6 @@ return {
 				},
 				"encoding",
 			},
-			lualine_y = {},
 			lualine_z = { "filename" },
 		}
 		require("lualine").setup({
@@ -40,17 +49,10 @@ return {
 			sections = {
 				lualine_a = { "mode" },
 				lualine_b = { { "branch", icon = "" } },
-				lualine_c = { { "diff" } },
+				lualine_c = {},
 				lualine_x = {},
-				lualine_y = {
-					{ "diagnostics", symbols = { error = "E", warn = "W", info = "I", hint = "H" } },
-				},
-				lualine_z = {
-					{
-						"lsp_status",
-						icon = "",
-					},
-				},
+				lualine_y = {},
+				lualine_z = {},
 			},
 			inactive_sections = {
 				lualine_a = { "windows" },

@@ -1,7 +1,7 @@
 local ascii_potato = require("const.potato_ascii")
 return {
 	"goolord/alpha-nvim",
-	enabled = true,
+	enabled = false,
 	lazy = false,
 	config = function()
 		local function update()

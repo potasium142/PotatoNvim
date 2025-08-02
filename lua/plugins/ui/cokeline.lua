@@ -11,15 +11,17 @@ return {
 
 		local highlight = function(buffer)
 			if buffer.is_readonly then
-				return "lualine_a_visual"
+				return "ErrorMsg"
 			end
 
 			if buffer.is_focused then
-				return "IncSearch"
+				-- return "IncSearch"
+				return "Cursor"
 			end
 
 			if is_picking_focus() then
-				return "Search"
+				-- return "Search"
+				return "DiffChange"
 			end
 
 			return "Normal"
