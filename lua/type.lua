@@ -17,3 +17,13 @@
 --- @class FormatterConfig
 --- @field name string
 --- @field config? table
+
+--- @class DapAdapterConfig
+--- @field name string
+--- @field config table
+--- @field ft_pattern table
+
+--- @class DapConfig
+--- @field name string,
+--- @field config table
+--- @field ft_pattern table
