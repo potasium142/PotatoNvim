@@ -16,4 +16,4 @@
 
 --- @class FormatterConfig
 --- @field name string
---- @field opts? table
+--- @field config? table
