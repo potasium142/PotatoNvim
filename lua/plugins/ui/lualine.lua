@@ -3,16 +3,18 @@ return {
 	enabled = true,
 	config = function()
 		local winbar = {
+			lualine_a = { "filename" },
+			lualine_b = { "diff" },
 			lualine_c = {
 				{ "diagnostics", symbols = { error = "E", warn = "W", info = "I", hint = "H" } },
 			},
-			lualine_a = {
+			lualine_x = {},
+			lualine_z = {
 				{
 					"lsp_status",
 					icon = "",
 				},
 			},
-			lualine_b = { { "diff" } },
 			lualine_y = {
 				{
 					"fileformat",
@@ -24,7 +26,6 @@ return {
 				},
 				"encoding",
 			},
-			lualine_z = { "filename" },
 		}
 		require("lualine").setup({
 			extensions = {
@@ -45,38 +46,16 @@ return {
 					statusline = {},
 					winbar = { "neo-tree", "dap-view" },
 				},
+
+				globalstatus = false,
 			},
-			sections = {
-				lualine_a = { "mode" },
-				lualine_b = { { "branch", icon = "" } },
-				lualine_c = {},
-				lualine_x = {},
-				lualine_y = {},
-				lualine_z = {},
-			},
-			inactive_sections = {
-				lualine_a = { "windows" },
-				lualine_b = { { "branch", icon = "" }, { "diff" } },
-			},
-			winbar = winbar,
-			inactive_winbar = winbar,
+			-- inactive_sections = {
+			-- 	lualine_a = { "windows" },
+			-- 	lualine_b = { { "branch", icon = "" }, { "diff" } },
+			-- },
+			sections = winbar,
+			inactive_sections = winbar,
 			tabline = {},
-		})
-		vim.api.nvim_create_autocmd({ "BufEnter" }, {
-			callback = function()
-				require("lualine").refresh({
-					place = { "winbar" },
-				})
-			end,
-		})
-		vim.api.nvim_create_autocmd({ "User" }, {
-			pattern = "GitSignsUpdate",
-			callback = function()
-				require("lualine").refresh({
-					place = { "statusline" },
-				})
-				-- print("update")
-			end,
 		})
 	end,
 }
