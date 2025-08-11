@@ -4,6 +4,7 @@ return {
 		"nvim-lua/plenary.nvim",
 	},
 	lazy = false,
+	enabled = false,
 	opts = function()
 		local is_picking_focus = require("cokeline.mappings").is_picking_focus
 

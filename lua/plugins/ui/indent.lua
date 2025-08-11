@@ -1,7 +1,7 @@
 return {
 	"lukas-reineke/indent-blankline.nvim",
 	main = "ibl",
-	enabled = true,
+	enabled = false,
 	dependencies = {
 		"rainbow-delimiters.nvim",
 	},

@@ -2,6 +2,7 @@ return {
 	{
 		"windwp/nvim-autopairs",
 		lazy = false,
+		enabled = false,
 		event = "InsertEnter",
 		opts = {
 			fast_wrap = {

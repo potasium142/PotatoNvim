@@ -29,8 +29,12 @@ M.opt = {
 	foldexpr = "nvim_treesitter#foldexpr()",
 	foldlevelstart = 69,
 	laststatus = 3,
-	list = false,
+	list = true,
 	showmode = false,
+	listchars = {
+		tab = "| .",
+		multispace = "| - ",
+	},
 	cmdheight = 1,
 }
 
